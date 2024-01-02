@@ -1,0 +1,91 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-08-21T08:35:38.266Z",
+  "id": "sq9LtYOY3nVGvOg3",
+  "meta": null,
+  "name": "Senas_ERROR_Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c4ee7aa3-93ef-415f-845a-1a0efb364aad",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        100,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n@phx-cloud.ch",
+        "toEmail": "olivier@sebel.be",
+        "subject": "SENAS - Workflow ERROR",
+        "text": "=WORKFLOW LOG !!! ERROR !!!:  {{ $json.execution.error.message }}",
+        "options": {}
+      },
+      "id": "9d282986-6f89-438c-ad86-7ca560eebebc",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        320,
+        320
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "aO5TPXWbGMX7D9cU",
+          "name": "n8n@phx-cloud.ch"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "502883818",
+        "text": "={{ $now.toFormat('hh:mm - dd.MM.yyyy')  }} WORKFLOW LOG !!! ERROR !!!:  {{ $json.execution.error.message }}",
+        "additionalFields": {}
+      },
+      "id": "d7728bf4-3b48-4f36-9cc5-85be6e78fe69",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        320,
+        160
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-09-02T06:34:49.000Z",
+  "versionId": "77efa802-4eb6-404b-b205-fa47ba990694"
+}
