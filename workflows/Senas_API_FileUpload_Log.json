@@ -1,0 +1,254 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "WooCommerce",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-28T12:16:39.406Z",
+  "id": "4aezPL1M77c5dmAE",
+  "meta": null,
+  "name": "Senas_API_FileUpload_Log",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "senas-api",
+        "options": {
+          "noResponseBody": true
+        }
+      },
+      "id": "e11d7969-b010-47cc-8c3b-7e931d2a7ff5",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        360
+      ],
+      "webhookId": "131ee37d-2c6c-492a-b686-344a22a83f4e"
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "order_upload",
+          "mode": "list",
+          "cachedResultName": "order_upload"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "file",
+              "value": "={{ $json.query['order-file'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "531f29a7-fecf-492a-9cc7-5b081a44cf0c",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1260,
+        360
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "order_id",
+              "stringValue": "={{ $json.query[\"order-file\"].match(/\\d+/)[0] }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "5bc3e9c3-9f6e-4607-b1e2-2d21c6dc57bf",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1040,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://www.senas.ch/wp-json/wc/v3/orders/{{ $json.order_id }}/notes",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"note\": \"{{ $now.toFormat('d.MM.y H:mm:ss') }} - Upload zu Frigo-Suisse, erfolgreich!\"\n}",
+        "options": {}
+      },
+      "id": "068556ea-cc3b-4bca-86ae-a8fa3b7f50e6",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1260,
+        160
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "update",
+        "orderId": "={{ $json.order_id }}",
+        "updateFields": {
+          "status": "completed"
+        },
+        "billingUi": {},
+        "couponLinesUi": {},
+        "feeLinesUi": {},
+        "lineItemsUi": {},
+        "metadataUi": {},
+        "shippingUi": {},
+        "shippingLinesUi": {}
+      },
+      "id": "fcad7682-79e6-4d5b-8628-8fa6200bc71c",
+      "name": "WooCommerce",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        -40
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "order_id",
+        "valueToMatchOn": "={{ $json.order_id }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "status",
+              "value": "completed"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6af7c660-f2de-4604-aab6-49fbf0a21869",
+      "name": "MySQL1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1260,
+        -220
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.phx-cloud.ch",
+            "user-agent": "curl/7.68.0",
+            "accept": "*/*",
+            "x-forwarded-for": "65.108.255.86",
+            "x-forwarded-host": "n8n.phx-cloud.ch",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "f1b1eec967b2",
+            "x-real-ip": "65.108.255.86",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "order-file": "senas_order_11130.csv"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-16T15:39:16.013Z",
+      "updatedAt": "2023-08-16T15:39:16.013Z",
+      "id": "KkVmd7DNw8r5lRhu",
+      "name": "SENAS"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-27T16:21:56.000Z",
+  "versionId": "a5a8a341-383e-454f-9030-cce17a245254"
+}
