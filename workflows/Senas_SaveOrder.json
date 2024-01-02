@@ -1,0 +1,3149 @@
+{
+  "active": false,
+  "connections": {
+    "WooCommerce Trigger": {
+      "main": [
+        [
+          {
+            "node": "Status - Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Bexio Invoice ID1": {
+      "main": [
+        [
+          {
+            "node": "Merge - 001",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Baserow - Create Temp. Line": {
+      "main": [
+        [
+          {
+            "node": "Merge - 001",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split MetaData - 001": {
+      "main": [
+        [
+          {
+            "node": "Filter Bexio Invoice ID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge - 001": {
+      "main": [
+        [
+          {
+            "node": "Concat Temp. Data for Baserow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concat Temp. Data for Baserow": {
+      "main": [
+        [
+          {
+            "node": "Update Temp. Baserow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Check Billing + Shipping Address1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [],
+        [
+          {
+            "node": "POS Order - Nothing to DO1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Billing + Shipping Address1": {
+      "main": [
+        [
+          {
+            "node": "Is Woo Shipping + Billing same?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Bexio Contact2": {
+      "main": [
+        [
+          {
+            "node": "bexio_contact_number_2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bexio - Get Contact/Customer ID2": {
+      "main": [
+        [
+          {
+            "node": "Get Bexio Contact2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Woo Shipping + Billing same?": {
+      "main": [
+        [
+          {
+            "node": "Get baserow ID1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Shipping_Address",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow": {
+      "main": [
+        [
+          {
+            "node": "Bexio - Get Contact/Customer ID2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "bexio_contact_number_2": {
+      "main": [
+        [
+          {
+            "node": "Baserow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get baserow ID1": {
+      "main": [
+        [
+          {
+            "node": "Baserow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shipping_Address": {
+      "main": [
+        [
+          {
+            "node": "Search Bexio Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "bexio_contact_number_3": {
+      "main": [
+        [
+          {
+            "node": "Get baserow ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get baserow ID": {
+      "main": [
+        [
+          {
+            "node": "Baserow2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow2": {
+      "main": [
+        [
+          {
+            "node": "Reload Woo Order Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow1": {
+      "main": [
+        [
+          {
+            "node": "Reload Woo Order Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reload Woo Order Data": {
+      "main": [
+        [
+          {
+            "node": "Status - Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status - Switch": {
+      "main": [
+        [
+          {
+            "node": "Shipping - Switch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [],
+        [
+          {
+            "node": "Baserow10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shipping - Switch": {
+      "main": [
+        [
+          {
+            "node": "Baserow - Get Customer Details",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Baserow - Get Customer Details1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow- Add First Row": {
+      "main": [
+        [
+          {
+            "node": "Baserow- Add POS Row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow - Get Customer Details": {
+      "main": [
+        [
+          {
+            "node": "Baserow- Add First Row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "is Empty?": {
+      "main": [
+        [
+          {
+            "node": "Kein Lieferdatum angegeben",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kein Lieferdatum angegeben": {
+      "main": [
+        [
+          {
+            "node": "Calc Delivery Date",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get baserow ID3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get baserow ID2": {
+      "main": [
+        [
+          {
+            "node": "Baserow3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calc Delivery Date": {
+      "main": [
+        [
+          {
+            "node": "Get baserow ID2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "is Empty?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get baserow ID3": {
+      "main": [
+        [
+          {
+            "node": "Baserow4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow- Add First Row1": {
+      "main": [
+        [
+          {
+            "node": "Baserow- Add POS Row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow - Get Customer Details1": {
+      "main": [
+        [
+          {
+            "node": "Baserow- Add First Row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Filter3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "is Empty?2": {
+      "main": [
+        [
+          {
+            "node": "Kein Lieferdatum angegeben1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kein Lieferdatum angegeben1": {
+      "main": [
+        [
+          {
+            "node": "Calc Delivery Date1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get baserow ID5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get baserow ID4": {
+      "main": [
+        [
+          {
+            "node": "Baserow5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calc Delivery Date1": {
+      "main": [
+        [
+          {
+            "node": "Get baserow ID4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter3": {
+      "main": [
+        [
+          {
+            "node": "is Empty?2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get baserow ID5": {
+      "main": [
+        [
+          {
+            "node": "Baserow6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow3": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow4": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow5": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow6": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WooCommerce1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists3": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Add POS to Items1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add POS to Items1": {
+      "main": [
+        [
+          {
+            "node": "Baserow7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow7": {
+      "main": [
+        [
+          {
+            "node": "Get complete List for CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get complete List for CSV": {
+      "main": [
+        [
+          {
+            "node": "Prepare List for CSV1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare List for CSV1": {
+      "main": [
+        [
+          {
+            "node": "Create CSV1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create CSV1": {
+      "main": [
+        [
+          {
+            "node": "Send Email1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email1": {
+      "main": [
+        [
+          {
+            "node": "Baserow8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow8": {
+      "main": [
+        [
+          {
+            "node": "Baserow9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow9": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Bexio Contact": {
+      "main": [
+        [
+          {
+            "node": "is Empty?3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "is Empty?3": {
+      "main": [
+        [
+          {
+            "node": "NO Contact Found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NO Contact Found": {
+      "main": [
+        [
+          {
+            "node": "Create Bexio Contact1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "bexio_contact_number_3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Bexio Contact1": {
+      "main": [
+        [
+          {
+            "node": "bexio_contact_number_3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow10": {
+      "main": [
+        [
+          {
+            "node": "Baserow11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow11": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow14": {
+      "main": [
+        [
+          {
+            "node": "Baserow15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow- Add POS Row": {
+      "main": [
+        [
+          {
+            "node": "Baserow14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow16": {
+      "main": [
+        [
+          {
+            "node": "Baserow17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow- Add POS Row1": {
+      "main": [
+        [
+          {
+            "node": "Baserow16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Baserow12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram": {
+      "main": [
+        [
+          {
+            "node": "Baserow18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow18": {
+      "main": [
+        [
+          {
+            "node": "Baserow19",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow19": {
+      "main": [
+        [
+          {
+            "node": "Baserow20",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow20": {
+      "main": [
+        [
+          {
+            "node": "Baserow21",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow12": {
+      "main": [
+        [
+          {
+            "node": "Baserow13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status - Switch1": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Split MetaData - 001",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Baserow - Create Temp. Line",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-07-30T16:20:45.926Z",
+  "id": "csqaY5BMPHgpC6s6",
+  "meta": null,
+  "name": "Senas_SaveOrder",
+  "nodes": [
+    {
+      "parameters": {
+        "event": "order.updated"
+      },
+      "id": "429d8f3d-8b18-49d0-96f6-3e6c2f86a535",
+      "name": "WooCommerce Trigger",
+      "type": "n8n-nodes-base.wooCommerceTrigger",
+      "typeVersion": 1,
+      "position": [
+        -4660,
+        -280
+      ],
+      "webhookId": "912d2148-b52f-42a2-8d07-8c24ab4eef56",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://wp.phx-cloud.ch/wp-json/wc/v3/orders/{{ $json.id }}/notes ",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "note",
+              "value": "WORKFLOW LOG: Bestellung nicht weitergeleitet. Grund: Abholung"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "526c868b-1c83-49c0-b68a-20654808a3e6",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1120,
+        480
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "JxBvFf2gmb4ZrGrE",
+          "name": "WooCommerce TEST PHX"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://wp.phx-cloud.ch/wp-json/wc/v3/orders/{{ $json.id }}/notes ",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "note",
+              "value": "WORKFLOW LOG: Bestellung nicht weitergeleitet. Grund: Status nicht \"In Bearbeitung\""
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "0f31b738-525f-4841-b333-4d1ff4b3540e",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1720,
+        520
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "JxBvFf2gmb4ZrGrE",
+          "name": "WooCommerce TEST PHX"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.meta_data.key }}",
+              "value2": "_bexio_invoice_id"
+            }
+          ]
+        }
+      },
+      "id": "0512657b-0bda-4dd9-a120-1a9de35454ad",
+      "name": "Filter Bexio Invoice ID1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        -3900,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 94,
+        "tableId": 491,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4520,
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldId": 4521,
+              "fieldValue": "={{ $json.customer_id }}"
+            }
+          ]
+        }
+      },
+      "id": "845f2850-b66d-454f-8708-c5f5b5c827ce",
+      "name": "Baserow - Create Temp. Line",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -4100,
+        -380
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "meta_data",
+        "options": {
+          "destinationFieldName": "meta_data"
+        }
+      },
+      "id": "78f637ba-4446-4f92-947c-9f2d72afd419",
+      "name": "Split MetaData - 001",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -4100,
+        -220
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d30b6cb3-4f58-4e9b-b042-168004e71d4b",
+      "name": "Merge - 001",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -3680,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "id",
+              "renameField": true,
+              "outputFieldName": "baserow_id"
+            },
+            {
+              "fieldToAggregate": "meta_data.value",
+              "renameField": true,
+              "outputFieldName": "baserow_value"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ec409574-3f1b-459f-a819-8d62081665a9",
+      "name": "Concat Temp. Data for Baserow",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -3480,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 94,
+        "tableId": 491,
+        "rowId": "={{ $json.baserow_id[0] }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4523,
+              "fieldValue": "={{ $json.baserow_value[0] }}"
+            }
+          ]
+        }
+      },
+      "id": "c05e0cef-ea7a-4736-a71e-5b1c9ce42db2",
+      "name": "Update Temp. Baserow",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -3280,
+        -240
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "value1": "={{ $json.created_via }}",
+        "rules": {
+          "rules": [
+            {
+              "operation": "equal",
+              "value2": "=checkout"
+            },
+            {
+              "operation": "equal",
+              "value2": "=pos",
+              "output": 3
+            }
+          ]
+        }
+      },
+      "id": "2d22a836-33af-41ad-b27a-9cf21ab6643b",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -4120,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access input data\nconst inputData = items;\n\n// Fields to compare\nconst fieldsToCompare = [\"first_name\", \"last_name\", \"address_1\", \"city\", \"postcode\"];\n\n// Initialize a flag to track if all field values are the same\nlet allFieldsAreEqual = true;\n\n// Compare the values of each field across elements\nfor (const field of fieldsToCompare) {\n    const valueElement1 = items[0].json.billing[field];\n    const valueElement2 = items[0].json.shipping[field];\n\n    if (valueElement1 !== valueElement2) {\n        allFieldsAreEqual = false;\n        break; // No need to continue checking if any field is different\n    }\n}\n\nif (allFieldsAreEqual) {\n    // Field values are the same across elements, proceed further\nfor (const item of $input.all()) {\n  //item.json.billing.switch = 0;\n  item.json.billing.billing_shipping_address_same = true;\n  item.json.billing.order_no = items[0].json.id;\n}\n return items[0].json.billing;\n  \n} else {\n    // Field values are not the same, no further action needed\n  for (const item of $input.all()) {\n  //item.json.shipping.switch = 1;\n  item.json.shipping.billing_shipping_address_same = false;\n  item.json.shipping.order_no = items[0].json.id;\n}\n  \n    return items[0].json.shipping;\n\n  \n}\n\n\n"
+      },
+      "id": "d8cf0fc6-2d9a-4e96-beb9-f99c1ee26acb",
+      "name": "Check Billing + Shipping Address1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3880,
+        -20
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {},
+      "id": "9f11b8aa-497a-4f54-bf1b-23d7b9486bf7",
+      "name": "POS Order - Nothing to DO1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -3900,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.billing_shipping_address_same }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "f6f65245-05fc-4236-9744-c8178ff7f979",
+      "name": "Is Woo Shipping + Billing same?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -3640,
+        -20
+      ],
+      "notesInFlow": true,
+      "notes": "If the Billing + Shipping address are the same, the Address has been transfered as the Billing Address to Bexio and can taken from there (Only Customer Number)."
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bexio.com/2.0/contact/{{ $json.contact_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "99c80749-c821-4413-bb4a-3430fbb4fc89",
+      "name": "Get Bexio Contact2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -2620,
+        -40
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "xTCPZWzscowXOuCF",
+          "name": "PROD Senas Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "bexio_id",
+              "value": "={{ $json.id }}"
+            }
+          ],
+          "string": [
+            {
+              "name": "bexio_number",
+              "value": "={{ $json.nr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "96d1ace7-a82e-43c0-a8ab-6a4714d961b7",
+      "name": "bexio_contact_number_2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -2420,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bexio.com/2.0/kb_invoice/{{ $json.Bexio_Invoice_Number }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "e285ef02-5ec9-4e88-9190-8a11f29c48c5",
+      "name": "Bexio - Get Contact/Customer ID2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -2820,
+        -40
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "xTCPZWzscowXOuCF",
+          "name": "PROD Senas Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "databaseId": 94,
+        "tableId": 491,
+        "rowId": "={{ $json.id }}"
+      },
+      "id": "f23ce5df-e450-422a-b642-a9f215476e9f",
+      "name": "Baserow",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -3020,
+        -40
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 94,
+        "tableId": 491,
+        "rowId": "={{ $('Get baserow ID1').item.json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4524,
+              "fieldValue": "={{ $('bexio_contact_number_2').item.json.bexio_id }}"
+            },
+            {
+              "fieldId": 4525,
+              "fieldValue": "={{ $('bexio_contact_number_2').item.json.bexio_number }}"
+            }
+          ]
+        }
+      },
+      "id": "c91945b9-ef9f-41dc-b72c-b6e2f0737b59",
+      "name": "Baserow1",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -2220,
+        -40
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 94,
+        "tableId": 491,
+        "limit": 1,
+        "additionalOptions": {}
+      },
+      "id": "3fcd33cd-7786-471d-a287-5def6c2540e4",
+      "name": "Get baserow ID1",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -3220,
+        -40
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Woo_First_Name",
+              "value": "={{ $('WooCommerce Trigger').item.json.shipping.first_name }}"
+            },
+            {
+              "name": "Woo_Last_Name",
+              "value": "={{ $('WooCommerce Trigger').item.json.shipping.last_name }}"
+            },
+            {
+              "name": "Woo_Last_Address_1",
+              "value": "={{ $('WooCommerce Trigger').item.json.shipping.address_1 }}"
+            },
+            {
+              "name": "Woo_City",
+              "value": "={{ $('WooCommerce Trigger').item.json.shipping.city }}"
+            },
+            {
+              "name": "Woo_Post_Code",
+              "value": "={{ $('WooCommerce Trigger').item.json.shipping.postcode }}"
+            },
+            {
+              "name": "Woo_Phone",
+              "value": "={{ $('WooCommerce Trigger').item.json.billing.phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aa9d44c6-ddfc-4035-8a80-72d0e50a7494",
+      "name": "Shipping_Address",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -3400,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.bexio.com/2.0/contact",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"contact_type_id\": 2,\n    \"name_1\": \"{{ $('Shipping_Address').item.json[\"Woo_Last_Name\"] }}\",\n    \"name_2\": \"{{ $('Shipping_Address').item.json[\"Woo_First_Name\"] }}\",\n    \"address\": \"{{ $('Shipping_Address').item.json[\"Woo_Last_Address_1\"]}}\",\n    \"postcode\": {{ $('Shipping_Address').item.json[\"Woo_Post_Code\"]}},\n    \"city\": \"{{ $('Shipping_Address').item.json[\"Woo_City\"] }}\",\n    \"country_id\": 1,\n    \"phone_fixed\": \"{{ $('Shipping_Address').item.json[\"Woo_Phone\"] }}\",\n    \"remarks\": \"\",\n    \"contact_group_ids\": \"6\",\n    \"user_id\": 1,\n    \"owner_id\": 1\n}",
+        "options": {}
+      },
+      "id": "0af8b0be-1b42-4e66-affc-9abb3f17c88f",
+      "name": "Create Bexio Contact1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -2600,
+        180
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "xTCPZWzscowXOuCF",
+          "name": "PROD Senas Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "bexio_id",
+              "value": "={{ $json.id }}"
+            }
+          ],
+          "string": [
+            {
+              "name": "bexio_number",
+              "value": "={{ $json.nr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e902e5ad-d7b0-40b5-a470-e68d85d0bf13",
+      "name": "bexio_contact_number_3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -2420,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "databaseId": 94,
+        "tableId": 491,
+        "limit": 1,
+        "additionalOptions": {}
+      },
+      "id": "1bab15ff-d806-49d6-a8e7-4408bf27f0ec",
+      "name": "Get baserow ID",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -2240,
+        380
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 94,
+        "tableId": 491,
+        "rowId": "={{ $json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4524,
+              "fieldValue": "={{ $('bexio_contact_number_3').item.json.bexio_id }}"
+            },
+            {
+              "fieldId": 4525,
+              "fieldValue": "={{ $('bexio_contact_number_3').item.json.bexio_number }}"
+            }
+          ]
+        }
+      },
+      "id": "7dba8b45-fde2-4262-b440-486ec2005f4e",
+      "name": "Baserow2",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -2060,
+        200
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $json.WooCommerce_Order_Number }}"
+      },
+      "id": "91ac58f4-796f-42e2-920b-04a89b126093",
+      "name": "Reload Woo Order Data",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        -1900,
+        -40
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "9ce24ebb-b5a7-46ff-966b-84259e300614",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -1280,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.status }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "processing"
+            },
+            {
+              "value2": "on-hold",
+              "output": 3
+            },
+            {
+              "value2": "cancelled",
+              "output": 3
+            },
+            {
+              "value2": "refunded",
+              "output": 3
+            },
+            {}
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "0ad7b989-d5b0-4e00-80c9-4a0758ee803d",
+      "name": "Status - Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -1720,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.shipping_lines[0].method_id }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "flexible_shipping"
+            },
+            {
+              "value2": "local_pickup",
+              "output": 1
+            }
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "d30bf21e-0df2-4e7c-8ccc-f6f7db18fb5b",
+      "name": "Shipping - Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -1400,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 95,
+        "tableId": 492,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4526,
+              "fieldValue": "OK"
+            },
+            {
+              "fieldId": 4527,
+              "fieldValue": "719"
+            },
+            {
+              "fieldId": 4529,
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldId": 4532,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.first_name }}  {{ $('Shipping - Switch').item.json.shipping.last_name }}"
+            },
+            {
+              "fieldId": 4533,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.address_2 }}"
+            },
+            {
+              "fieldId": 4534,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.address_1 }}"
+            },
+            {
+              "fieldId": 4535,
+              "fieldValue": "Schweiz"
+            },
+            {
+              "fieldId": 4536,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.postcode }}"
+            },
+            {
+              "fieldId": 4537,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.city }}"
+            },
+            {
+              "fieldId": 4531,
+              "fieldValue": "={{ $json.Bexio_Customer_Number }}"
+            },
+            {
+              "fieldId": 4538,
+              "fieldValue": "3"
+            },
+            {
+              "fieldId": 4540,
+              "fieldValue": "={{ $json.WooCommerce_Order_Number }}"
+            }
+          ]
+        }
+      },
+      "id": "db0fa9e4-fd67-4e5f-b493-8e0254d953cf",
+      "name": "Baserow- Add First Row",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -760,
+        -680
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 95,
+        "tableId": 492,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4526,
+              "fieldValue": "POS"
+            },
+            {
+              "fieldId": 4527,
+              "fieldValue": "Position-NR"
+            },
+            {
+              "fieldId": 4529,
+              "fieldValue": "Anzahl LE"
+            },
+            {
+              "fieldId": 4531,
+              "fieldValue": "Bezeichnung"
+            },
+            {
+              "fieldId": 4532,
+              "fieldValue": "Chargenvorgabe"
+            },
+            {
+              "fieldId": 4533,
+              "fieldValue": "MHD-Vorgabe"
+            },
+            {
+              "fieldId": 4534,
+              "fieldValue": "Pos-Text"
+            },
+            {
+              "fieldId": 4530,
+              "fieldValue": "Artikelnr"
+            }
+          ]
+        }
+      },
+      "id": "eb6da41d-0691-4019-b1e5-c9793d55e757",
+      "name": "Baserow- Add POS Row",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        -680
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 94,
+        "tableId": 491,
+        "limit": 1,
+        "additionalOptions": {}
+      },
+      "id": "da5c9077-c441-43f4-924f-a6b4a011b284",
+      "name": "Baserow - Get Customer Details",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        -680
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "meta_data",
+        "options": {}
+      },
+      "id": "e9986020-0a2f-4b8d-944d-1d2d0d46b2ca",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -980,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "if (items.length == 1 && Object.keys(items[0].json).length == 0) {\n  //console.log(\"Test 123\")\n    return  [{json: {empty: true}}];\n} else {\n  return items;\n}\n\n"
+      },
+      "id": "dad5b136-aa66-4534-a212-69a6181e13d7",
+      "name": "is Empty?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.empty }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "c0f8d10e-d52c-425b-bf60-365c2eead21c",
+      "name": "Kein Lieferdatum angegeben",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 95,
+        "tableId": 492,
+        "rowId": "={{ $json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4530,
+              "fieldValue": "={{ DateTime.fromFormat($('Calc Delivery Date').item.json.date, \"dd/MM/yyyy\").toFormat('dd.MM.yyyy') }} "
+            }
+          ]
+        }
+      },
+      "id": "30f27f54-877d-46c9-b477-fcebfce0c918",
+      "name": "Baserow3",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -600
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 95,
+        "tableId": 492,
+        "limit": 1,
+        "additionalOptions": {}
+      },
+      "id": "72bf589b-ae2d-4869-9a14-912bf21b98f7",
+      "name": "Get baserow ID2",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -600
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current date\nconst currentDate = new Date();\n\n// Function to check if a given date is a Saturday or Sunday\nfunction isWeekend(date) {\n  const day = date.getDay();\n  return day === 0 || day === 6; // 0 is Sunday, 6 is Saturday\n}\n\n// Calculate the next business day\nfunction getNextBusinessDay(date) {\n  const nextDay = new Date(date);\n  do {\n    nextDay.setDate(nextDay.getDate() + 3);\n  } while (isWeekend(nextDay));\n  return nextDay;\n}\n\n// Check if today is a weekday\nif (isWeekend(currentDate)) {\n  // If it's a weekend, get the next business day\n  const nextBusinessDay = getNextBusinessDay(currentDate);\n  return [{ date: nextBusinessDay.toLocaleDateString('en-GB') }];\n} else {\n  // If it's a weekday, use the current date\n  return [{ date: currentDate.toLocaleDateString('en-GB') }];\n}\n"
+      },
+      "id": "d9b1d4a9-fe8d-4f48-a1d8-7585dc5db27d",
+      "name": "Calc Delivery Date",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -120,
+        -600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.key }}",
+              "value2": "thwdtp_delivery_datepicker"
+            }
+          ]
+        }
+      },
+      "id": "acdf12a9-7cd4-41af-b4c6-30b9907a05f4",
+      "name": "Filter2",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        -760,
+        -480
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 95,
+        "tableId": 492,
+        "rowId": "={{ $json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4530,
+              "fieldValue": "={{ DateTime.fromFormat($('is Empty?').item.json[\"value\"], \"yyyy-MM-dd\").toFormat('dd.MM.yyyy') }} "
+            }
+          ]
+        }
+      },
+      "id": "3ad2cd5a-fe79-4648-b546-51f61a4ea047",
+      "name": "Baserow4",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -400
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 95,
+        "tableId": 492,
+        "limit": 1,
+        "additionalOptions": {}
+      },
+      "id": "8548ed8b-9045-4fa4-8650-dab606ebed87",
+      "name": "Get baserow ID3",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        -400
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "07e9ebc0-9592-4a53-bebd-70a71ca71be9",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -1020,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 95,
+        "tableId": 492,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4526,
+              "fieldValue": "OK"
+            },
+            {
+              "fieldId": 4527,
+              "fieldValue": "719"
+            },
+            {
+              "fieldId": 4529,
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldId": 4532,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.first_name }}  {{ $('Shipping - Switch').item.json.shipping.last_name }}"
+            },
+            {
+              "fieldId": 4533,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.address_2 }}"
+            },
+            {
+              "fieldId": 4534,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.address_1 }}"
+            },
+            {
+              "fieldId": 4535,
+              "fieldValue": "Schweiz"
+            },
+            {
+              "fieldId": 4536,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.postcode }}"
+            },
+            {
+              "fieldId": 4537,
+              "fieldValue": "={{ $('Shipping - Switch').item.json.shipping.city }}"
+            },
+            {
+              "fieldId": 4531,
+              "fieldValue": "={{ $json.Bexio_Customer_Number }}"
+            },
+            {
+              "fieldId": 4538,
+              "fieldValue": "35"
+            },
+            {
+              "fieldId": 4540,
+              "fieldValue": "={{ $json.WooCommerce_Order_Number }}"
+            }
+          ]
+        }
+      },
+      "id": "65b987ad-5c94-41c4-91d3-03dd0623622b",
+      "name": "Baserow- Add First Row1",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -740,
+        -280
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 95,
+        "tableId": 492,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4526,
+              "fieldValue": "POS"
+            },
+            {
+              "fieldId": 4527,
+              "fieldValue": "Position-NR"
+            },
+            {
+              "fieldId": 4529,
+              "fieldValue": "Anzahl LE"
+            },
+            {
+              "fieldId": 4531,
+              "fieldValue": "Bezeichnung"
+            },
+            {
+              "fieldId": 4532,
+              "fieldValue": "Chargenvorgabe"
+            },
+            {
+              "fieldId": 4533,
+              "fieldValue": "MHD-Vorgabe"
+            },
+            {
+              "fieldId": 4534,
+              "fieldValue": "Pos-Text"
+            },
+            {
+              "fieldId": 4530,
+              "fieldValue": "Artikelnr"
+            }
+          ]
+        }
+      },
+      "id": "bc18e05d-397b-48ac-8088-ad5a4abc7845",
+      "name": "Baserow- Add POS Row1",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -540,
+        -280
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 94,
+        "tableId": 491,
+        "limit": 1,
+        "additionalOptions": {}
+      },
+      "id": "d386ec3f-a9ec-43ac-8c2d-abfeaea2e07b",
+      "name": "Baserow - Get Customer Details1",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -960,
+        -280
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "meta_data",
+        "options": {}
+      },
+      "id": "3aaec3aa-6cf5-4ecb-be5c-8c19789a5253",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -960,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "if (items.length == 1 && Object.keys(items[0].json).length == 0) {\n  //console.log(\"Test 123\")\n    return  [{json: {empty: true}}];\n} else {\n  return items;\n}\n\n"
+      },
+      "id": "ae3c025b-fb19-4505-be63-e18e88fc1600",
+      "name": "is Empty?2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -540,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.empty }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "b5fa4a9e-4058-49d6-b025-b85e81dfa434",
+      "name": "Kein Lieferdatum angegeben1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 95,
+        "tableId": 492,
+        "rowId": "={{ $json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4530,
+              "fieldValue": "={{ DateTime.fromFormat($('Calc Delivery Date1').item.json.date, \"dd/MM/yyyy\").toFormat('dd.MM.yyyy') }} "
+            }
+          ]
+        }
+      },
+      "id": "d9495b66-b684-4e37-8ed5-29853e6ee288",
+      "name": "Baserow5",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        300,
+        -200
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 95,
+        "tableId": 492,
+        "limit": 1,
+        "additionalOptions": {}
+      },
+      "id": "a953a4ad-8b53-462f-8ce8-bcca49573261",
+      "name": "Get baserow ID4",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        100,
+        -200
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current date\nconst currentDate = new Date();\n\n// Function to check if a given date is a Saturday or Sunday\nfunction isWeekend(date) {\n  const day = date.getDay();\n  return day === 0 || day === 6; // 0 is Sunday, 6 is Saturday\n}\n\n// Calculate the next business day\nfunction getNextBusinessDay(date) {\n  const nextDay = new Date(date);\n  do {\n    nextDay.setDate(nextDay.getDate() + 3);\n  } while (isWeekend(nextDay));\n  return nextDay;\n}\n\n// Check if today is a weekday\nif (isWeekend(currentDate)) {\n  // If it's a weekend, get the next business day\n  const nextBusinessDay = getNextBusinessDay(currentDate);\n  return [{ date: nextBusinessDay.toLocaleDateString('en-GB') }];\n} else {\n  // If it's a weekday, use the current date\n  return [{ date: currentDate.toLocaleDateString('en-GB') }];\n}\n"
+      },
+      "id": "c766880e-cfaf-4511-8746-26506d51585b",
+      "name": "Calc Delivery Date1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -100,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.key }}",
+              "value2": "thwdtp_delivery_datepicker"
+            }
+          ]
+        }
+      },
+      "id": "70922afd-5838-4355-9127-b3effbeced21",
+      "name": "Filter3",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        -740,
+        -80
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 95,
+        "tableId": 492,
+        "rowId": "={{ $json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4530,
+              "fieldValue": "={{ DateTime.fromFormat($('is Empty?2').item.json[\"value\"], \"yyyy-MM-dd\").toFormat('dd.MM.yyyy') }} "
+            }
+          ]
+        }
+      },
+      "id": "818106c0-9025-4427-9f89-3d7beb45c119",
+      "name": "Baserow6",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        100,
+        0
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 95,
+        "tableId": 492,
+        "limit": 1,
+        "additionalOptions": {}
+      },
+      "id": "6fa1d2ce-c54f-40c8-ae60-984d25e8ab51",
+      "name": "Get baserow ID5",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        0
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $json.Bestellnummer }}"
+      },
+      "id": "f36e7ed8-caa1-4dcf-a8b2-e29a618a6fb3",
+      "name": "WooCommerce1",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        680,
+        -260
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "line_items",
+        "options": {}
+      },
+      "id": "fcb04e6b-6084-43c6-85c6-32aab9b98ef6",
+      "name": "Item Lists3",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        900,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.tax_class }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "reduzierter-preis-frigo"
+            }
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "8a82643b-8598-4095-9b8a-04c3981acea8",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://www.senas.ch/wp-json/wc/v3/orders/{{ $('WooCommerce1').item.json.id }}/notes",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "note",
+              "value": "=WORKFLOW LOG: Artikel \"{{ $json.name }}\" nicht zu FrigoSuisse übermittelt, da kein TK Artikel."
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "9ab42cc0-9e28-4015-b2d1-1c16c3224ba8",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1380,
+        -40
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop through each item in the input item list\nfor (let i = 0; i < items.length; i++) {\n  // Calculate the current item's position (index + 1) multiplied by 10 and convert it to a string\n  const positionAsString = ((i + 1) * 10).toString();\n\n  // Add the position as a string to the item\n  items[i].json.position = positionAsString;\n}\n\n// Return the modified items\nreturn items;"
+      },
+      "id": "2ce99079-366b-4242-ba28-f196a8609e64",
+      "name": "Add POS to Items1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 95,
+        "tableId": 492,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4526,
+              "fieldValue": "OP"
+            },
+            {
+              "fieldId": 4527,
+              "fieldValue": "={{ $json.position }}"
+            },
+            {
+              "fieldId": 4529,
+              "fieldValue": "={{ $json.quantity }}"
+            },
+            {
+              "fieldId": 4530,
+              "fieldValue": "={{ $json.sku }}"
+            },
+            {
+              "fieldId": 4531,
+              "fieldValue": "={{ $json.name }}"
+            }
+          ]
+        }
+      },
+      "id": "906bb3a6-61f0-462c-a036-21cf9d0889a4",
+      "name": "Baserow7",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        -340
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 95,
+        "tableId": 492,
+        "returnAll": true,
+        "additionalOptions": {}
+      },
+      "id": "3be11e9c-5159-469b-a3d5-b0da10ce102b",
+      "name": "Get complete List for CSV",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        -220
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "fileFormat": "csv",
+        "options": {}
+      },
+      "id": "36594fe7-537a-446c-a0e6-0aa0519aa7fd",
+      "name": "Create CSV1",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "KOPF",
+              "value": "={{ $json.KOPF }}"
+            },
+            {
+              "name": "Absender",
+              "value": "={{ $json.Absender }}"
+            },
+            {
+              "name": "Auftragsnr",
+              "value": "={{ $json.Auftragsnr }}"
+            },
+            {
+              "name": "Lieferdatum",
+              "value": "={{ $json.Lieferdatum }}"
+            },
+            {
+              "name": "Kundennummer",
+              "value": "={{ $json.Kundennummer }}"
+            },
+            {
+              "name": "Name",
+              "value": "={{ $json.Name }}"
+            },
+            {
+              "name": "Zusatz",
+              "value": "={{ $json.Zusatz }}"
+            },
+            {
+              "name": "Strasse",
+              "value": "={{ $json.Strasse }}"
+            },
+            {
+              "name": "Land",
+              "value": "={{ $json.Land }}"
+            },
+            {
+              "name": "PLZ",
+              "value": "={{ $json.PLZ }}"
+            },
+            {
+              "name": "Ort",
+              "value": "={{ $json.Ort }}"
+            },
+            {
+              "name": "Lieferart",
+              "value": "={{ $json.Lieferart }}"
+            },
+            {
+              "name": "Tour",
+              "value": "={{ $json.Tour }}"
+            },
+            {
+              "name": "Bestellnummer",
+              "value": "={{ $json.Bestellnummer }}"
+            },
+            {
+              "name": "KopfText",
+              "value": "={{ $json.KopfText }}"
+            }
+          ]
+        },
+        "options": {
+          "dotNotation": true
+        }
+      },
+      "id": "39e24f88-4122-4493-8a57-c86c6d97d92e",
+      "name": "Prepare List for CSV1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n@phx-cloud.ch",
+        "toEmail": "olivier@sebel.be",
+        "subject": "New FrigoSuisse Order",
+        "text": "New FrigoSuisse Order\n\nPlease Check Attachment",
+        "options": {
+          "attachments": "data",
+          "ccEmail": "info@senas.ch",
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "7b94aa69-f42e-40eb-b14f-0443a82e91fb",
+      "name": "Send Email1",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        2480,
+        -220
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "aO5TPXWbGMX7D9cU",
+          "name": "n8n@phx-cloud.ch"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 95,
+        "tableId": 492,
+        "returnAll": true,
+        "additionalOptions": {}
+      },
+      "id": "16d49ded-c313-4244-9bfc-ddcede5c294b",
+      "name": "Baserow8",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        2700,
+        -220
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "databaseId": 95,
+        "tableId": 492,
+        "rowId": "={{ $json.id }}"
+      },
+      "id": "204a97c0-6875-4235-86db-832714174a70",
+      "name": "Baserow9",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        2920,
+        -220
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "protocol": "sftp",
+        "operation": "upload",
+        "path": "/spreadsheet.csv"
+      },
+      "id": "e3baf864-0ea0-4637-94f2-d025f6409cc7",
+      "name": "FTP1",
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        -20
+      ],
+      "credentials": {
+        "sftp": {
+          "id": "PBw8cZ3raBMWQBAA",
+          "name": "TEST sFTP2GO"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "delete $('Create CSV1')').context;\nreturn items;\n\nconsole.log($('Create CSV1')').context)"
+      },
+      "id": "f9276932-761d-4b53-849d-affec4d1a13f",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3140,
+        -220
+      ],
+      "disabled": true,
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.bexio.com/2.0/contact/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "order_by",
+              "value": "updated_at_desc "
+            },
+            {
+              "name": "limit",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n     {\n        \"field\": \"name_1\",\n        \"value\": \"{{ $json[\"Woo_Last_Name\"] }}\",\n        \"criteria\": \"like\"\n    },\n    {\n        \"field\": \"address\",\n        \"value\": \"{{ $json[\"Woo_Last_Address_1\"] }}\",\n        \"criteria\": \"like\"\n    },\n    {\n        \"field\": \"postcode\",\n        \"value\": \"{{ $json[\"Woo_Post_Code\"] }}\",\n        \"criteria\": \"=\"\n    }\n]",
+        "options": {}
+      },
+      "id": "43686f17-70b0-4b05-99bf-a20782455257",
+      "name": "Search Bexio Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -3220,
+        200
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "xTCPZWzscowXOuCF",
+          "name": "PROD Senas Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "if (items.length == 1 && Object.keys(items[0].json).length == 0) {\n  console.log(\"Test 123\")\n    return  [{json: {empty: true}}];\n} else {\n  return items;\n}\n\n"
+      },
+      "id": "13ae684f-6f09-4746-b2c9-0111dbe41dc9",
+      "name": "is Empty?3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3040,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.empty }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "c03c2532-bbf7-449a-8a2d-1914ebe4c611",
+      "name": "NO Contact Found",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -2880,
+        200
+      ],
+      "notesInFlow": true,
+      "notes": "If the Billing + Shipping address are the same, the Address has been transfered as the Billing Address to Bexio and can taken from there (Only Customer Number)."
+    },
+    {
+      "parameters": {
+        "databaseId": 94,
+        "tableId": 491,
+        "returnAll": true,
+        "additionalOptions": {}
+      },
+      "id": "6f0dd95b-34e5-4774-b917-02b662ad45ea",
+      "name": "Baserow10",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -1700,
+        220
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "databaseId": 94,
+        "tableId": 491,
+        "rowId": "={{ $json.id }}"
+      },
+      "id": "67e8fd26-34d5-47ed-bd6e-41486dc3e276",
+      "name": "Baserow11",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -1480,
+        220
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 94,
+        "tableId": 491,
+        "returnAll": true,
+        "additionalOptions": {}
+      },
+      "id": "ce9e0b94-0aea-4791-8aa2-ce73b213dd34",
+      "name": "Baserow14",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        -680
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "databaseId": 94,
+        "tableId": 491,
+        "rowId": "={{ $json.id }}"
+      },
+      "id": "ec17be40-fc38-4a0d-b6f0-3b4c2d089dcd",
+      "name": "Baserow15",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        -780
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 94,
+        "tableId": 491,
+        "returnAll": true,
+        "additionalOptions": {}
+      },
+      "id": "1aa20f5c-1261-48e6-a7ef-91a89239530b",
+      "name": "Baserow16",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -380,
+        -280
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "databaseId": 94,
+        "tableId": 491,
+        "rowId": "={{ $json.id }}"
+      },
+      "id": "fa330bbc-1f09-4ced-8508-97f2dd263b55",
+      "name": "Baserow17",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        -280
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "502883818",
+        "text": "={{ $now.toFormat('hh:mm - dd.MM.yyyy')  }} - New Senas Order arrived",
+        "additionalFields": {}
+      },
+      "id": "c047ef19-f300-470c-951d-cfde436977db",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        -4100,
+        -540
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 94,
+        "tableId": 491,
+        "returnAll": true,
+        "additionalOptions": {}
+      },
+      "id": "ddb6a2c5-c8a7-493b-8b55-773e271c91f5",
+      "name": "Baserow18",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -3880,
+        -540
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "databaseId": 94,
+        "tableId": 491,
+        "rowId": "={{ $json.id }}"
+      },
+      "id": "965362f1-96d8-428c-9a00-1b49ab6cb3be",
+      "name": "Baserow19",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -3680,
+        -540
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "databaseId": 95,
+        "tableId": 492,
+        "returnAll": true,
+        "additionalOptions": {}
+      },
+      "id": "1e6ba936-e7fe-46d9-9488-424eadb7b9dc",
+      "name": "Baserow20",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -3500,
+        -540
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "databaseId": 95,
+        "tableId": 492,
+        "rowId": "={{ $json.id }}"
+      },
+      "id": "721996ed-384b-4b2a-9bfa-92c08036c3be",
+      "name": "Baserow21",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        -3300,
+        -540
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 95,
+        "tableId": 492,
+        "returnAll": true,
+        "additionalOptions": {}
+      },
+      "id": "ba1a1a9a-467d-4b2a-b032-10a188659321",
+      "name": "Baserow12",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        -40
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "databaseId": 95,
+        "tableId": 492,
+        "rowId": "={{ $json.id }}"
+      },
+      "id": "dcc28193-47ab-4f1f-b3b7-d2ba7ac83fa5",
+      "name": "Baserow13",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        -40
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "id": "9cae3563-c55f-41dd-82eb-66b7c46d0664",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.status }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "processing"
+            },
+            {
+              "value2": "on-hold",
+              "output": 3
+            },
+            {
+              "value2": "cancelled",
+              "output": 3
+            },
+            {
+              "value2": "refunded",
+              "output": 3
+            },
+            {}
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "94bf1bc3-1255-4824-9207-05e1b3abfe77",
+      "name": "Status - Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -4460,
+        -280
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "sq9LtYOY3nVGvOg3"
+  },
+  "staticData": {
+    "node:WooCommerce Trigger": {}
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-11-16T20:55:31.000Z",
+  "versionId": "716031a9-15ad-4fbf-bb2e-e52de2cd5485"
+}
