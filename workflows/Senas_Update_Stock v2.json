@@ -1,0 +1,373 @@
+{
+  "active": true,
+  "connections": {
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "WooCommerce1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "MySQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WooCommerce1": {
+      "main": [
+        [
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Trigger (IMAP)": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        []
+      ]
+    },
+    "MySQL1": {
+      "main": [
+        [
+          {
+            "node": "MySQL3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL3": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WooCommerce4": {
+      "main": [
+        [
+          {
+            "node": "MySQL4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-22T08:21:02.550Z",
+  "id": "scoBkhJqu169aTsD",
+  "meta": null,
+  "name": "Senas_Update_Stock v2",
+  "nodes": [
+    {
+      "parameters": {
+        "format": "resolved",
+        "options": {
+          "customEmailConfig": "[\"UNSEEN\", [\"SUBJECT\", \"Bestand Frigosuisse 719\"]]"
+        }
+      },
+      "id": "48194b4d-a942-4cc5-80b5-91bff428291e",
+      "name": "Email Trigger (IMAP)",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [
+        160,
+        640
+      ],
+      "credentials": {
+        "imap": {
+          "id": "u31frbIrp3r7mPex",
+          "name": "N8N IMAP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "attachment_0",
+        "options": {
+          "rawData": false
+        }
+      },
+      "id": "61ec9f7e-57b7-48d1-9f69-5236b34ce2bc",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        380,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "#TRUNCATE TABLE `senas`.`stock_frigo`;\nINSERT INTO stock_frigo ( sku, stock, exec_id)\nVALUES ($1, $2, $3)\nON DUPLICATE KEY UPDATE stock = stock + VALUES(stock);\n",
+        "options": {
+          "queryReplacement": "= {{ $json.sku }},  {{ $json.stock }}, {{ $execution.id }}"
+        }
+      },
+      "id": "59b1cc48-d69c-4f68-a6f9-a45c7dd8aad3",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1040,
+        640
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Date",
+              "stringValue": "={{ DateTime.fromFormat( $json[\"Datum\"], \"dd.MM.yyyy\").toFormat(\"yyyy-MM-dd\") }}"
+            },
+            {
+              "name": "sku",
+              "type": "numberValue",
+              "numberValue": "={{ $json.Artikel }}"
+            },
+            {
+              "name": "description",
+              "stringValue": "={{ $json.Bezeichnung }}"
+            },
+            {
+              "name": "mhd",
+              "stringValue": "={{ DateTime.fromFormat($json.MHD, \"dd.MM.yyyy\").toFormat(\"yyyy-MM-dd\") }}"
+            },
+            {
+              "name": "stock",
+              "type": "numberValue",
+              "numberValue": "={{ $json.Menge }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "bdce08f8-8a3c-4f7d-9f74-839ff3f6b705",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        620,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "sku": "={{ $json.sku }}"
+        }
+      },
+      "id": "8ddba6c5-6eb9-46d5-a52c-59d2e7a48483",
+      "name": "WooCommerce1",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        840,
+        960
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO stock_woo (id_woo, sku, description, date_modified_woo, stock_woo)\nVALUES ($1, $2, $3, $4, $5)\nON DUPLICATE KEY UPDATE stock_woo = VALUES(stock_woo);\n",
+        "options": {
+          "queryReplacement": "={{ $json.id }}, {{ $json.sku }}, {{ $json.name }}, {{ $json.date_modified }},  {{ $json.stock_quantity }}"
+        }
+      },
+      "id": "8dc96420-0b4d-4233-9779-9f2efd22616d",
+      "name": "MySQL1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1040,
+        960
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO stock_frigo_history (date, sku, description, mhd, stock, exec_id)\nVALUES ($1, $2, $3, $4, $5, $6)\nON DUPLICATE KEY UPDATE stock = stock + VALUES(stock);\n",
+        "options": {
+          "queryReplacement": "={{ $json.Date }},  {{ $json.sku }},  {{ $json.description }},  {{ $json.mhd }},  {{ $json.stock }}, {{ $execution.id }}"
+        }
+      },
+      "id": "362f0ddd-caf7-4583-b636-1432392cb652",
+      "name": "MySQL2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1040,
+        800
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "senas_stock",
+          "mode": "list",
+          "cachedResultName": "senas_stock"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "4f036f1e-0b9a-4ab0-b989-5ae8d9a58488",
+      "name": "MySQL3",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        960
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "product",
+        "operation": "update",
+        "productId": "={{ $json.id_woo }}",
+        "updateFields": {
+          "stockQuantity": "={{ $json.stock_frigo }}"
+        },
+        "dimensionsUi": {},
+        "imagesUi": {},
+        "metadataUi": {}
+      },
+      "id": "d5dd0669-b093-4f80-b39e-d58aa8975edc",
+      "name": "WooCommerce4",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        800
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "TRUNCATE TABLE `senas`.`stock_frigo`;\n\n",
+        "options": {
+          "queryReplacement": "="
+        }
+      },
+      "id": "2a5d1309-ee30-4658-9687-5d623fc68ffe",
+      "name": "MySQL4",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1780,
+        800
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "MySQL account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 300
+  },
+  "staticData": {
+    "node:Email Trigger (IMAP)": {
+      "lastMessageUid": 101
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-08-16T15:39:16.013Z",
+      "updatedAt": "2023-08-16T15:39:16.013Z",
+      "id": "KkVmd7DNw8r5lRhu",
+      "name": "SENAS"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-02T04:16:43.000Z",
+  "versionId": "f27f5f2c-b548-4189-9737-1eebe3ccbd84"
+}
