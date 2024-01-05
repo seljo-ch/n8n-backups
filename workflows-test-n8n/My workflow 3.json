@@ -1,0 +1,76 @@
+{
+  "active": false,
+  "connections": {
+    "WooCommerce Trigger": {
+      "main": [
+        [
+          {
+            "node": "RabbitMQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-18T19:37:17.024Z",
+  "id": "JyB8zJ5qB6x89MIX",
+  "meta": null,
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "event": "order.updated"
+      },
+      "id": "b9a0c813-0bf6-4391-b846-5d552514fde2",
+      "name": "WooCommerce Trigger",
+      "type": "n8n-nodes-base.wooCommerceTrigger",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        520
+      ],
+      "webhookId": "ef4052e1-37d8-4d84-9337-56c7b73cdf4b",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "queue": "WooCommerce",
+        "options": {}
+      },
+      "id": "e4701dec-b133-4238-bd64-28f16997aa3a",
+      "name": "RabbitMQ",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1.1,
+      "position": [
+        1240,
+        520
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "MhgathEZM0u2hW3V",
+          "name": "Senas - RabbitMQ"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:WooCommerce Trigger": {
+      "webhookId": 76,
+      "secret": "368db0601a15082648e02ace9b086eb5"
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-05T08:56:37.000Z",
+  "versionId": "7a24c435-0cee-445a-9fbd-355acd84078b"
+}
