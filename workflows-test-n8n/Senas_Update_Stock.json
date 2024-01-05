@@ -1,0 +1,539 @@
+{
+  "active": false,
+  "connections": {
+    "Email Trigger (IMAP)": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WooCommerce": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "WooCommerce",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [],
+        [],
+        [
+          {
+            "node": "Baserow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WooCommerce2": {
+      "main": [
+        [
+          {
+            "node": "Baserow3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow3": {
+      "main": [
+        [
+          {
+            "node": "Baserow4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow4": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WooCommerce3": {
+      "main": [
+        [
+          {
+            "node": "Baserow5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baserow5": {
+      "main": [
+        [
+          {
+            "node": "Baserow6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-08-22T13:12:47.323Z",
+  "id": "Sw6NicxHZvZvbiNc",
+  "meta": null,
+  "name": "Senas_Update_Stock",
+  "nodes": [
+    {
+      "parameters": {
+        "format": "resolved",
+        "options": {
+          "customEmailConfig": "[\"UNSEEN\", [\"SUBJECT\", \"Bestand Frigosuisse 719\"]]"
+        }
+      },
+      "id": "53cd5278-b65b-47c5-b133-f0a128fca505",
+      "name": "Email Trigger (IMAP)",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [
+        80,
+        360
+      ],
+      "credentials": {
+        "imap": {
+          "id": "u31frbIrp3r7mPex",
+          "name": "N8N IMAP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "attachment_0",
+        "options": {
+          "rawData": false
+        }
+      },
+      "id": "720d4efd-96f2-4891-86d7-9442125c879a",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        300,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": 100,
+        "options": {
+          "sku": "={{ $json.Artikel }}"
+        }
+      },
+      "id": "6e21cd0f-7d9c-4f41-9da3-ec6ba621ff20",
+      "name": "WooCommerce",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        -80
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates",
+        "compare": "selectedFields",
+        "fieldsToCompare": "Bezeichnung, Artikel",
+        "options": {}
+      },
+      "id": "9dd0a67c-504e-47e9-8cb7-99fcd33be0a0",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        720,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sort",
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Menge",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dc4d8b26-1ee0-4924-b7b3-487a2d8fe10c",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        520,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "sku",
+              "field2": "Artikel"
+            }
+          ]
+        },
+        "resolve": "preferInput2",
+        "fuzzyCompare": true,
+        "options": {}
+      },
+      "id": "6ac85173-4f66-468d-be02-4dc8f4f0738b",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        1340,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n@phx-cloud.ch",
+        "toEmail": "olivier@sebel.be;info@senas.ch",
+        "subject": "Workflow Error - Senas Lagerbestand Update",
+        "text": "=!!! Wokflow Error !!!\n\nFolgender Artikel konnte nicht aktualisiert wurde, da innerhalb WooCommerce kein artikel mit der Identischen SKU / Artikelnummer unter \"Lagerbestand\" gefunden wurde.\n\nBitte die Artikelnummer in WooCommerce korrigieren.\n\n-----\nSKU im File:   {{ $json.Artikel }}\nBezeichnung:  {{ $json.Bezeichnung }}\n-----\n\nFehler Zeit: {{ $now.toFormat('HH:mm - DDDD') }}\n",
+        "options": {
+          "ccEmail": "info@senas.ch"
+        }
+      },
+      "id": "4ed5afd6-ca9f-466c-9d93-486ce4f17017",
+      "name": "Send Email1",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        100
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "aO5TPXWbGMX7D9cU",
+          "name": "n8n@phx-cloud.ch"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "databaseId": 31,
+        "tableId": 163,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 1515,
+              "fieldValue": "={{ $json.Artikel }}"
+            },
+            {
+              "fieldId": 1516,
+              "fieldValue": "={{ $json.Menge }}"
+            },
+            {
+              "fieldId": 4542,
+              "fieldValue": "={{ $json.Bezeichnung }}"
+            }
+          ]
+        }
+      },
+      "id": "65a2f4c7-332d-47f2-9160-97dd00bc729a",
+      "name": "Baserow",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        -200
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": 100,
+        "options": {
+          "sku": "={{ $json.Frigo_SKU }}"
+        }
+      },
+      "id": "0af3b0f8-8b19-494d-a619-c72a95160d27",
+      "name": "WooCommerce2",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        -200
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 31,
+        "tableId": 163,
+        "additionalOptions": {
+          "filters": {
+            "fields": [
+              {
+                "field": 1515,
+                "value": "={{ $json.sku }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "6d2ccc68-6cad-4ab4-901d-9d954f74cb8e",
+      "name": "Baserow3",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        -200
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "databaseId": 31,
+        "tableId": 163,
+        "rowId": "={{ $json.id }}",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": 4543,
+              "fieldValue": "={{ $('WooCommerce2').item.json.id }}"
+            }
+          ]
+        }
+      },
+      "id": "08a363d8-ee70-4d52-940d-d075525111ef",
+      "name": "Baserow4",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        -200
+      ],
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "product",
+        "operation": "update",
+        "productId": "={{ $json.WOC_ID }}",
+        "updateFields": {
+          "stockQuantity": "={{ $json.Menge }}"
+        },
+        "dimensionsUi": {},
+        "imagesUi": {},
+        "metadataUi": {}
+      },
+      "id": "621d86b6-86b7-4569-b0eb-35a46b965084",
+      "name": "WooCommerce3",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        2660,
+        -200
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "databaseId": 31,
+        "tableId": 163,
+        "returnAll": true,
+        "additionalOptions": {}
+      },
+      "id": "8025a170-c54e-4667-950d-75de79d33c5a",
+      "name": "Baserow5",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        -200
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "databaseId": 31,
+        "tableId": 163,
+        "rowId": "={{ $json.id }}"
+      },
+      "id": "9a371e3c-4ed7-4c32-bc56-3ed9b28ccfd2",
+      "name": "Baserow6",
+      "type": "n8n-nodes-base.baserow",
+      "typeVersion": 1,
+      "position": [
+        3100,
+        -200
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "baserowApi": {
+          "id": "09FPFrojn2VPnDJd",
+          "name": "Baserow account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "502883818",
+        "text": "=!!! Wokflow Error !!!\n\nFolgender Artikel konnte nicht aktualisiert wurde, da innerhalb WooCommerce kein artikel mit der Identischen SKU / Artikelnummer unter \"Lagerbestand\" gefunden wurde.\n\nBitte die Artikelnummer in WooCommerce korrigieren.\n\n-----\nSKU im File:   {{ $json.Artikel }}\nBezeichnung:  {{ $json.Bezeichnung }}\n-----\n\nFehler Zeit: {{ $now.toFormat('HH:mm - DDDD') }}\n",
+        "additionalFields": {}
+      },
+      "id": "2302a011-cd31-4a07-94e4-13fce768cbba",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        280
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 300
+  },
+  "staticData": {
+    "node:Email Trigger (IMAP)": {
+      "lastMessageUid": 40
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-10-07T14:05:43.000Z",
+  "versionId": "1b945d2a-fc9e-4e0b-8fb4-907cedb50d8b"
+}
