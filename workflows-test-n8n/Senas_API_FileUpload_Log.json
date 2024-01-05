@@ -1,0 +1,82 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-28T12:16:39.406Z",
+  "id": "4aezPL1M77c5dmAE",
+  "meta": null,
+  "name": "Senas_API_FileUpload_Log",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "senas-api",
+        "options": {
+          "noResponseBody": true
+        }
+      },
+      "id": "e11d7969-b010-47cc-8c3b-7e931d2a7ff5",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        360
+      ],
+      "webhookId": "131ee37d-2c6c-492a-b686-344a22a83f4e"
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "order_upload",
+          "mode": "list",
+          "cachedResultName": "order_upload"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "file",
+              "value": "={{ $json.query['order-file'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "531f29a7-fecf-492a-9cc7-5b081a44cf0c",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1040,
+        360
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-05T08:56:36.000Z",
+  "versionId": "0097cb4e-4b8a-4c8f-97cd-36d2484cc780"
+}
