@@ -1,0 +1,86 @@
+{
+  "active": false,
+  "connections": {
+    "Listen for incoming events": {
+      "main": [
+        [
+          {
+            "node": "Send back the JSON content of the message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-02T11:54:51.929Z",
+  "id": "sFEW4KTG5wJBeH9d",
+  "meta": null,
+  "name": "My workflow 8",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## This is a workflow for a Telegram-echo bot\n1. Add your Telegram bot credentials for both nodes\n2. Activate the workflow\n3. Send something to the bot (i.e. a message, a forwarded message, sticker, emoji, voice, file, an image...)\n4. Second node will fetch the incoming JSON object, format it and send back\n\n#### This bot is useful for debugging and learning purposes of the Telegram platform",
+        "height": 391,
+        "width": 727
+      },
+      "id": "ad5c5425-0024-4d3b-bec6-6d73e2af48b8",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1020,
+        340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "updates": [
+          "*"
+        ],
+        "additionalFields": {}
+      },
+      "id": "47d612d3-9cfd-4427-95e9-3b98566d0f46",
+      "name": "Listen for incoming events",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "position": [
+        1060,
+        560
+      ],
+      "webhookId": "322dce18-f93e-4f86-b9b1-3305519b7834",
+      "typeVersion": 1,
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.from.id }}",
+        "text": "=```\n{{ JSON.stringify($json, null, 2) }}\n```",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "705dce46-1064-4a57-a323-1b9f073a4fad",
+      "name": "Send back the JSON content of the message",
+      "type": "n8n-nodes-base.telegram",
+      "position": [
+        1280,
+        560
+      ],
+      "typeVersion": 1.1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-02T11:54:51.929Z",
+  "versionId": "fbc0296a-4a83-4bed-b34a-fda83f5e865d"
+}
