@@ -1,0 +1,30 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-01-01T17:02:29.577Z",
+  "id": "MYNHZtKIIC4cuxiV",
+  "meta": null,
+  "name": "My workflow 6",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "090bbd8d-b1ca-4f67-bd92-c500ad47093a",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-01T17:02:29.577Z",
+  "versionId": "9eec2837-2d79-4c63-b4fe-6a3e99fe46df"
+}
