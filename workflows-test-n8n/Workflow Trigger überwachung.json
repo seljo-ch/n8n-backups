@@ -1,0 +1,250 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Email1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-10-07T20:00:17.462Z",
+  "id": "ZCf9yWfXDQQI6tqn",
+  "meta": null,
+  "name": "Workflow Trigger überwachung",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 6
+            }
+          ]
+        }
+      },
+      "id": "8aaa02d4-363c-4a33-969d-7f8bf565f184",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        20,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://n8n.phx-cloud.ch/api/v1/executions",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "includeData",
+              "value": "false"
+            },
+            {
+              "name": "workflowId",
+              "value": "scoBkhJqu169aTsD"
+            },
+            {
+              "name": "limit",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "X-N8N-API-KEY",
+              "value": "n8n_api_16b68575282f2a502845112b0f4ab39fc3b6d2b54b04e9f8635b96d508fc0482756eefbb6e8b4310"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dd8fd3e9-4652-4d43-8fe3-8ee224349db3",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        380,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "ExecDate",
+              "stringValue": "={{ DateTime.fromISO( $json[\"data\"][0][\"stoppedAt\"]).toFormat(\"yyyy-MM-dd\") }} "
+            }
+          ]
+        },
+        "include": "selected",
+        "includeFields": "ExecDate",
+        "options": {}
+      },
+      "id": "6f7f05f0-440f-4747-9413-19b385a71bbc",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        600,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const stoppedAt = new Date($('Edit Fields').item.json.ExecDate);\nconst currentDate = new Date();\nconst threeDaysAgo = new Date(currentDate);\nthreeDaysAgo.setDate(currentDate.getDate() - 3);\n\nconst isOlderThanThreeDays = stoppedAt < threeDaysAgo;\n\nreturn { isOlderThanThreeDays };\n"
+      },
+      "id": "e403c944-5f71-4905-8a5f-6d4101499f53",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.isOlderThanThreeDays }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "2e4f3e3f-b6c4-4a80-a7ed-d4282da7216a",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n@phx-cloud.ch",
+        "toEmail": "olivier@sebel.be;info@senas.ch",
+        "subject": "Workflow Error - Senas Lagerbestand Update",
+        "text": "=!!! Wokflow Information !!!\n\nSeit drei Tagen ist der nicht mehr gelaufen. Der Trigger wurde nicht mehr ausgelöst (automatisch). Evtl. muss analysiert werden was fehlgeschlagen ist oder was nicht funktioniert hat (E-Mails nicht angekommen, Zugangsdaten funktioniern nicht mehr etc.).\n\nDanke. \n\n-----\n\nZeit: {{ $now.toFormat('HH:mm - DDDD') }}\n",
+        "options": {
+          "ccEmail": "info@senas.ch"
+        }
+      },
+      "id": "f376680a-f90c-4f0b-85dc-e0949d946091",
+      "name": "Send Email1",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        80
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "aO5TPXWbGMX7D9cU",
+          "name": "n8n@phx-cloud.ch"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "502883818",
+        "text": "=!!! Wokflow Information !!!\n\nSeit drei Tagen ist der nicht mehr gelaufen. Der Trigger wurde nicht mehr ausgelöst (automatisch). Evtl. muss analysiert werden was fehlgeschlagen ist oder was nicht funktioniert hat (E-Mails nicht angekommen, Zugangsdaten funktioniern nicht mehr etc.).\n\nDanke. \n\n-----\n\nZeit: {{ $now.toFormat('HH:mm - DDDD') }}\n",
+        "additionalFields": {}
+      },
+      "id": "233e57e2-5aba-4cd7-bc26-5c3d54e00139",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        240
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-05T08:56:38.000Z",
+  "versionId": "9ef80e56-b671-4da7-8eae-b9ea242a8b87"
+}
