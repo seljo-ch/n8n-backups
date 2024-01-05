@@ -1,0 +1,515 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Convert to/from binary data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to/from binary data": {
+      "main": [
+        [
+          {
+            "node": "Write Binary File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Discord",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Discord1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Discord1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-01T16:03:57.081Z",
+  "id": "bjDyoW2PexxXoUyd",
+  "meta": null,
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "255e13f4-d84a-47f4-b684-5815afdb5262",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://internal.users.n8n.cloud/webhook/level2-erp",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "unique_id",
+              "value": "recNiyEwCwkhO1kqG "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b98ee516-a9c4-4dbd-92f2-2089f038f025",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1420,
+        720
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "2tYoXJTgSpj0DA9H",
+          "name": "n8n Course"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appRoWS6h89urr8ZD",
+          "mode": "list",
+          "cachedResultName": "n8n Course",
+          "cachedResultUrl": "https://airtable.com/appRoWS6h89urr8ZD"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl5LjR6jYZkLOg91",
+          "mode": "list",
+          "cachedResultName": "customers",
+          "cachedResultUrl": "https://airtable.com/appRoWS6h89urr8ZD/tbl5LjR6jYZkLOg91"
+        },
+        "options": {}
+      },
+      "id": "89a1722d-01d6-45f4-b680-2c6ff76fda60",
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        300
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "abPXAAzi6EcX2YFB",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "customerID",
+              "field2": "customerID"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7309653f-39bf-4f03-a779-374afdbe7939",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1660,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "orderPrice",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cd5a9da2-6351-47df-92e1-dbacca339675",
+      "name": "Sort",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "fc115ed4-eab2-47c0-818e-891761471284",
+              "leftValue": "={{ $json.region }}",
+              "rightValue": "Americas",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fd3f8879-bb37-47f0-bd31-f9e5ee2f9254",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2140,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "fileName": "=report_orderID{{ $('If').item.json.orderID }}.json  ",
+        "options": {}
+      },
+      "id": "2c7608a7-6baf-475b-a163-d3ec296f0fb7",
+      "name": "Write Binary File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "options": {}
+      },
+      "id": "b58459fd-7646-4b79-b9b4-b4525cf1c58a",
+      "name": "Convert to/from binary data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1.1,
+      "position": [
+        2380,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n@phx-cloud.ch",
+        "toEmail": "olivier@sebel.be",
+        "subject": "Course N8N",
+        "options": {
+          "attachments": "=data"
+        }
+      },
+      "id": "27f166fd-8de4-4bff-884a-d817bf4f64ba",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2720,
+        520
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "aO5TPXWbGMX7D9cU",
+          "name": "n8n@phx-cloud.ch"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=I sent the file via email with the label ID '{{ $json[\"messageId\"] }}' and wrote the binary file {{ $('Write Binary File').params[\"fileName\"]}}. My ID: {{ $('HTTP Request').params[\"headerParameters\"][\"parameters\"][0][\"value\"] }}",
+        "options": {}
+      },
+      "id": "f3e92de7-36b1-421d-9ebd-69e8c5dfce21",
+      "name": "Discord",
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        2960,
+        520
+      ],
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "kzui33G6nMLlQatU",
+          "name": "Discord Webhook account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "batchSize": 5,
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "dbd348f2-23bf-4b8c-a8b8-97f323600868",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2120,
+        820
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "customerEmail",
+              "stringValue": "={{ $json.customerEmail }}"
+            },
+            {
+              "name": "customerRegion",
+              "stringValue": "={{ $json.region }}"
+            },
+            {
+              "name": "customerSince",
+              "stringValue": "={{ $json.customerSince }}"
+            },
+            {
+              "name": "orderPrice",
+              "type": "numberValue",
+              "numberValue": "={{ $json.orderPrice }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "9cf35659-ff76-44f4-89fd-d55d31b861b1",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2360,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.customerSince }}",
+        "outputFieldName": "customerSince",
+        "options": {
+          "includeInputFields": true
+        }
+      },
+      "id": "8521465a-6738-43e7-a029-e3691ce8bde9",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        2580,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "fileFormat": "csv",
+        "options": {
+          "fileName": "={{$runIndex > 0 ? 'file_low_orders':'file_high_orders'}}"
+        }
+      },
+      "id": "b48e49c6-5b4e-4ba4-99da-4d7f2370a226",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=I created the spreadsheet {{ $binary.data.fileName }}. My ID: {{ $('HTTP Request').params[\"headerParameters\"][\"parameters\"][0][\"value\"] }}",
+        "options": {}
+      },
+      "id": "22dc0855-0a5b-4f8d-b243-a3e2e179a268",
+      "name": "Discord1",
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        3080,
+        840
+      ],
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "kzui33G6nMLlQatU",
+          "name": "Discord Webhook account"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-01T17:01:59.000Z",
+  "versionId": "57b0be69-1ce5-4ce7-93a6-6e70fce48f2c"
+}
