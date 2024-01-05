@@ -1,0 +1,1064 @@
+{
+  "active": false,
+  "connections": {
+    "Start": {
+      "main": [
+        []
+      ]
+    },
+    "Status - Switch": {
+      "main": [
+        [
+          {
+            "node": "Is Order Existing?1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [],
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status matching": {
+      "main": [
+        [
+          {
+            "node": "Get WooCommerce Order1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Order Existing?1": {
+      "main": [
+        [
+          {
+            "node": "is Empty?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get WooCommerce Order": {
+      "main": [
+        [
+          {
+            "node": "Status - Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Order_ID": {
+      "main": [
+        [
+          {
+            "node": "Get WooCommerce Order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "Get Order_ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get WooCommerce Order1": {
+      "main": [
+        [
+          {
+            "node": "Status - Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status - Switch1": {
+      "main": [
+        [],
+        [],
+        [],
+        [
+          {
+            "node": "Telegram1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "is Empty?1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Create Order",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Status matching",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Order": {
+      "main": [
+        [
+          {
+            "node": "Get Order_ID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Order_ID1": {
+      "main": [
+        [
+          {
+            "node": "Get WooCommerce Order2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get WooCommerce Order2": {
+      "main": [
+        [
+          {
+            "node": "Status - Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-02T09:56:57.917Z",
+  "id": "0MhLVlhXZSLht9yC",
+  "meta": null,
+  "name": "My workflow 7",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "65b40e54-dee2-4865-a10f-94b5549eaa2c",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.status }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "processing"
+            },
+            {
+              "value2": "on-hold",
+              "output": 3
+            },
+            {
+              "value2": "cancelled",
+              "output": 3
+            },
+            {
+              "value2": "refunded",
+              "output": 3
+            }
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "032be6f2-1460-49b7-904f-2459808a9027",
+      "name": "Status - Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        60,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "364f51f6-b8e0-42c6-9dcc-441edfd536c3",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "={{ $node['Status - Switch'].json['status'] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": false
+        }
+      },
+      "id": "07cb4933-e001-43bb-8356-3578d42df31d",
+      "name": "Status matching",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        920,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "order_id",
+              "value": "=1"
+            }
+          ]
+        },
+        "options": {
+          "outputColumns": [
+            "order_id",
+            "status"
+          ]
+        }
+      },
+      "id": "6a8180a3-55d2-44a2-8e31-a54c9779ef0b",
+      "name": "Is Order Existing?1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        260,
+        260
+      ],
+      "retryOnFail": false,
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.status }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "processing"
+            },
+            {
+              "value2": "on-hold",
+              "output": 3
+            },
+            {
+              "value2": "cancelled",
+              "output": 3
+            },
+            {
+              "value2": "refunded",
+              "output": 3
+            }
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "c3a4f245-df5d-44b5-a076-2b20151abc41",
+      "name": "Status - Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $json.order_id }}"
+      },
+      "id": "5f180b36-2dd3-45e4-a52c-98dfbd7c3ed2",
+      "name": "Get WooCommerce Order",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        580
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {
+          "outputColumns": [
+            "order_id",
+            "status"
+          ]
+        }
+      },
+      "id": "d83f5002-7543-4fb0-afa4-238da7851dd4",
+      "name": "Get Order_ID",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1320,
+        580
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "order_id",
+        "valueToMatchOn": "={{ $json.order_id }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "status",
+              "value": "={{ $('Start').item.json.status }}"
+            },
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0265fc93-fc15-40c2-9ab5-f7a4549a0f8c",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        580
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $json.order_id }}"
+      },
+      "id": "2e24f643-bbb9-42be-8071-5449a24727c7",
+      "name": "Get WooCommerce Order1",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        360
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "-4082909185",
+        "text": "={{ $now.toFormat('HH:mm - dd.MM.yyyy')  }} - Senas Order arrived (#{{ $json.id }}) / Status {{ $json.status }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "d65b82f0-66fe-4806-9646-cf82f79a489c",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        240,
+        620
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "-4082909185",
+        "text": "={{ $now.toFormat('HH:mm - dd.MM.yyyy')  }} - Senas Order arrived (#{{ $json.id }}) / Status {{ $json.status }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "4b324fbb-8647-4af1-a89a-381addc5639e",
+      "name": "Telegram1",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        580
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const jsonData = $json;\n\nif (items.length == 1 && Object.keys(items[0].json).length == 0) {\n  //console.log(\"Test 123\")\n    return  [{json: {empty: true}}];\n} else {\n   return  jsonData;\n\n}\n\n"
+      },
+      "id": "2a188277-13ad-4ec4-9f09-605b9e7d2aa5",
+      "name": "is Empty?1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "44646aac-66d7-4551-a120-e67f6010c4d5",
+              "leftValue": "={{ $json.empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a345defc-d5e0-4280-9642-9b896d443253",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        660,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "order_id",
+              "value": "={{ $('Start').item.json.id }}"
+            },
+            {
+              "column": "status",
+              "value": "={{ $('Start').item.json.status }}"
+            },
+            {
+              "column": "customer_id",
+              "value": "={{ $('Start').item.json.customer_id }}"
+            },
+            {
+              "column": "billingfirst_name",
+              "value": "={{ $('Start').item.json.billing.first_name }}"
+            },
+            {
+              "column": "billinglast_name",
+              "value": "={{ $('Start').item.json.billing.last_name }}"
+            },
+            {
+              "column": "billingcompany",
+              "value": "={{ $('Start').item.json.billing.company }}"
+            },
+            {
+              "column": "billingaddress_1",
+              "value": "={{ $('Start').item.json.billing.address_1 }}"
+            },
+            {
+              "column": "billingaddress_2",
+              "value": "={{ $('Start').item.json.billing.address_2 }}"
+            },
+            {
+              "column": "billingcity",
+              "value": "={{ $('Start').item.json.billing.city }}"
+            },
+            {
+              "column": "billingstate",
+              "value": "={{ $('Start').item.json.billing.state }}"
+            },
+            {
+              "column": "billingpostcode",
+              "value": "={{ $('Start').item.json.billing.postcode }}"
+            },
+            {
+              "column": "billingcountry",
+              "value": "={{ $('Start').item.json.billing.country }}"
+            },
+            {
+              "column": "billingemail",
+              "value": "={{ $('Start').item.json.billing.email }}"
+            },
+            {
+              "column": "billingphone",
+              "value": "={{ $('Start').item.json.billing.phone }}"
+            },
+            {
+              "column": "shippingfirst_name",
+              "value": "={{ $('Start').item.json.shipping.first_name }}"
+            },
+            {
+              "column": "shippinglast_name",
+              "value": "={{ $('Start').item.json.shipping.last_name }}"
+            },
+            {
+              "column": "shippingcompany",
+              "value": "={{ $('Start').item.json.shipping.company }}"
+            },
+            {
+              "column": "shippingaddress_1",
+              "value": "={{ $('Start').item.json.shipping.address_1 }}"
+            },
+            {
+              "column": "shippingaddress_2",
+              "value": "={{ $('Start').item.json.shipping.address_2 }}"
+            },
+            {
+              "column": "shippingcity",
+              "value": "={{ $('Start').item.json.shipping.city }}"
+            },
+            {
+              "column": "shippingstate",
+              "value": "={{ $('Start').item.json.shipping.state }}"
+            },
+            {
+              "column": "shippingpostcode",
+              "value": "={{ $('Start').item.json.shipping.postcode }}"
+            },
+            {
+              "column": "shippingcountry",
+              "value": "={{ $('Start').item.json.shipping.country }}"
+            },
+            {
+              "column": "shippingphone",
+              "value": "={{ $('Start').item.json.shipping.phone }}"
+            },
+            {
+              "column": "payment_methode_title",
+              "value": "={{ $('Start').item.json.payment_method_title }}"
+            },
+            {
+              "column": "created_via",
+              "value": "={{ $('Start').item.json.created_via }}"
+            },
+            {
+              "column": "customer_note",
+              "value": "={{ $('Start').item.json.customer_note }}"
+            },
+            {
+              "column": "shipping_method_id",
+              "value": "={{ $('Start').item.json.shipping_lines[0].method_id }}"
+            },
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f63c60e0-eed0-4250-882b-c6e4a989c6a3",
+      "name": "Create Order",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        920,
+        120
+      ],
+      "alwaysOutputData": false,
+      "retryOnFail": false,
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {
+          "outputColumns": [
+            "order_id",
+            "status"
+          ]
+        }
+      },
+      "id": "59625789-a87f-452e-a9a9-d151436cf85a",
+      "name": "Get Order_ID1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1320,
+        120
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $json.order_id }}"
+      },
+      "id": "0b440570-aa46-4f10-bd5a-3fd2dbc05892",
+      "name": "Get WooCommerce Order2",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        120
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Start": [
+      {
+        "json": {
+          "id": 11132,
+          "parent_id": 0,
+          "status": "processing",
+          "currency": "CHF",
+          "version": "8.2.2",
+          "prices_include_tax": true,
+          "date_created": "2023-12-29T21:50:55",
+          "date_modified": "2023-12-30T16:14:30",
+          "discount_total": "0.00",
+          "discount_tax": "0.00",
+          "shipping_total": "29.00",
+          "shipping_tax": "0.00",
+          "cart_tax": "3.35",
+          "total": "161.00",
+          "total_tax": "3.35",
+          "customer_id": 229,
+          "order_key": "wc_order_R31LQ9QfIVAwW",
+          "billing": {
+            "first_name": "Carole",
+            "last_name": "Renaud",
+            "company": "",
+            "address_1": "La Gare 3",
+            "address_2": "",
+            "city": "Les Bayards",
+            "state": "NE",
+            "postcode": "2127",
+            "country": "CH",
+            "email": "traildog@bluewin.ch",
+            "phone": "0798607071"
+          },
+          "shipping": {
+            "first_name": "Carole",
+            "last_name": "Renaud",
+            "company": "",
+            "address_1": "La Gare 3",
+            "address_2": "",
+            "city": "Les Bayards",
+            "state": "NE",
+            "postcode": "2127",
+            "country": "CH",
+            "phone": ""
+          },
+          "payment_method": "bacs",
+          "payment_method_title": "Vorauskasse",
+          "transaction_id": "",
+          "customer_ip_address": "62.202.191.142",
+          "customer_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15",
+          "created_via": "checkout",
+          "customer_note": "",
+          "date_completed": null,
+          "date_paid": "2023-12-30T16:14:30",
+          "cart_hash": "d8484fe0b9efdc32dc76511e7b6f35d4",
+          "number": "11132",
+          "meta_data": [
+            {
+              "id": 212618,
+              "key": "is_vat_exempt",
+              "value": "no"
+            },
+            {
+              "id": 212619,
+              "key": "thwdtp_order_type",
+              "value": "delivery"
+            },
+            {
+              "id": 212620,
+              "key": "thwdtp_delivery_datepicker",
+              "value": "2024-01-03"
+            },
+            {
+              "id": 212621,
+              "key": "wpml_language",
+              "value": "de"
+            },
+            {
+              "id": 212624,
+              "key": "b2bking_product_customrows_group_10788",
+              "value": ""
+            },
+            {
+              "id": 212625,
+              "key": "b2bking_product_customrows_group_b2c",
+              "value": ""
+            },
+            {
+              "id": 212629,
+              "key": "_bexio_order_id",
+              "value": "956"
+            },
+            {
+              "id": 212630,
+              "key": "_bexio_order_nr",
+              "value": "AU-00956"
+            },
+            {
+              "id": 212631,
+              "key": "_bexio_invoice_id",
+              "value": "1857"
+            },
+            {
+              "id": 212632,
+              "key": "_bexio_invoice_nr",
+              "value": "RE-01857"
+            },
+            {
+              "id": 212633,
+              "key": "_bexio_invoice_issued",
+              "value": "1"
+            }
+          ],
+          "line_items": [
+            {
+              "id": 4481,
+              "name": "VOM Active Complete Karton 15x560g Meatballs",
+              "product_id": 6612,
+              "variation_id": 0,
+              "quantity": 2,
+              "tax_class": "reduzierter-preis-frigo",
+              "subtotal": "128.65",
+              "subtotal_tax": "3.35",
+              "total": "128.65",
+              "total_tax": "3.35",
+              "taxes": [
+                {
+                  "id": 5,
+                  "total": "3.345029",
+                  "subtotal": "3.345029"
+                }
+              ],
+              "meta_data": [
+                {
+                  "id": 45714,
+                  "key": "_price_without_tax",
+                  "value": "64.327485",
+                  "display_key": "_price_without_tax",
+                  "display_value": "64.327485"
+                },
+                {
+                  "id": 45715,
+                  "key": "_price_with_tax",
+                  "value": "66",
+                  "display_key": "_price_with_tax",
+                  "display_value": "66"
+                },
+                {
+                  "id": 45732,
+                  "key": "_reduced_stock",
+                  "value": "2",
+                  "display_key": "_reduced_stock",
+                  "display_value": "2"
+                }
+              ],
+              "sku": "133504",
+              "price": 64.3274855,
+              "image": {
+                "id": "6129",
+                "src": "https://www.senas.ch/wp-content/uploads/2020/11/VOM-Barffutter-Meatballs.jpg"
+              },
+              "parent_name": null
+            }
+          ],
+          "tax_lines": [
+            {
+              "id": 4483,
+              "rate_code": "MEHRWERTSTEUER NAHRUNGSMITTELFRIGO-1",
+              "rate_id": 5,
+              "label": "Mehrwertsteuer Nahrungsmittelfrigo",
+              "compound": false,
+              "tax_total": "3.35",
+              "shipping_tax_total": "0.00",
+              "rate_percent": 2.6,
+              "meta_data": []
+            }
+          ],
+          "shipping_lines": [
+            {
+              "id": 4482,
+              "method_title": "Versand nach Gewicht",
+              "method_id": "flexible_shipping",
+              "instance_id": "1",
+              "total": "29.00",
+              "total_tax": "0.00",
+              "taxes": [],
+              "meta_data": [
+                {
+                  "id": 45721,
+                  "key": "_default",
+                  "value": "yes",
+                  "display_key": "_default",
+                  "display_value": "yes"
+                },
+                {
+                  "id": 45722,
+                  "key": "_fs_method",
+                  "value": {
+                    "woocommerce_method_instance_id": "1",
+                    "id": "1",
+                    "id_for_shipping": "flexible_shipping_1_1",
+                    "method_title": "Versand nach Gewicht",
+                    "method_description": "",
+                    "method_free_shipping": "",
+                    "method_free_shipping_label": "",
+                    "method_calculation_method": "sum",
+                    "method_visibility": "no",
+                    "method_default": "yes",
+                    "method_enabled": "yes",
+                    "method_integration": "",
+                    "method_free_shipping_cart_notice": "no",
+                    "method_debug_mode": "no",
+                    "tax_status": "taxable"
+                  },
+                  "display_key": "_fs_method",
+                  "display_value": {
+                    "woocommerce_method_instance_id": "1",
+                    "id": "1",
+                    "id_for_shipping": "flexible_shipping_1_1",
+                    "method_title": "Versand nach Gewicht",
+                    "method_description": "",
+                    "method_free_shipping": "",
+                    "method_free_shipping_label": "",
+                    "method_calculation_method": "sum",
+                    "method_visibility": "no",
+                    "method_default": "yes",
+                    "method_enabled": "yes",
+                    "method_integration": "",
+                    "method_free_shipping_cart_notice": "no",
+                    "method_debug_mode": "no",
+                    "tax_status": "taxable"
+                  }
+                },
+                {
+                  "id": 45723,
+                  "key": "_fs_integration",
+                  "value": "",
+                  "display_key": "_fs_integration",
+                  "display_value": ""
+                },
+                {
+                  "id": 45724,
+                  "key": "description",
+                  "value": "",
+                  "display_key": "description",
+                  "display_value": ""
+                },
+                {
+                  "id": 45725,
+                  "key": "Positionen",
+                  "value": "VOM Active Complete Karton 15x560g Meatballs &times; 2",
+                  "display_key": "Positionen",
+                  "display_value": "VOM Active Complete Karton 15x560g Meatballs &times; 2"
+                }
+              ]
+            }
+          ],
+          "fee_lines": [],
+          "coupon_lines": [],
+          "refunds": [],
+          "payment_url": "https://www.senas.ch/checkout/order-pay/11132/?pay_for_order=true&key=wc_order_R31LQ9QfIVAwW",
+          "is_editable": false,
+          "needs_payment": false,
+          "needs_processing": true,
+          "date_created_gmt": "2023-12-29T20:50:55",
+          "date_modified_gmt": "2023-12-30T15:14:30",
+          "date_completed_gmt": null,
+          "date_paid_gmt": "2023-12-30T15:14:30",
+          "currency_symbol": "CHF",
+          "_links": {
+            "self": [
+              {
+                "href": "https://www.senas.ch/wp-json/wc/v3/orders/11132"
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://www.senas.ch/wp-json/wc/v3/orders"
+              }
+            ],
+            "customer": [
+              {
+                "href": "https://www.senas.ch/wp-json/wc/v3/customers/229"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-02T11:39:46.000Z",
+  "versionId": "8265795a-a878-4554-b4fc-92564c0e261e"
+}
