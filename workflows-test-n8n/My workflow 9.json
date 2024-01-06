@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Telegram",
+            "node": "WooCommerce",
             "type": "main",
             "index": 0
           }
@@ -31,22 +31,21 @@
     },
     {
       "parameters": {
-        "chatId": "502883818",
-        "text": "⛔ Not Processed ⛔",
-        "additionalFields": {}
+        "operation": "get",
+        "productId": "8599"
       },
-      "id": "c96b34e4-e935-4265-b4aa-08b8ab3d7b5d",
-      "name": "Telegram",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.1,
+      "id": "9eea48b2-d561-4ff9-a206-cfbd94ffb8fe",
+      "name": "WooCommerce",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
       "position": [
         1420,
         540
       ],
       "credentials": {
-        "telegramApi": {
-          "id": "zMQolP6gxtFEhn1Q",
-          "name": "PHX_Cloud_BOT"
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
         }
       }
     }
@@ -58,6 +57,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-01-02T11:57:37.968Z",
-  "versionId": "3c9033b4-16b1-4c02-b82b-0a834f85f08f"
+  "updatedAt": "2024-01-06T12:52:24.000Z",
+  "versionId": "bc744838-afa6-4b3d-8a34-ba6c5196e171"
 }
