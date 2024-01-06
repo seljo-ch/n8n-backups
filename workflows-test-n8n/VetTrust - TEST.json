@@ -8,6 +8,11 @@
             "node": "FTP1",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Search Bexio Invoice",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -27,18 +32,7 @@
       "main": [
         [
           {
-            "node": "Spreadsheet File1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Spreadsheet File1": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
+            "node": "Read Order File",
             "type": "main",
             "index": 0
           }
@@ -216,6 +210,99 @@
           }
         ]
       ]
+    },
+    "is Empty?1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Order Existing?": {
+      "main": [
+        [
+          {
+            "node": "is Empty?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Create Order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Order File": {
+      "main": [
+        [
+          {
+            "node": "Is Order Existing?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "is Empty?2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Bexio Invoice": {
+      "main": [
+        [
+          {
+            "node": "is Empty?2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create Bexio Invoice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Bexio Invoice": {
+      "main": [
+        [
+          {
+            "node": "Create Bexio Invoice comment",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Update Order Bexio Infos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-11-07T20:41:52.950Z",
@@ -245,7 +332,7 @@
       "type": "n8n-nodes-base.ftp",
       "typeVersion": 1,
       "position": [
-        360,
+        580,
         360
       ],
       "credentials": {
@@ -265,7 +352,7 @@
       "type": "n8n-nodes-base.ftp",
       "typeVersion": 1,
       "position": [
-        580,
+        800,
         360
       ],
       "credentials": {
@@ -274,19 +361,6 @@
           "name": "SFTP account - PHX"
         }
       }
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "c0613e2e-479a-462a-b140-9bff0862fa9a",
-      "name": "Spreadsheet File1",
-      "type": "n8n-nodes-base.spreadsheetFile",
-      "typeVersion": 2,
-      "position": [
-        800,
-        360
-      ]
     },
     {
       "parameters": {
@@ -305,8 +379,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
-        1020,
-        360
+        -100,
+        -300
       ]
     },
     {
@@ -319,8 +393,8 @@
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 3,
       "position": [
-        1380,
-        20
+        260,
+        -640
       ]
     },
     {
@@ -332,8 +406,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1800,
-        20
+        680,
+        -640
       ]
     },
     {
@@ -352,8 +426,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        2000,
-        20
+        880,
+        -640
       ]
     },
     {
@@ -365,8 +439,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2220,
-        -60
+        1100,
+        -720
       ]
     },
     {
@@ -385,8 +459,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 1,
       "position": [
-        1600,
-        20
+        480,
+        -640
       ],
       "alwaysOutputData": true
     },
@@ -402,8 +476,8 @@
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 3,
       "position": [
-        1380,
-        220
+        260,
+        -440
       ]
     },
     {
@@ -424,8 +498,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1,
       "position": [
-        1600,
-        220
+        480,
+        -440
       ]
     },
     {
@@ -437,8 +511,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        2000,
-        280
+        880,
+        -380
       ]
     },
     {
@@ -493,14 +567,14 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        1380,
-        -160
+        260,
+        -820
       ],
       "executeOnce": true,
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "SENAS - MySQL account"
+          "name": "SENAS TEST - MySQL account"
         }
       }
     },
@@ -531,13 +605,13 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        2220,
-        120
+        1100,
+        -540
       ],
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "SENAS - MySQL account"
+          "name": "SENAS TEST - MySQL account"
         }
       }
     },
@@ -568,14 +642,14 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        2420,
-        -60
+        1300,
+        -720
       ],
       "alwaysOutputData": false,
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "SENAS - MySQL account"
+          "name": "SENAS TEST - MySQL account"
         }
       }
     },
@@ -623,13 +697,13 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        2220,
-        280
+        1100,
+        -380
       ],
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "SENAS - MySQL account"
+          "name": "SENAS TEST - MySQL account"
         }
       }
     },
@@ -689,13 +763,13 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        1600,
-        -160
+        480,
+        -820
       ],
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "SENAS - MySQL account"
+          "name": "SENAS TEST - MySQL account"
         }
       }
     },
@@ -712,13 +786,13 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        2640,
-        280
+        1520,
+        -380
       ],
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "SENAS - MySQL account"
+          "name": "SENAS TEST - MySQL account"
         }
       }
     },
@@ -736,8 +810,8 @@
       "type": "n8n-nodes-base.spreadsheetFile",
       "typeVersion": 2,
       "position": [
-        2860,
-        280
+        1740,
+        -380
       ]
     },
     {
@@ -753,13 +827,13 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        2440,
-        280
+        1320,
+        -380
       ],
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "SENAS - MySQL account"
+          "name": "SENAS TEST - MySQL account"
         }
       }
     },
@@ -772,8 +846,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3280,
-        280
+        2160,
+        -380
       ],
       "executeOnce": true
     },
@@ -788,9 +862,452 @@
       "type": "n8n-nodes-base.spreadsheetFile",
       "typeVersion": 2,
       "position": [
-        3080,
+        1960,
+        -380
+      ]
+    },
+    {
+      "parameters": {
+        "height": 278.9739478957916,
+        "width": 403.95190380761534
+      },
+      "id": "dfda109e-b4a2-4277-bbef-d4c142d94ea2",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        320,
         280
       ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "order_id",
+              "value": "={{ $json[\"Bestell-Nr.\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3155ae2f-7d4d-46cf-992d-b99e780e6d0f",
+      "name": "Is Order Existing?",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1260,
+        360
+      ],
+      "retryOnFail": false,
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS TEST - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const jsonData = $json;\n\nif (items.length == 1 && Object.keys(items[0].json).length == 0) {\n  //console.log(\"Test 123\")\n    return  [{json: {empty: true}}];\n} else {\n   return  jsonData;\n\n}\n\n"
+      },
+      "id": "1ac464c4-2331-446c-86cc-9d64d23a3c65",
+      "name": "is Empty?1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        360
+      ],
+      "notesInFlow": true,
+      "notes": "No Order found in DB -> Create"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "44646aac-66d7-4551-a120-e67f6010c4d5",
+              "leftValue": "={{ $json.empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6c5a9204-db2b-4ad3-baea-bd14cd40c142",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "order_id",
+              "value": "={{$items(\"Read Order File\")[0].json[\"Bestell-Nr.\"]}}"
+            },
+            {
+              "column": "dropshipping",
+              "value": "=1"
+            },
+            {
+              "column": "billingcompany",
+              "value": "VetTrust AG"
+            },
+            {
+              "column": "billingaddress_1",
+              "value": "Bodenhof 2"
+            },
+            {
+              "column": "billingcity",
+              "value": "Küssnacht a/R"
+            },
+            {
+              "column": "billingpostcode",
+              "value": "6403 "
+            },
+            {
+              "column": "shippingfirst_name",
+              "value": "={{ $items(\"Read Order File\")[0].json[\"Vorname\"]}}"
+            },
+            {
+              "column": "shippinglast_name",
+              "value": "={{ $items(\"Read Order File\")[0].json[\"Nachname\"]}}"
+            },
+            {
+              "column": "shippingcompany",
+              "value": "={{ $items(\"Read Order File\")[0].json[\"Firma\"]}}"
+            },
+            {
+              "column": "shippingaddress_1",
+              "value": "={{ $items(\"Read Order File\")[0].json[\"Adresse\"]}}"
+            },
+            {
+              "column": "shippingaddress_2",
+              "value": "={{ $items(\"Read Order File\")[0].json[\"Zusatz\"]}}"
+            },
+            {
+              "column": "shippingcity",
+              "value": "={{ $items(\"Read Order File\")[0].json[\"Ort\"]}}"
+            },
+            {
+              "column": "shippingpostcode",
+              "value": "={{ $items(\"Read Order File\")[0].json[\"PLZ\"]}}"
+            },
+            {
+              "column": "created_via",
+              "value": "Dropshipping"
+            },
+            {
+              "column": "shipping_method_id",
+              "value": "35"
+            },
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            },
+            {
+              "column": "billingaddress_2",
+              "value": "={{ $items(\"Read Order File\")[0].json[\"Zusatz\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a6750e1b-8296-4af9-ab1f-17e94784f407",
+      "name": "Create Order",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1920,
+        220
+      ],
+      "alwaysOutputData": false,
+      "retryOnFail": false,
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS TEST - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c0613e2e-479a-462a-b140-9bff0862fa9a",
+      "name": "Read Order File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Fixed Vettrust Address\n**Double click** to edit me. [Guide](https://docs.n8n.io/workflows/sticky-notes/)"
+      },
+      "id": "c434c905-6627-4d39-b3f3-43fc92f01eed",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const jsonData = $json;\n\nif (items.length == 1 && Object.keys(items[0].json).length == 0) {\n  //console.log(\"Test 123\")\n    return  [{json: {empty: true}}];\n} else {\n   return  jsonData;\n\n}\n\n"
+      },
+      "id": "bf3df5b3-cb7d-42d8-a5d8-b68faa4f17d0",
+      "name": "is Empty?2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        820
+      ],
+      "notesInFlow": true,
+      "notes": "No Order found in DB -> Create"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "44646aac-66d7-4551-a120-e67f6010c4d5",
+              "leftValue": "={{ $json.empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "916067fd-f1fe-4cf4-88c5-72c012570c9c",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.bexio.com/2.0/kb_invoice/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "[\n    {\n        \"field\": \"contact_id\",\n        \"value\": 3,\n        \"criteria\": \"=\"\n    },\n    {\n        \"field\": \"kb_item_status_id\",\n        \"value\": 7,\n        \"criteria\": \"=\"\n    },\n    {\n        \"field\": \"title\",\n        \"value\": \"Webshop Bestellungen\",\n        \"criteria\": \"=\"\n    }\n]",
+        "options": {}
+      },
+      "id": "40346460-95fc-496e-9a18-c82ef73d237e",
+      "name": "Search Bexio Invoice",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        560,
+        820
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "W9Ui8hTjsB8ipoET",
+          "name": "TEST - Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Bexio Status\n7 = Draft",
+        "height": 85.59149319732386,
+        "width": 185.4337616780375
+      },
+      "id": "58581d91-6841-4c84-b8b3-993e7a4fddac",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        520,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.bexio.com/2.0/kb_invoice",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"contact_id\": 3,\n    \"user_id\": 1,\n    \"title\": \"Webshop Bestellungen\"\n}",
+        "options": {}
+      },
+      "id": "240e384c-9ca0-4ab1-b093-84278e1cca7e",
+      "name": "Create Bexio Invoice",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1220,
+        680
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "W9Ui8hTjsB8ipoET",
+          "name": "TEST - Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.bexio.com/2.0/kb_invoice/{{ $json.id }}/comment",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"text\": \"*** Rechnung erstellt durch Workflow ***\",\n  \"user_id\": 1,\n  \"is_public\": false\n}",
+        "options": {}
+      },
+      "id": "5224908b-de3f-46b5-9dee-29b4b43ec59f",
+      "name": "Create Bexio Invoice comment",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1440,
+        680
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "W9Ui8hTjsB8ipoET",
+          "name": "TEST - Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "exec_id",
+        "valueToMatchOn": "={{ $execution.id}}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "bexio_customer_id",
+              "value": "={{ $json.contact_id }}"
+            },
+            {
+              "column": "bexio_invoice_id",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "column": "bexio_invoice_nr",
+              "value": "={{ $json.document_nr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b96ff026-efe6-4026-9bb5-02a3b67254cc",
+      "name": "Update Order Bexio Infos",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1440,
+        840
+      ],
+      "alwaysOutputData": false,
+      "retryOnFail": false,
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS TEST - MySQL account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -800,6 +1317,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-11-14T19:16:04.000Z",
-  "versionId": "7e3aa4e8-cb30-4046-aee0-b19360fadff7"
+  "updatedAt": "2024-01-06T17:09:22.000Z",
+  "versionId": "5c4791be-437e-4516-b833-63cf294b92b2"
 }
