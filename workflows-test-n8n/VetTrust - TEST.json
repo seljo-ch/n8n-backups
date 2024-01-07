@@ -285,6 +285,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Update Order Bexio Infos1",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -1308,6 +1315,53 @@
           "name": "SENAS TEST - MySQL account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "exec_id",
+        "valueToMatchOn": "={{ $execution.id}}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "bexio_customer_id",
+              "value": "={{ $json.contact_id }}"
+            },
+            {
+              "column": "bexio_invoice_id",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "column": "bexio_invoice_nr",
+              "value": "={{ $json.document_nr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8cf36f13-546b-4a8d-94ab-9e39e22baa33",
+      "name": "Update Order Bexio Infos1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1440,
+        1060
+      ],
+      "alwaysOutputData": false,
+      "retryOnFail": false,
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS TEST - MySQL account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1317,6 +1371,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-01-06T17:09:22.000Z",
-  "versionId": "5c4791be-437e-4516-b833-63cf294b92b2"
+  "updatedAt": "2024-01-07T08:22:05.000Z",
+  "versionId": "b8065cf0-d6a2-4d14-8d14-dd360690da52"
 }
