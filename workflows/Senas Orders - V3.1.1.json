@@ -451,7 +451,7 @@
       "main": [
         [
           {
-            "node": "Get WooCommerce Order2",
+            "node": "Get Woo Order (1)",
             "type": "main",
             "index": 0
           }
@@ -522,13 +522,7 @@
     },
     "Get WooCommerce Order2": {
       "main": [
-        [
-          {
-            "node": "Status - Switch2",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Status - Switch2": {
@@ -591,6 +585,68 @@
         [
           {
             "node": "Telegram3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Woo Order (1)": {
+      "main": [
+        [
+          {
+            "node": "Split Out MetaData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out MetaData": {
+      "main": [
+        [
+          {
+            "node": "Switch - Meta for Invoice ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch - Meta for Invoice ID": {
+      "main": [
+        [
+          {
+            "node": "Get Woo Order (2)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 60s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 60s": {
+      "main": [
+        [
+          {
+            "node": "Get Woo Order (1)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Woo Order (2)": {
+      "main": [
+        [
+          {
+            "node": "Status - Switch2",
             "type": "main",
             "index": 0
           }
@@ -1790,7 +1846,7 @@
       "type": "n8n-nodes-base.rabbitmqTrigger",
       "typeVersion": 1,
       "position": [
-        -3040,
+        -3700,
         1460
       ],
       "credentials": {
@@ -1809,7 +1865,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2400,
+        -3060,
         1300
       ],
       "notesInFlow": true,
@@ -1844,7 +1900,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -2200,
+        -2860,
         1300
       ]
     },
@@ -1861,7 +1917,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1,
       "position": [
-        -2620,
+        -3280,
         1600
       ],
       "credentials": {
@@ -1902,7 +1958,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -1940,
+        -2600,
         1380
       ]
     },
@@ -2042,7 +2098,7 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        -1940,
+        -2600,
         1160
       ],
       "alwaysOutputData": false,
@@ -2084,7 +2140,7 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        -1680,
+        -2340,
         1160
       ],
       "credentials": {
@@ -2105,8 +2161,8 @@
       "type": "n8n-nodes-base.wooCommerce",
       "typeVersion": 1,
       "position": [
-        -1380,
-        1160
+        -380,
+        840
       ],
       "credentials": {
         "wooCommerceApi": {
@@ -2179,7 +2235,7 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        -1520,
+        -2180,
         1500
       ],
       "credentials": {
@@ -2220,7 +2276,7 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        -1680,
+        -2340,
         1500
       ],
       "credentials": {
@@ -2260,7 +2316,7 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        -1680,
+        -2340,
         1340
       ]
     },
@@ -2294,7 +2350,7 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        -2600,
+        -3260,
         1300
       ],
       "retryOnFail": false,
@@ -2342,8 +2398,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1,
       "position": [
-        -960,
-        1180
+        -980,
+        1120
       ],
       "credentials": {
         "telegramApi": {
@@ -2382,7 +2438,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1,
       "position": [
-        -2800,
+        -3460,
         1460
       ]
     },
@@ -2398,9 +2454,452 @@
         -100,
         1680
       ]
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $json.order_id }}"
+      },
+      "id": "63a879b9-c876-4b2a-b39b-c703e2e446a9",
+      "name": "Get Woo Order (1)",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        -2140,
+        1160
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "meta_data",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "id",
+        "options": {}
+      },
+      "id": "fa797ac5-5aa6-437b-851d-1f0cdd0f2338",
+      "name": "Split Out MetaData",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -1920,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.meta_data.key }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "=_bexio_invoice_id",
+              "outputKey": "Normal"
+            },
+            {
+              "value2": "_bexio_sync_processing",
+              "outputKey": "Wait"
+            }
+          ]
+        }
+      },
+      "id": "de33e8ff-7b77-41d7-86d9-090fb9b42f4c",
+      "name": "Switch - Meta for Invoice ID",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        -1680,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $('Get Woo Order (1)').item.json.id }}"
+      },
+      "id": "1cde3831-4d0e-44c1-a7b5-76e6e7d98e08",
+      "name": "Get Woo Order (2)",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        -1440,
+        1080
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "unit": "minutes"
+      },
+      "id": "77c5aa50-5347-456d-9542-283c7a936586",
+      "name": "Wait 60s",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        -1440,
+        1260
+      ],
+      "webhookId": "5353b205-4196-4784-9a80-743e4b0e6a0a"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Get Woo Order (1)": [
+      {
+        "json": {
+          "id": 11151,
+          "parent_id": 0,
+          "status": "completed",
+          "currency": "CHF",
+          "version": "8.2.2",
+          "prices_include_tax": true,
+          "date_created": "2024-01-08T18:00:17",
+          "date_modified": "2024-01-08T21:40:07",
+          "discount_total": "0.00",
+          "discount_tax": "0.00",
+          "shipping_total": "49.00",
+          "shipping_tax": "0.00",
+          "cart_tax": "9.01",
+          "total": "404.50",
+          "total_tax": "9.01",
+          "customer_id": 219,
+          "order_key": "wc_order_s2rsUVRzg1FvO",
+          "billing": {
+            "first_name": "Sandrine",
+            "last_name": "Chappaz",
+            "company": "Éducation canine",
+            "address_1": "les barattes",
+            "address_2": "186",
+            "city": "Le Crêt-près-Semsales",
+            "state": "FR",
+            "postcode": "1611",
+            "country": "CH",
+            "email": "educanine.ch@gmail.com",
+            "phone": "+41797092246"
+          },
+          "shipping": {
+            "first_name": "Stéphan",
+            "last_name": "Delisle",
+            "company": "Éducation canine",
+            "address_1": "Route des bains",
+            "address_2": "19",
+            "city": "Henniez",
+            "state": "VD",
+            "postcode": "1525",
+            "country": "CH",
+            "phone": ""
+          },
+          "payment_method": "bacs",
+          "payment_method_title": "Vorauskasse",
+          "transaction_id": "",
+          "customer_ip_address": "213.55.220.244",
+          "customer_user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+          "created_via": "checkout",
+          "customer_note": "",
+          "date_completed": "2024-01-08T21:40:07",
+          "date_paid": "2024-01-08T21:30:08",
+          "cart_hash": "aa9bf29b9af6dfc30d70a23c4ac7b1e9",
+          "number": "11151",
+          "meta_data": [
+            {
+              "id": 213738,
+              "key": "is_vat_exempt",
+              "value": "no"
+            },
+            {
+              "id": 213739,
+              "key": "thwdtp_order_type",
+              "value": "delivery"
+            },
+            {
+              "id": 213740,
+              "key": "thwdtp_delivery_datepicker",
+              "value": "2024-01-10"
+            },
+            {
+              "id": 213741,
+              "key": "wpml_language",
+              "value": "de"
+            },
+            {
+              "id": 213743,
+              "key": "b2bking_product_customrows_group_10788",
+              "value": ""
+            },
+            {
+              "id": 213744,
+              "key": "b2bking_product_customrows_group_b2c",
+              "value": ""
+            },
+            {
+              "id": 213748,
+              "key": "_bexio_order_id",
+              "value": "965"
+            },
+            {
+              "id": 213749,
+              "key": "_bexio_order_nr",
+              "value": "AU-00965"
+            },
+            {
+              "id": 213750,
+              "key": "_bexio_invoice_id",
+              "value": "1866"
+            },
+            {
+              "id": 213751,
+              "key": "_bexio_invoice_nr",
+              "value": "RE-01866"
+            },
+            {
+              "id": 213752,
+              "key": "_bexio_invoice_issued",
+              "value": "1"
+            },
+            {
+              "id": 213756,
+              "key": "_bexio_invoice_paid",
+              "value": "1"
+            }
+          ],
+          "line_items": [
+            {
+              "id": 4554,
+              "name": "VOM Active Complete Karton 30x500g Wurst",
+              "product_id": 6613,
+              "variation_id": 0,
+              "quantity": 2,
+              "tax_class": "reduzierter-preis-frigo",
+              "subtotal": "230.99",
+              "subtotal_tax": "6.01",
+              "total": "230.99",
+              "total_tax": "6.01",
+              "taxes": [
+                {
+                  "id": 5,
+                  "total": "6.005848",
+                  "subtotal": "6.005848"
+                }
+              ],
+              "meta_data": [
+                {
+                  "id": 46422,
+                  "key": "_price_without_tax",
+                  "value": "115.497076",
+                  "display_key": "_price_without_tax",
+                  "display_value": "115.497076"
+                },
+                {
+                  "id": 46423,
+                  "key": "_price_with_tax",
+                  "value": "118.5",
+                  "display_key": "_price_with_tax",
+                  "display_value": "118.5"
+                },
+                {
+                  "id": 46451,
+                  "key": "_reduced_stock",
+                  "value": "2",
+                  "display_key": "_reduced_stock",
+                  "display_value": "2"
+                }
+              ],
+              "sku": "133500",
+              "price": 115.497076,
+              "image": {
+                "id": "8583",
+                "src": "https://www.senas.ch/wp-content/uploads/2020/11/Active_500g-scaled.jpg"
+              },
+              "parent_name": null
+            },
+            {
+              "id": 4555,
+              "name": "VOM Active Lachs Karton 30x 500g Wurst",
+              "product_id": 6615,
+              "variation_id": 0,
+              "quantity": 1,
+              "tax_class": "reduzierter-preis-frigo",
+              "subtotal": "115.50",
+              "subtotal_tax": "3.00",
+              "total": "115.50",
+              "total_tax": "3.00",
+              "taxes": [
+                {
+                  "id": 5,
+                  "total": "3.002924",
+                  "subtotal": "3.002924"
+                }
+              ],
+              "meta_data": [
+                {
+                  "id": 46433,
+                  "key": "_price_without_tax",
+                  "value": "115.497076",
+                  "display_key": "_price_without_tax",
+                  "display_value": "115.497076"
+                },
+                {
+                  "id": 46434,
+                  "key": "_price_with_tax",
+                  "value": "118.5",
+                  "display_key": "_price_with_tax",
+                  "display_value": "118.5"
+                },
+                {
+                  "id": 46452,
+                  "key": "_reduced_stock",
+                  "value": "1",
+                  "display_key": "_reduced_stock",
+                  "display_value": "1"
+                }
+              ],
+              "sku": "125500",
+              "price": 115.497076,
+              "image": {
+                "id": "5789",
+                "src": "https://www.senas.ch/wp-content/uploads/2020/07/02.jpg"
+              },
+              "parent_name": null
+            }
+          ],
+          "tax_lines": [
+            {
+              "id": 4557,
+              "rate_code": "MEHRWERTSTEUER NAHRUNGSMITTELFRIGO-1",
+              "rate_id": 5,
+              "label": "Mehrwertsteuer Nahrungsmittelfrigo",
+              "compound": false,
+              "tax_total": "9.01",
+              "shipping_tax_total": "0.00",
+              "rate_percent": 2.6,
+              "meta_data": []
+            }
+          ],
+          "shipping_lines": [
+            {
+              "id": 4556,
+              "method_title": "Versand nach Gewicht",
+              "method_id": "flexible_shipping",
+              "instance_id": "1",
+              "total": "49.00",
+              "total_tax": "0.00",
+              "taxes": [],
+              "meta_data": [
+                {
+                  "id": 46440,
+                  "key": "_default",
+                  "value": "yes",
+                  "display_key": "_default",
+                  "display_value": "yes"
+                },
+                {
+                  "id": 46441,
+                  "key": "_fs_method",
+                  "value": {
+                    "woocommerce_method_instance_id": "1",
+                    "id": "1",
+                    "id_for_shipping": "flexible_shipping_1_1",
+                    "method_title": "Versand nach Gewicht",
+                    "method_description": "",
+                    "method_free_shipping": "",
+                    "method_free_shipping_label": "",
+                    "method_calculation_method": "sum",
+                    "method_visibility": "no",
+                    "method_default": "yes",
+                    "method_enabled": "yes",
+                    "method_integration": "",
+                    "method_free_shipping_cart_notice": "no",
+                    "method_debug_mode": "no",
+                    "tax_status": "taxable"
+                  },
+                  "display_key": "_fs_method",
+                  "display_value": {
+                    "woocommerce_method_instance_id": "1",
+                    "id": "1",
+                    "id_for_shipping": "flexible_shipping_1_1",
+                    "method_title": "Versand nach Gewicht",
+                    "method_description": "",
+                    "method_free_shipping": "",
+                    "method_free_shipping_label": "",
+                    "method_calculation_method": "sum",
+                    "method_visibility": "no",
+                    "method_default": "yes",
+                    "method_enabled": "yes",
+                    "method_integration": "",
+                    "method_free_shipping_cart_notice": "no",
+                    "method_debug_mode": "no",
+                    "tax_status": "taxable"
+                  }
+                },
+                {
+                  "id": 46442,
+                  "key": "_fs_integration",
+                  "value": "",
+                  "display_key": "_fs_integration",
+                  "display_value": ""
+                },
+                {
+                  "id": 46443,
+                  "key": "description",
+                  "value": "",
+                  "display_key": "description",
+                  "display_value": ""
+                },
+                {
+                  "id": 46444,
+                  "key": "Positionen",
+                  "value": "VOM Active Complete Karton 30x500g Wurst &times; 2, VOM Active Lachs Karton 30x 500g Wurst &times; 1",
+                  "display_key": "Positionen",
+                  "display_value": "VOM Active Complete Karton 30x500g Wurst &times; 2, VOM Active Lachs Karton 30x 500g Wurst &times; 1"
+                }
+              ]
+            }
+          ],
+          "fee_lines": [],
+          "coupon_lines": [],
+          "refunds": [],
+          "payment_url": "https://www.senas.ch/checkout/order-pay/11151/?pay_for_order=true&key=wc_order_s2rsUVRzg1FvO",
+          "is_editable": false,
+          "needs_payment": false,
+          "needs_processing": true,
+          "date_created_gmt": "2024-01-08T17:00:17",
+          "date_modified_gmt": "2024-01-08T20:40:07",
+          "date_completed_gmt": "2024-01-08T20:40:07",
+          "date_paid_gmt": "2024-01-08T20:30:08",
+          "currency_symbol": "CHF",
+          "_links": {
+            "self": [
+              {
+                "href": "https://www.senas.ch/wp-json/wc/v3/orders/11151"
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://www.senas.ch/wp-json/wc/v3/orders"
+              }
+            ],
+            "customer": [
+              {
+                "href": "https://www.senas.ch/wp-json/wc/v3/customers/219"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": true,
@@ -2417,6 +2916,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-05T09:11:22.000Z",
-  "versionId": "79bf877a-c162-4445-b56e-082cafbd62c6"
+  "updatedAt": "2024-01-09T08:56:49.000Z",
+  "versionId": "969626ba-caf3-422a-a31b-5aa4d234c474"
 }
