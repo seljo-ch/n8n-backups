@@ -31,8 +31,19 @@
     },
     {
       "parameters": {
-        "operation": "get",
-        "productId": "8599"
+        "resource": "order",
+        "operation": "update",
+        "orderId": "11143",
+        "updateFields": {
+          "status": "processing"
+        },
+        "billingUi": {},
+        "couponLinesUi": {},
+        "feeLinesUi": {},
+        "lineItemsUi": {},
+        "metadataUi": {},
+        "shippingUi": {},
+        "shippingLinesUi": {}
       },
       "id": "9eea48b2-d561-4ff9-a206-cfbd94ffb8fe",
       "name": "WooCommerce",
@@ -57,6 +68,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-01-06T12:52:24.000Z",
-  "versionId": "bc744838-afa6-4b3d-8a34-ba6c5196e171"
+  "updatedAt": "2024-01-09T09:05:24.000Z",
+  "versionId": "d63aa65e-dab5-409a-8c6f-17255e564ca7"
 }
