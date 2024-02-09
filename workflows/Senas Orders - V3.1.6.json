@@ -1,0 +1,2872 @@
+{
+  "active": true,
+  "connections": {
+    "Item Lists - line_items": {
+      "main": [
+        [
+          {
+            "node": "Switch Frigo Tax Class",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "is Empty?": {
+      "main": [
+        [
+          {
+            "node": "Kein Lieferdatum angegeben",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add POS to Items1": {
+      "main": [
+        [
+          {
+            "node": "Insert Order Lines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists - MetaData": {
+      "main": [
+        [
+          {
+            "node": "Filter Date + Bexio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Date + Bexio": {
+      "main": [
+        [
+          {
+            "node": "0 Date - 1 Bexio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "0 Date - 1 Bexio": {
+      "main": [
+        [
+          {
+            "node": "is Empty?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare DB Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Addresses": {
+      "main": [
+        [
+          {
+            "node": "Check Billing + Shipping Address",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Billing + Shipping Address": {
+      "main": [
+        [
+          {
+            "node": "Is Woo Shipping + Billing same?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare DB Input": {
+      "main": [
+        [
+          {
+            "node": "Update Bexio Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Bexio Data": {
+      "main": [
+        [
+          {
+            "node": "Get Addresses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Bexio Contact2": {
+      "main": [
+        [
+          {
+            "node": "Keep Customer Infos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Woo Shipping + Billing same?": {
+      "main": [
+        [
+          {
+            "node": "Bexio - Get Invoice",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Shipping_Address",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bexio - Get Invoice": {
+      "main": [
+        [
+          {
+            "node": "Get Bexio Contact2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keep Customer Infos": {
+      "main": [
+        [
+          {
+            "node": "Update Bexio in DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Bexio Contact1": {
+      "main": [
+        [
+          {
+            "node": "MySQL22",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "bexio_contact_number_3": {
+      "main": [
+        [
+          {
+            "node": "MySQL21",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Bexio Contact": {
+      "main": [
+        [
+          {
+            "node": "is Empty?3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "is Empty?3": {
+      "main": [
+        [
+          {
+            "node": "NO Contact Found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NO Contact Found": {
+      "main": [
+        [
+          {
+            "node": "Create Bexio Contact1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "bexio_contact_number_3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Frigo Tax Class": {
+      "main": [
+        [
+          {
+            "node": "Add POS to Items1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [],
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shipping Method": {
+      "main": [
+        [
+          {
+            "node": "Switch - Shipping",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Temp Rows - pickup": {
+      "main": [
+        [
+          {
+            "node": "Get Temp Order Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Temp Rows - flex_shipping": {
+      "main": [
+        [
+          {
+            "node": "Get Temp Order Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Convert to/from binary data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Temp Order Data": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch - Shipping": {
+      "main": [
+        [
+          {
+            "node": "Create Temp Rows - flex_shipping",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Temp Rows - pickup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to/from binary data": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "FTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FTP": {
+      "main": [
+        [
+          {
+            "node": "Clear Temp Table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kein Lieferdatum angegeben": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Delivery Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Status - Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "is Empty?1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Get Woo Order (1)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Status matching",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Order_ID2": {
+      "main": [
+        [
+          {
+            "node": "Get WooCommerce Order3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL1": {
+      "main": [
+        [
+          {
+            "node": "Get Order_ID2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get WooCommerce Order3": {
+      "main": [
+        [
+          {
+            "node": "Status - Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status matching": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status - Switch2": {
+      "main": [
+        [
+          {
+            "node": "Item Lists - MetaData",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Item Lists - line_items",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Shipping Method",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [],
+        [
+          {
+            "node": "Telegram4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Order Existing?": {
+      "main": [
+        [
+          {
+            "node": "is Empty?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status - Switch3": {
+      "main": [
+        [
+          {
+            "node": "Is Order Existing?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [],
+        [
+          {
+            "node": "Telegram3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Woo Order (1)": {
+      "main": [
+        [
+          {
+            "node": "Split Out MetaData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out MetaData": {
+      "main": [
+        [
+          {
+            "node": "Switch - Meta for Invoice ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 60s": {
+      "main": [
+        [
+          {
+            "node": "Get Woo Order (1)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Woo Order (2)": {
+      "main": [
+        [
+          {
+            "node": "Create Order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Order": {
+      "main": [
+        [
+          {
+            "node": "Get Order_ID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch - Meta for Invoice ID": {
+      "main": [
+        [
+          {
+            "node": "Get Woo Order (2)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 60s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Order_ID1": {
+      "main": [
+        [
+          {
+            "node": "Get Woo Order (3)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Woo Order (3)": {
+      "main": [
+        [
+          {
+            "node": "Status - Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shipping_Address": {
+      "main": [
+        [
+          {
+            "node": "Search Bexio Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-27T16:18:08.129Z",
+  "id": "3wwbuWTZtJap2i1W",
+  "meta": null,
+  "name": "Senas Orders - V3.1.6",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "line_items",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "id",
+        "options": {}
+      },
+      "id": "983f9dd8-d7de-41ae-a20b-cbe08eafa9dd",
+      "name": "Item Lists - line_items",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -520,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop through each item in the input item list\nfor (let i = 0; i < items.length; i++) {\n  // Calculate the current item's position (index + 1) multiplied by 10 and convert it to a string\n  const positionAsString = ((i + 1) * 10).toString();\n\n  // Add the position as a string to the item\n  items[i].json.position = positionAsString;\n}\n\n// Return the modified items\nreturn items;"
+      },
+      "id": "b8851f83-b709-457e-83c0-da09e0fdcfcc",
+      "name": "Add POS to Items1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const jsonData = $json;\n\nif (items.length == 1 && Object.keys(items[0].json).length == 0) {\n  //console.log(\"Test 123\")\n    return  [{json: {empty: true}}];\n} else {\n   return  [{json: {date: jsonData.value}}];\n\n}\n\n"
+      },
+      "id": "9129e519-313e-4b68-90ea-c1f5f31ddb23",
+      "name": "is Empty?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        100,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "meta_data",
+        "options": {}
+      },
+      "id": "7392a86d-e48d-45db-88c5-e5defabaf310",
+      "name": "Item Lists - MetaData",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -520,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.key }}",
+              "value2": "thwdtp_delivery_datepicker"
+            },
+            {
+              "value1": "={{ $json.key }}",
+              "value2": "thwdtp_pickup_datepicker"
+            },
+            {
+              "value1": "={{ $json.key }}",
+              "value2": "_bexio_invoice_id"
+            },
+            {
+              "value1": "={{ $json.key }}",
+              "value2": "_bexio_invoice_nr"
+            },
+            {
+              "value1": "={{ $json.key }}",
+              "value2": "_bexio_order_id"
+            }
+          ]
+        },
+        "combineConditions": "OR"
+      },
+      "id": "14b693f1-cc7b-4eb4-b545-d035f02810d0",
+      "name": "Filter Date + Bexio",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        1300
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.key }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "thwdtp_delivery_datepicker"
+            },
+            {
+              "value2": "thwdtp_pickup_datepicker"
+            },
+            {
+              "value2": "_bexio_invoice_id",
+              "output": 1
+            },
+            {
+              "value2": "_bexio_order_id",
+              "output": 1
+            },
+            {
+              "value2": "_bexio_invoice_nr",
+              "output": 1
+            }
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "d5465bfb-d453-42aa-a113-224b5c98fb62",
+      "name": "0 Date - 1 Bexio",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {
+          "outputColumns": [
+            "billingfirst_name",
+            "billinglast_name",
+            "billingaddress_1",
+            "billingcity",
+            "billingpostcode",
+            "shippingfirst_name",
+            "shippinglast_name",
+            "shippingaddress_1",
+            "shippingcity",
+            "shippingpostcode",
+            "bexio_invoice_id"
+          ]
+        }
+      },
+      "id": "1fbd1eca-5d05-43e2-9956-9838f8ff4b2f",
+      "name": "Get Addresses",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        500,
+        1300
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.same_address }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "19ea2160-5e56-4c79-8521-1ec5927020fc",
+      "name": "Is Woo Shipping + Billing same?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        900,
+        1300
+      ],
+      "notesInFlow": true,
+      "notes": "If the Billing + Shipping address are the same, the Address has been transfered as the Billing Address to Bexio and can taken from there (Only Customer Number)."
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Example JavaScript code for multiple JSON element comparisons\nconst jsonData = $json;\n\n// Perform multiple comparisons\nconst comparisonResult =\n  jsonData.billingfirst_name === jsonData.shippingfirst_name &&\n  jsonData.billinglast_name === jsonData.shippinglast_name\n  jsonData.billingaddress_1 === jsonData.shippingaddress_1 &&\n  jsonData.billingpostcode === jsonData.shippingpostcode &&\n  jsonData.billingcity === jsonData.shippingcity;\n\n// Output the result\nreturn { same_address: comparisonResult,\n          bexio_invoice_id: jsonData.bexio_invoice_id,\n        shippingfirst_name: jsonData.shippingfirst_name,\n        shippinglast_name: jsonData.shippinglast_name,\n        shippingaddress_1: jsonData.shippingaddress_1,\n        shippingcity: jsonData.shippingcity,\n        shippingpostcode: jsonData.shippingpostcode\n  };\n"
+      },
+      "id": "da75a4f2-128f-418e-844f-b79a2b663be8",
+      "name": "Check Billing + Shipping Address",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        1300
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const jsonData = $json;\n\n// Remove the \"id\" property\ndelete jsonData.id;\n\n// Remove the underscore from the \"key\" property\njsonData.key = jsonData.key.replace(/^_/, '');\n\n// Output the modified JSON\nreturn jsonData;"
+      },
+      "id": "4dbd52f1-0f4c-46db-a839-b788fbf814ae",
+      "name": "Prepare DB Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        100,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "exec_id",
+        "valueToMatchOn": "={{ $execution.id }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "={{ $json.key }}",
+              "value": "={{ $json.value }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2db9c14a-c560-4836-9bbb-fcef39deae30",
+      "name": "Update Bexio Data",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        300,
+        1300
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bexio.com/2.0/contact/{{ $json.contact_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a3edb7ee-5057-4b62-bca0-3c603bf00958",
+      "name": "Get Bexio Contact2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1340,
+        1180
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "xTCPZWzscowXOuCF",
+          "name": "PROD Senas Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.bexio.com/2.0/kb_invoice/{{ $json.bexio_invoice_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "558464fc-5f2d-4ac1-854f-4d4dfead747a",
+      "name": "Bexio - Get Invoice",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1160,
+        1180
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "xTCPZWzscowXOuCF",
+          "name": "PROD Senas Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "bexio_id",
+              "value": "={{ $json.id }}"
+            }
+          ],
+          "string": [
+            {
+              "name": "bexio_number",
+              "value": "={{ $json.nr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5d65b848-4f9f-4e56-83d0-3aecf1d1f1ad",
+      "name": "Keep Customer Infos",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "exec_id",
+        "valueToMatchOn": "={{ $execution.id }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "bexio_customer_id",
+              "value": "={{ $json.bexio_id }}"
+            },
+            {
+              "column": "bexio_customer_nr",
+              "value": "={{ $json.bexio_number }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4b23ea59-ef1e-40c6-8b95-042ec20caee9",
+      "name": "Update Bexio in DB",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1700,
+        1180
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.bexio.com/2.0/contact",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"contact_type_id\": 2,\n    \"name_1\": \"{{ $('Shipping_Address').item.json[\"Woo_Last_Name\"] }}\",\n    \"name_2\": \"{{ $('Shipping_Address').item.json[\"Woo_First_Name\"] }}\",\n    \"address\": \"{{ $('Shipping_Address').item.json[\"Woo_Address_1\"]}}\",\n    \"postcode\": {{ $('Shipping_Address').item.json[\"Woo_Post_Code\"]}},\n    \"city\": \"{{ $('Shipping_Address').item.json[\"Woo_City\"] }}\",\n    \"country_id\": 1,\n    \"phone_fixed\": \"{{ $('Shipping_Address').item.json[\"Woo_Phone\"] }}\",\n    \"remarks\": \"\",\n    \"contact_group_ids\": \"6\",\n    \"user_id\": 1,\n    \"owner_id\": 1\n}",
+        "options": {}
+      },
+      "id": "eb235e66-2934-46b8-8395-4629c9aff0c9",
+      "name": "Create Bexio Contact1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1940,
+        1380
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "xTCPZWzscowXOuCF",
+          "name": "PROD Senas Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "bexio_id",
+              "value": "={{ $json.id }}"
+            }
+          ],
+          "string": [
+            {
+              "name": "bexio_number",
+              "value": "={{ $json.nr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dd391e9e-f122-4312-b24e-6779f0a378d6",
+      "name": "bexio_contact_number_3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.bexio.com/2.0/contact/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "order_by",
+              "value": "updated_at_desc "
+            },
+            {
+              "name": "limit",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n     {\n        \"field\": \"name_1\",\n        \"value\": \"{{ $json[\"Woo_Last_Name\"] }}\",\n        \"criteria\": \"like\"\n    },\n    {\n        \"field\": \"address\",\n        \"value\": \"{{ $json[\"Woo_Address_1\"] }}\",\n        \"criteria\": \"like\"\n    }\n]",
+        "options": {}
+      },
+      "id": "a212bb76-168c-401d-8d4f-5f5756c3976a",
+      "name": "Search Bexio Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1340,
+        1400
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "xTCPZWzscowXOuCF",
+          "name": "PROD Senas Bexio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "if (items.length == 1 && Object.keys(items[0].json).length == 0) {\n  console.log(\"Test 123\")\n    return  [{json: {empty: true}}];\n} else {\n  return items;\n}\n\n"
+      },
+      "id": "67a521c6-766f-4f8b-910c-04d3492a17ed",
+      "name": "is Empty?3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.empty }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "5d420f3e-ff34-45e9-bdf8-815819d111fc",
+      "name": "NO Contact Found",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        1400
+      ],
+      "notesInFlow": true,
+      "notes": "If the Billing + Shipping address are the same, the Address has been transfered as the Billing Address to Bexio and can taken from there (Only Customer Number)."
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.line_items.tax_class }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "reduzierter-preis-frigo"
+            }
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "ebb8763f-148a-4d30-8757-df1c93c80c53",
+      "name": "Switch Frigo Tax Class",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "order_lines_new",
+          "mode": "list",
+          "cachedResultName": "order_lines_new"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "Position-NR",
+              "value": "={{ $json.position }}"
+            },
+            {
+              "column": "order_id",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "column": "Anzahl LE",
+              "value": "={{ $json.line_items.quantity }}"
+            },
+            {
+              "column": "Artikelnr",
+              "value": "={{ $json.line_items.sku }}"
+            },
+            {
+              "column": "Bezeichnung",
+              "value": "={{ $json.line_items.name }}"
+            },
+            {
+              "column": "Excec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0388a65-7c8b-4718-a59e-1f1b7e95be05",
+      "name": "Insert Order Lines",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        100,
+        1500
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "exec_id",
+        "valueToMatchOn": "={{ $execution.id }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "delivery_date",
+              "value": "={{ DateTime.fromFormat($json.date, \"yyyy-MM-dd\").toFormat('dd.MM.yyyy') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d82b661c-9877-4b4a-b1aa-0eb96dfc50ea",
+      "name": "Update Delivery Date",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        480,
+        940
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {
+          "outputColumns": [
+            "shipping_method_id"
+          ]
+        }
+      },
+      "id": "0f89c716-85d3-45f7-9234-22389a657661",
+      "name": "Shipping Method",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -980,
+        1980
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Versandarten \n3 für Selbst-Abholer in Möhlin (local_pickup)\n35 für Lieferungen (flexible_shipping)\n",
+        "height": 96.57675437032134,
+        "width": 324.98714914376933
+      },
+      "id": "b48646d4-7eff-44d2-9783-14606182c6d6",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -940,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\tuse senas;\n    INSERT INTO order_temp(`KOPF`, `Absender`, `Auftragsnr`, `Lieferdatum`, `Kundennummer`,`Name`,`Zusatz`,`Strasse`, `Land`, `PLZ`, `Ort`,`Lieferart`,`KopfText`, `Exec_id`) \n    SELECT \n    \t\"OK\",\n    \t\"719\",\n        `orders`.`order_id`,\n        `orders`.`delivery_date`,\n        `orders`.`bexio_customer_nr`,\n        CONCAT(`orders`.`shippingfirst_name`,\" \", `orders`.`shippinglast_name`), \n        CONCAT(`orders`.`shippingcompany`,\" \", `orders`.`shippingaddress_2`), \n        `orders`.`shippingaddress_1`,\n        \"CH\", #Land\n        `orders`.`shippingpostcode`,\n        `orders`.`shippingcity`,\n        \"35\", #Lieferart 3 für Selbst-Abholer in Möhlin (local_pickup) 35 für Lieferungen (flexible_shipping)\n        CONCAT(`orders`.`billingphone`,\" \", `orders`.`shippingphone`,\" \",\"/ 1h vorher anrufen\"),\n        `orders`.`exec_id`\n    FROM `orders`\n    \n    WHERE `orders`.`exec_id` = $1;\n    \nINSERT INTO order_temp(`KOPF`, `Absender`, `Auftragsnr`, `Lieferdatum`, `Kundennummer`, `Name`, `Zusatz`,`Strasse`, `Exec_id`) \n\tvalue (\n\t\t\"POS\",\n        \"Position-NR\",\n        \"Anzahl LE\",\n        \"Artikelnr\",\n        \"Bezeichnung\",\n        \"Chargenvorgabe\",\n        \"MHD-Vorgabe\",\n        \"Pos-Text\",\n        $1\n        );\n\nINSERT INTO order_temp(`Kopf`, `Absender`, `Auftragsnr`, `Lieferdatum`, `Kundennummer`, `Name`, `Zusatz`, `Strasse`, `Exec_id`) \n\tSELECT \n    \t`order_lines_new`.`KOPF`, \n        `order_lines_new`.`Position-NR`, \n        `order_lines_new`.`Anzahl LE`, \n        `order_lines_new`.`Artikelnr`,\n        `order_lines_new`.`Bezeichnung`,\n\t\t`order_lines_new`.`Chargenvorgabe`,\n\t\t`order_lines_new`.`MHD-Vorgabe`,\n        `order_lines_new`.`Pos-Text`,\n        `order_lines_new`.`Excec_id`\n    FROM `order_lines_new`\n  \tWHERE `order_lines_new`.`Excec_id` = $1;",
+        "options": {
+          "queryReplacement": "={{ $execution.id }}"
+        }
+      },
+      "id": "9f49405d-be29-40a9-af3f-c5b8c076dce4",
+      "name": "Create Temp Rows - flex_shipping",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -520,
+        1780
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\tuse senas;\n    INSERT INTO order_temp(`KOPF`, `Absender`, `Auftragsnr`, `Lieferdatum`, `Kundennummer`,`Name`,`Zusatz`,`Strasse`, `Land`, `PLZ`, `Ort`,`Lieferart`,`KopfText`, `Exec_id`) \n    SELECT \n    \t\"OK\",\n    \t\"719\",\n        `orders`.`order_id`,\n        `orders`.`delivery_date`,\n        `orders`.`bexio_customer_nr`,\n        CONCAT(`orders`.`shippingfirst_name`,\" \", `orders`.`shippinglast_name`), \n        CONCAT(`orders`.`shippingcompany`,\" \", `orders`.`shippingaddress_2`), \n        `orders`.`shippingaddress_1`,\n        \"CH\", #Land\n        `orders`.`shippingpostcode`,\n        `orders`.`shippingcity`,\n        \"3\", #Lieferart 3 für Selbst-Abholer in Möhlin (local_pickup) 35 für Lieferungen (flexible_shipping)\n        CONCAT(`orders`.`billingphone`,\" \", `orders`.`shippingphone`),\n        `orders`.`exec_id`\n    FROM `orders`\n    \n    WHERE `orders`.`exec_id` = $1;\n    \nINSERT INTO order_temp(`KOPF`, `Absender`, `Auftragsnr`, `Lieferdatum`, `Kundennummer`, `Name`, `Zusatz`,`Strasse`, `Exec_id`) \n\tvalue (\n\t\t\"POS\",\n        \"Position-NR\",\n        \"Anzahl LE\",\n        \"Artikelnr\",\n        \"Bezeichnung\",\n        \"Chargenvorgabe\",\n        \"MHD-Vorgabe\",\n        \"Pos-Text\",\n        $1\n        );\n\nINSERT INTO order_temp(`Kopf`, `Absender`, `Auftragsnr`, `Lieferdatum`, `Kundennummer`, `Name`, `Zusatz`, `Strasse`, `Exec_id`) \n\tSELECT \n    \t`order_lines_new`.`KOPF`, \n        `order_lines_new`.`Position-NR`, \n        `order_lines_new`.`Anzahl LE`, \n        `order_lines_new`.`Artikelnr`,\n        `order_lines_new`.`Bezeichnung`,\n\t\t`order_lines_new`.`Chargenvorgabe`,\n\t\t`order_lines_new`.`MHD-Vorgabe`,\n        `order_lines_new`.`Pos-Text`,\n        `order_lines_new`.`Excec_id`\n    FROM `order_lines_new`\n  \tWHERE `order_lines_new`.`Excec_id` = $1;",
+        "options": {
+          "queryReplacement": "={{ $execution.id }}"
+        }
+      },
+      "id": "7c607a4a-988f-45c0-806c-52acd797c26c",
+      "name": "Create Temp Rows - pickup",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -520,
+        2080
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT `KOPF`, `Absender`, `Auftragsnr`, `Lieferdatum`, `Kundennummer`, `Name`, `Zusatz`, `Strasse`, `Land`, `PLZ`, `Ort`, `Lieferart`, `Tour`, `Bestellnummer`, `KopfText` FROM `order_temp`\nWHERE `Exec_id` = $1;",
+        "options": {
+          "queryReplacement": "={{ $execution.id }}"
+        }
+      },
+      "id": "f69b4b78-f81b-469f-b318-3f1a2ad0ed5b",
+      "name": "Get Temp Order Data",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -260,
+        1920
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "fileFormat": "csv",
+        "options": {
+          "fileName": "=senas_{{ $json.Auftragsnr }}.xls",
+          "headerRow": true
+        }
+      },
+      "id": "689918b8-4fe7-4c92-9241-fee393a4c4a1",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "includeEmptyCells": true
+        }
+      },
+      "id": "50ade7ab-c125-4357-ae76-755bb7c9873e",
+      "name": "Spreadsheet File1",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 2,
+      "position": [
+        200,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const SEPARATOR = ';';\nconst NEWLINE = '\\r\\n';\nconst order = $input.first().json.Auftragsnr;\n\nconst rows = [Object.keys($input.first().json)];\n\nlet result = '';\n\nfor (let item of $input.all()) {\n  rows.push( Object.keys(item.json).map(key => item.json[key]) ) ;\n}\n\nfor (let row of rows) {\n  result += row.join(SEPARATOR) + NEWLINE;\n}\n\n\n\nreturn [{\n  json: {\n    csv_content: result,\n    order_number: order\n  }\n}];\n\n"
+      },
+      "id": "f659936b-8f7b-4005-8cab-dbc87f9a1185",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        1920
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "convertAllData": false,
+        "sourceKey": "csv_content",
+        "options": {
+          "encoding": "utf8",
+          "fileName": "=senas_order_{{ $json.order_number }}.csv",
+          "mimeType": "text/csv",
+          "useRawData": true
+        }
+      },
+      "id": "bcf90ccc-20a3-4948-8836-23f64979c7ef",
+      "name": "Convert to/from binary data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        600,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.shipping_method_id }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "flexible_shipping",
+              "outputKey": "delivery"
+            },
+            {
+              "value2": "local_pickup",
+              "outputKey": "pickup"
+            }
+          ]
+        }
+      },
+      "id": "cca7c678-f27c-40bb-89ee-0ddbf2a46e1f",
+      "name": "Switch - Shipping",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        -760,
+        1980
+      ]
+    },
+    {
+      "parameters": {
+        "protocol": "sftp",
+        "operation": "upload",
+        "path": "=/senas/upload/{{$binary.data.fileName}}"
+      },
+      "id": "346a0ee3-1e62-4c60-bb0d-69984813d43a",
+      "name": "FTP",
+      "type": "n8n-nodes-base.ftp",
+      "typeVersion": 1,
+      "position": [
+        860,
+        2000
+      ],
+      "credentials": {
+        "sftp": {
+          "id": "3s4Z5m7HKHebiNmX",
+          "name": "SFTP account - PHX"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM `order_temp` WHERE `Exec_id` = $1;",
+        "options": {
+          "queryReplacement": "={{ $execution.id }}"
+        }
+      },
+      "id": "4b9bc3ad-ed4c-40ff-b1ea-32ed9b88782e",
+      "name": "Clear Temp Table",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        2000
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n@phx-cloud.ch",
+        "toEmail": "olivier@sebel.be",
+        "subject": "=New FrigoSuisse Order #{{ $json.order_number }}",
+        "text": "New FrigoSuisse Order\n\nPlease Check Attachment",
+        "options": {
+          "attachments": "data",
+          "ccEmail": "info@senas.ch",
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "87e96236-ca4d-44e7-8431-21d6b06a08d4",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        860,
+        1820
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "aO5TPXWbGMX7D9cU",
+          "name": "n8n@phx-cloud.ch"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "errorMessage": "Kein Lieferdatum"
+      },
+      "id": "f4fa0f27-aad0-4372-9b97-cb5a2266a41e",
+      "name": "Stop and Error",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        460,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.empty }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "e2eda6cb-8398-4f4a-9314-86b1e830a920",
+      "name": "Kein Lieferdatum angegeben",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        280,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "-4082909185",
+        "text": "={{ $now.toFormat('H:mm - dd.MM.yyyy')  }} !!! #{{ $('Status - Switch2').item.json.id }} Bestellung ohne Lieferdatum - ⛔ÜBERMITTLUNG ABGEBROCHEN ⛔ \n",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "7fa619f1-a57d-4ef5-b098-19c640082c44",
+      "name": "Telegram2",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "queue": "WooCommerce",
+        "options": {
+          "jsonParseBody": true,
+          "onlyContent": true,
+          "parallelMessages": 1
+        }
+      },
+      "id": "f1d81eee-4048-4a03-837c-4fd9b5ff855c",
+      "name": "Start",
+      "type": "n8n-nodes-base.rabbitmqTrigger",
+      "typeVersion": 1,
+      "position": [
+        -3700,
+        1460
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "MhgathEZM0u2hW3V",
+          "name": "Senas - RabbitMQ"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const jsonData = $json;\n\nif (items.length == 1 && Object.keys(items[0].json).length == 0) {\n  //console.log(\"Test 123\")\n    return  [{json: {empty: true}}];\n} else {\n   return  jsonData;\n\n}\n\n"
+      },
+      "id": "8f291948-d815-40cc-8106-2404dc526dec",
+      "name": "is Empty?1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3060,
+        1300
+      ],
+      "notesInFlow": true,
+      "notes": "No Order found in DB -> Create"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "44646aac-66d7-4551-a120-e67f6010c4d5",
+              "leftValue": "={{ $json.empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3e4af76b-08c8-4dab-a4f8-31f9f8f0902b",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -2860,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "-4082909185",
+        "text": "={{ $now.toFormat('HH:mm - dd.MM.yyyy')  }} - Senas Order arrived (#{{ $json.id }}) / Status {{ $json.status }} -⛔ Not Processed ⛔",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "64ad26b6-926e-4341-a197-9c737989513a",
+      "name": "Telegram3",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        -3280,
+        1600
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "364f51f6-b8e0-42c6-9dcc-441edfd536c3",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "={{ $node['Status - Switch3'].json['status'] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": false
+        }
+      },
+      "id": "ce8685c0-9088-49e1-9ec3-ef4389078a76",
+      "name": "Status matching",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -2600,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.status }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "processing"
+            },
+            {
+              "value2": "on-hold",
+              "output": 3
+            },
+            {
+              "value2": "cancelled",
+              "output": 3
+            },
+            {
+              "value2": "refunded",
+              "output": 3
+            }
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "bc6e2cdf-9be5-43ea-a518-f81d47338607",
+      "name": "Status - Switch2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -1160,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {
+          "outputColumns": [
+            "order_id",
+            "status"
+          ]
+        }
+      },
+      "id": "81b335be-a2e5-43b7-8a2e-68c6497faf0d",
+      "name": "Get Order_ID2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -2180,
+        1500
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "order_id",
+        "valueToMatchOn": "={{ $json.order_id }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "status",
+              "value": "={{ $('Start').item.json.status }}"
+            },
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "00373725-bc51-4cfd-aa6c-ab875d3c2b18",
+      "name": "MySQL1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -2340,
+        1500
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $json.order_id }}"
+      },
+      "id": "4c55ef09-ccb8-48b3-952c-9bd70a0fce45",
+      "name": "Get WooCommerce Order3",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        -1360,
+        1500
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "errorMessage": "Duplicate Order ID"
+      },
+      "id": "cdabb430-91af-40a4-bb43-fd5fe367a149",
+      "name": "Stop and Error1",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -2340,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "order_id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        },
+        "options": {
+          "outputColumns": [
+            "order_id",
+            "status"
+          ]
+        }
+      },
+      "id": "430eb69c-fdf2-45d0-8deb-bef751ca1d7c",
+      "name": "Is Order Existing?",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -3260,
+        1300
+      ],
+      "retryOnFail": false,
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "-4082909185",
+        "text": "={{ $now.toFormat('HH:mm - dd.MM.yyyy')  }} - Senas Order arrived (#{{ $json.id }}) / Status {{ $json.status }} -⛔ Not Processed ⛔",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "7fb01f2b-0bbb-4887-b883-0bd59880c832",
+      "name": "Telegram4",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        -940,
+        1540
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "-4082909185",
+        "text": "={{ $now.toFormat('HH:mm - dd.MM.yyyy')  }} - Senas Order arrived (#{{ $json.id }}) / Status {{ $json.status }} - ✅ NOW Processing ✅",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "a51ef6ac-c43b-4219-9531-bd8a493564ca",
+      "name": "Telegram5",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        1120
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.status }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "processing"
+            },
+            {
+              "value2": "on-hold",
+              "output": 3
+            },
+            {
+              "value2": "cancelled",
+              "output": 3
+            },
+            {
+              "value2": "refunded",
+              "output": 3
+            }
+          ]
+        },
+        "fallbackOutput": 3
+      },
+      "id": "2111cd36-3ec4-4194-b013-6bd27f91abf5",
+      "name": "Status - Switch3",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -3460,
+        1460
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $('Start').item.json.id }}"
+      },
+      "id": "63a879b9-c876-4b2a-b39b-c703e2e446a9",
+      "name": "Get Woo Order (1)",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        -2600,
+        1040
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "meta_data",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "id",
+        "options": {}
+      },
+      "id": "fa797ac5-5aa6-437b-851d-1f0cdd0f2338",
+      "name": "Split Out MetaData",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -2400,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $('Get Woo Order (1)').item.json.id }}"
+      },
+      "id": "1cde3831-4d0e-44c1-a7b5-76e6e7d98e08",
+      "name": "Get Woo Order (2)",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        -2000,
+        960
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "unit": "minutes"
+      },
+      "id": "77c5aa50-5347-456d-9542-283c7a936586",
+      "name": "Wait 60s",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        -2000,
+        1140
+      ],
+      "webhookId": "5353b205-4196-4784-9a80-743e4b0e6a0a"
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "order_id",
+              "value": "={{ $('Start').item.json.id }}"
+            },
+            {
+              "column": "status",
+              "value": "={{ $('Start').item.json.status }}"
+            },
+            {
+              "column": "customer_id",
+              "value": "={{ $('Start').item.json.customer_id }}"
+            },
+            {
+              "column": "billingfirst_name",
+              "value": "={{ $('Start').item.json.billing.first_name }}"
+            },
+            {
+              "column": "billinglast_name",
+              "value": "={{ $('Start').item.json.billing.last_name }}"
+            },
+            {
+              "column": "billingcompany",
+              "value": "={{ $('Start').item.json.billing.company }}"
+            },
+            {
+              "column": "billingaddress_1",
+              "value": "={{ $('Start').item.json.billing.address_1 }}"
+            },
+            {
+              "column": "billingaddress_2",
+              "value": "={{ $('Start').item.json.billing.address_2 }}"
+            },
+            {
+              "column": "billingcity",
+              "value": "={{ $('Start').item.json.billing.city }}"
+            },
+            {
+              "column": "billingstate",
+              "value": "={{ $('Start').item.json.billing.state }}"
+            },
+            {
+              "column": "billingpostcode",
+              "value": "={{ $('Start').item.json.billing.postcode }}"
+            },
+            {
+              "column": "billingcountry",
+              "value": "={{ $('Start').item.json.billing.country }}"
+            },
+            {
+              "column": "billingemail",
+              "value": "={{ $('Start').item.json.billing.email }}"
+            },
+            {
+              "column": "billingphone",
+              "value": "={{ $('Start').item.json.billing.phone }}"
+            },
+            {
+              "column": "shippingfirst_name",
+              "value": "={{ $('Start').item.json.shipping.first_name }}"
+            },
+            {
+              "column": "shippinglast_name",
+              "value": "={{ $('Start').item.json.shipping.last_name }}"
+            },
+            {
+              "column": "shippingcompany",
+              "value": "={{ $('Start').item.json.shipping.company }}"
+            },
+            {
+              "column": "shippingaddress_1",
+              "value": "={{ $('Start').item.json.shipping.address_1 }}"
+            },
+            {
+              "column": "shippingaddress_2",
+              "value": "={{ $('Start').item.json.shipping.address_2 }}"
+            },
+            {
+              "column": "shippingcity",
+              "value": "={{ $('Start').item.json.shipping.city }}"
+            },
+            {
+              "column": "shippingstate",
+              "value": "={{ $('Start').item.json.shipping.state }}"
+            },
+            {
+              "column": "shippingpostcode",
+              "value": "={{ $('Start').item.json.shipping.postcode }}"
+            },
+            {
+              "column": "shippingcountry",
+              "value": "={{ $('Start').item.json.shipping.country }}"
+            },
+            {
+              "column": "shippingphone",
+              "value": "={{ $('Start').item.json.shipping.phone }}"
+            },
+            {
+              "column": "payment_methode_title",
+              "value": "={{ $('Start').item.json.payment_method_title }}"
+            },
+            {
+              "column": "created_via",
+              "value": "={{ $('Start').item.json.created_via }}"
+            },
+            {
+              "column": "customer_note",
+              "value": "={{ $('Start').item.json.customer_note }}"
+            },
+            {
+              "column": "shipping_method_id",
+              "value": "={{ $('Start').item.json.shipping_lines[0].method_id }}"
+            },
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "69d36cd0-bef3-4c8b-ab1e-1c85ab330d2e",
+      "name": "Create Order",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -1780,
+        960
+      ],
+      "alwaysOutputData": false,
+      "retryOnFail": false,
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "exec_id",
+              "value": "={{ $execution.id }}"
+            }
+          ]
+        },
+        "options": {
+          "outputColumns": [
+            "order_id",
+            "status"
+          ]
+        }
+      },
+      "id": "2318806a-f791-4b9f-8388-f01c205cc035",
+      "name": "Get Order_ID1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        -1580,
+        960
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.meta_data.key }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "=_bexio_invoice_id",
+              "outputKey": "Normal"
+            },
+            {
+              "value2": "_bexio_sync_processing",
+              "outputKey": "Wait"
+            }
+          ]
+        }
+      },
+      "id": "de33e8ff-7b77-41d7-86d9-090fb9b42f4c",
+      "name": "Switch - Meta for Invoice ID",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        -2220,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "order",
+        "operation": "get",
+        "orderId": "={{ $('Get Woo Order (1)').item.json.id }}"
+      },
+      "id": "100082bd-0616-430a-9e3e-f33c77c47ee4",
+      "name": "Get Woo Order (3)",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        -1360,
+        1220
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "-4082909185",
+        "text": "={{ $now.toFormat('H:mm - dd.MM.yyyy')  }} !!! #{{ $('Status - Switch2').item.json.id }} Bestellung ohne/mit Artikeln die nicht Frigo sind oder falsche MwSt. Kategorie  - ⛔ÜBERMITTLUNG ABGEBROCHEN ⛔ ",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "aba4d5cc-aca8-4ec5-a67f-c5fdc38bb39f",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        1660
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "zMQolP6gxtFEhn1Q",
+          "name": "PHX_Cloud_BOT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "errorMessage": "TAX Class falsch - Nichts übermittelt"
+      },
+      "id": "1bc37528-7bad-4cae-a79b-178ecc6094a4",
+      "name": "Stop and Error3",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        100,
+        1660
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Woo_First_Name",
+              "value": "={{ $json.shippingfirst_name }}"
+            },
+            {
+              "name": "Woo_Last_Name",
+              "value": "={{ $json.shippinglast_name }}"
+            },
+            {
+              "name": "Woo_Address_1",
+              "value": "={{ $json.shippingaddress_1 }}"
+            },
+            {
+              "name": "Woo_City",
+              "value": "={{ $json.shippingcity }}"
+            },
+            {
+              "name": "Woo_Post_Code",
+              "value": "={{ $json.shippingpostcode }}"
+            },
+            {
+              "name": "Order_No",
+              "value": "={{ $json.bexio_invoice_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "47e0d6e1-9db5-4ff6-b646-0bff5bf23b39",
+      "name": "Shipping_Address",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "order_numbers",
+          "mode": "list",
+          "cachedResultName": "order_numbers"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "Exec_ID",
+        "valueToMatchOn": "={{ $execution.id }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "Bexio_Customer_ID",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "column": "Bexio_Customer_Number",
+              "value": "={{ $json.nr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "95a59887-82a2-42bc-b497-91bd3e78bf17",
+      "name": "MySQL22",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2220,
+        1380
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "orders",
+          "mode": "list",
+          "cachedResultName": "orders"
+        },
+        "dataMode": "defineBelow",
+        "columnToMatchOn": "exec_id",
+        "valueToMatchOn": "={{ $execution.id }}",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "bexio_customer_id",
+              "value": "={{ $json.bexio_id }}"
+            },
+            {
+              "column": "bexio_customer_nr",
+              "value": "={{ $json.bexio_number }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "183f310a-67a1-41ff-a0bc-6d855b02312e",
+      "name": "MySQL21",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2220,
+        1580
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Start": [
+      {
+        "json": {
+          "id": 11160,
+          "parent_id": 0,
+          "status": "processing",
+          "currency": "CHF",
+          "version": "8.2.2",
+          "prices_include_tax": true,
+          "date_created": "2024-01-11T11:49:49",
+          "date_modified": "2024-01-11T11:50:53",
+          "discount_total": "0.00",
+          "discount_tax": "0.00",
+          "shipping_total": "29.00",
+          "shipping_tax": "0.00",
+          "cart_tax": "0.00",
+          "total": "94.00",
+          "total_tax": "0.00",
+          "customer_id": 0,
+          "order_key": "wc_order_GLkhR56Q3ckBr",
+          "billing": {
+            "first_name": "Ramona",
+            "last_name": "Stritt",
+            "company": "",
+            "address_1": "Juraweg 4",
+            "address_2": "4",
+            "city": "St. Ursen",
+            "state": "FR",
+            "postcode": "1717",
+            "country": "CH",
+            "email": "stritt.ramona@hotmail.com",
+            "phone": "0798535666"
+          },
+          "shipping": {
+            "first_name": "Ramona",
+            "last_name": "Stritt",
+            "company": "",
+            "address_1": "Juraweg 4",
+            "address_2": "4",
+            "city": "St. Ursen",
+            "state": "FR",
+            "postcode": "1717",
+            "country": "CH",
+            "phone": ""
+          },
+          "payment_method": "payrexx_visa",
+          "payment_method_title": "Visa",
+          "transaction_id": "9835e99e",
+          "customer_ip_address": "178.195.190.54",
+          "customer_user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+          "created_via": "checkout",
+          "customer_note": "",
+          "date_completed": null,
+          "date_paid": "2024-01-11T11:50:53",
+          "cart_hash": "25e6b3532c9f65aaa07ff6fbd1ab0b04",
+          "number": "11160",
+          "meta_data": [
+            {
+              "id": 214341,
+              "key": "is_vat_exempt",
+              "value": "no"
+            },
+            {
+              "id": 214342,
+              "key": "thwdtp_order_type",
+              "value": "delivery"
+            },
+            {
+              "id": 214343,
+              "key": "thwdtp_delivery_datepicker",
+              "value": "2024-01-16"
+            },
+            {
+              "id": 214344,
+              "key": "wpml_language",
+              "value": "de"
+            },
+            {
+              "id": 214346,
+              "key": "payrexx_gateway_id",
+              "value": "13796108"
+            },
+            {
+              "id": 214351,
+              "key": "_bexio_order_id",
+              "value": "972"
+            },
+            {
+              "id": 214352,
+              "key": "_bexio_order_nr",
+              "value": "AU-00972"
+            },
+            {
+              "id": 214353,
+              "key": "_bexio_delivery_id",
+              "value": "297"
+            },
+            {
+              "id": 214354,
+              "key": "_bexio_delivery_nr",
+              "value": "LS-00297"
+            },
+            {
+              "id": 214355,
+              "key": "_bexio_invoice_id",
+              "value": "1874"
+            },
+            {
+              "id": 214356,
+              "key": "_bexio_invoice_nr",
+              "value": "RE-01874"
+            },
+            {
+              "id": 214357,
+              "key": "_bexio_invoice_issued",
+              "value": "1"
+            },
+            {
+              "id": 214358,
+              "key": "_bexio_invoice_paid",
+              "value": "1"
+            }
+          ],
+          "line_items": [
+            {
+              "id": 4588,
+              "name": "Troll Sport Hundefutter 15kg",
+              "product_id": 6306,
+              "variation_id": 0,
+              "quantity": 1,
+              "tax_class": "reduced-rate",
+              "subtotal": "65.00",
+              "subtotal_tax": "0.00",
+              "total": "65.00",
+              "total_tax": "0.00",
+              "taxes": [],
+              "meta_data": [
+                {
+                  "id": 46767,
+                  "key": "_price_without_tax",
+                  "value": "65",
+                  "display_key": "_price_without_tax",
+                  "display_value": "65"
+                },
+                {
+                  "id": 46768,
+                  "key": "_price_with_tax",
+                  "value": "65",
+                  "display_key": "_price_with_tax",
+                  "display_value": "65"
+                },
+                {
+                  "id": 46779,
+                  "key": "_reduced_stock",
+                  "value": "1",
+                  "display_key": "_reduced_stock",
+                  "display_value": "1"
+                }
+              ],
+              "sku": "801",
+              "price": 65,
+              "image": {
+                "id": "6307",
+                "src": "https://www.senas.ch/wp-content/uploads/2020/11/Troll-Sport-Hundefutter.png"
+              },
+              "parent_name": null
+            }
+          ],
+          "tax_lines": [],
+          "shipping_lines": [
+            {
+              "id": 4589,
+              "method_title": "Versand nach Gewicht",
+              "method_id": "flexible_shipping",
+              "instance_id": "1",
+              "total": "29.00",
+              "total_tax": "0.00",
+              "taxes": [],
+              "meta_data": [
+                {
+                  "id": 46774,
+                  "key": "_default",
+                  "value": "yes",
+                  "display_key": "_default",
+                  "display_value": "yes"
+                },
+                {
+                  "id": 46775,
+                  "key": "_fs_method",
+                  "value": {
+                    "woocommerce_method_instance_id": "1",
+                    "id": "1",
+                    "id_for_shipping": "flexible_shipping_1_1",
+                    "method_title": "Versand nach Gewicht",
+                    "method_description": "",
+                    "method_free_shipping": "",
+                    "method_free_shipping_label": "",
+                    "method_calculation_method": "sum",
+                    "method_visibility": "no",
+                    "method_default": "yes",
+                    "method_enabled": "yes",
+                    "method_integration": "",
+                    "method_free_shipping_cart_notice": "no",
+                    "method_debug_mode": "no",
+                    "tax_status": "taxable"
+                  },
+                  "display_key": "_fs_method",
+                  "display_value": {
+                    "woocommerce_method_instance_id": "1",
+                    "id": "1",
+                    "id_for_shipping": "flexible_shipping_1_1",
+                    "method_title": "Versand nach Gewicht",
+                    "method_description": "",
+                    "method_free_shipping": "",
+                    "method_free_shipping_label": "",
+                    "method_calculation_method": "sum",
+                    "method_visibility": "no",
+                    "method_default": "yes",
+                    "method_enabled": "yes",
+                    "method_integration": "",
+                    "method_free_shipping_cart_notice": "no",
+                    "method_debug_mode": "no",
+                    "tax_status": "taxable"
+                  }
+                },
+                {
+                  "id": 46776,
+                  "key": "_fs_integration",
+                  "value": "",
+                  "display_key": "_fs_integration",
+                  "display_value": ""
+                },
+                {
+                  "id": 46777,
+                  "key": "description",
+                  "value": "",
+                  "display_key": "description",
+                  "display_value": ""
+                },
+                {
+                  "id": 46778,
+                  "key": "Positionen",
+                  "value": "Troll Sport Hundefutter 15kg &times; 1",
+                  "display_key": "Positionen",
+                  "display_value": "Troll Sport Hundefutter 15kg &times; 1"
+                }
+              ]
+            }
+          ],
+          "fee_lines": [],
+          "coupon_lines": [],
+          "refunds": [],
+          "payment_url": "https://www.senas.ch/checkout/order-pay/11160/?pay_for_order=true&key=wc_order_GLkhR56Q3ckBr",
+          "is_editable": false,
+          "needs_payment": false,
+          "needs_processing": true,
+          "date_created_gmt": "2024-01-11T10:49:49",
+          "date_modified_gmt": "2024-01-11T10:50:53",
+          "date_completed_gmt": null,
+          "date_paid_gmt": "2024-01-11T10:50:53",
+          "currency_symbol": "CHF",
+          "_links": {
+            "self": [
+              {
+                "href": "https://www.senas.ch/wp-json/wc/v3/orders/11160"
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://www.senas.ch/wp-json/wc/v3/orders"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "sq9LtYOY3nVGvOg3"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-16T15:39:16.013Z",
+      "updatedAt": "2023-08-16T15:39:16.013Z",
+      "id": "KkVmd7DNw8r5lRhu",
+      "name": "SENAS"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-09T07:05:32.000Z",
+  "versionId": "1e9a8a7c-25b3-4c1a-b252-e46302145fa6"
+}
