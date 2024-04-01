@@ -600,7 +600,9 @@
   },
   "createdAt": "2024-01-06T12:56:51.459Z",
   "id": "JQgesnxtG38bGOM0",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Senas Orders - V3.1.1",
   "nodes": [
     {
@@ -2387,230 +2389,215 @@
     "Start": [
       {
         "json": {
-          "id": 11223,
+          "id": 11314,
           "parent_id": 0,
-          "status": "completed",
+          "status": "processing",
           "currency": "CHF",
-          "version": "8.5.2",
+          "version": "8.6.0",
           "prices_include_tax": true,
-          "date_created": "2024-02-08T17:51:20",
-          "date_modified": "2024-02-08T18:00:09",
+          "date_created": "2024-03-31T12:34:14",
+          "date_modified": "2024-04-01T19:24:48",
           "discount_total": "0.00",
           "discount_tax": "0.00",
-          "shipping_total": "29.00",
+          "shipping_total": "0.00",
           "shipping_tax": "0.00",
-          "cart_tax": "2.36",
-          "total": "122.00",
-          "total_tax": "2.36",
-          "customer_id": 254,
-          "order_key": "wc_order_hm9KtcGSXNxCe",
+          "cart_tax": "12.67",
+          "total": "500.00",
+          "total_tax": "12.67",
+          "customer_id": 174,
+          "order_key": "wc_order_XnXfZniJT9jol",
           "billing": {
-            "first_name": "Antonia",
-            "last_name": "Hutmacher",
-            "company": "Ancodog",
-            "address_1": "Langenhart 56",
+            "first_name": "Irène",
+            "last_name": "Bilgerig",
+            "company": "",
+            "address_1": "Buholzweg 5",
             "address_2": "",
-            "city": "Müllheim",
-            "state": "TG",
-            "postcode": "8555",
+            "city": "Pfaffnau",
+            "state": "LU",
+            "postcode": "6264",
             "country": "CH",
-            "email": "praxis@ancodog.ch",
-            "phone": "079 708 28 79"
+            "email": "eden9_10@hotmail.com",
+            "phone": "+41792997986"
           },
           "shipping": {
-            "first_name": "Janine",
-            "last_name": "Kerzenmacher",
+            "first_name": "Irène",
+            "last_name": "Bilgerig",
             "company": "",
-            "address_1": "Stettfurterstrasse 23",
+            "address_1": "Buholzweg 5",
             "address_2": "",
-            "city": "Matzingen",
-            "state": "TG",
-            "postcode": "9548",
+            "city": "Pfaffnau",
+            "state": "LU",
+            "postcode": "6264",
             "country": "CH",
             "phone": ""
           },
-          "payment_method": "payrexx_twint",
-          "payment_method_title": "Twint",
-          "transaction_id": "ba8bb306",
-          "customer_ip_address": "2a02:1210:1a3d:3800:7834:8ad0:e302:9b46",
-          "customer_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15",
+          "payment_method": "bacs",
+          "payment_method_title": "Vorauskasse",
+          "transaction_id": "",
+          "customer_ip_address": "178.197.218.158",
+          "customer_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
           "created_via": "checkout",
-          "customer_note": "Telefon: 079 955 72 16",
-          "date_completed": "2024-02-08T18:00:09",
-          "date_paid": "2024-02-08T17:51:41",
-          "cart_hash": "65808b003ff1c5a5d941ba91e58e1b6b",
-          "number": "11223",
+          "customer_note": "",
+          "date_completed": null,
+          "date_paid": "2024-04-01T19:24:48",
+          "cart_hash": "a25f0360dfd76803bdd7c7f2387701c4",
+          "number": "11314",
           "meta_data": [
             {
-              "id": 218066,
+              "id": 224583,
               "key": "is_vat_exempt",
               "value": "no"
             },
             {
-              "id": 218067,
+              "id": 224584,
               "key": "thwdtp_order_type",
-              "value": "delivery"
+              "value": "pickup"
             },
             {
-              "id": 218068,
-              "key": "thwdtp_delivery_datepicker",
-              "value": "2024-02-13"
+              "id": 224585,
+              "key": "thwdtp_pickup_datepicker",
+              "value": "2024-04-09"
             },
             {
-              "id": 218069,
+              "id": 224586,
               "key": "wpml_language",
               "value": "de"
             },
             {
-              "id": 218071,
+              "id": 224588,
               "key": "_wc_order_attribution_source_type",
               "value": "typein"
             },
             {
-              "id": 218072,
+              "id": 224589,
               "key": "_wc_order_attribution_utm_source",
               "value": "(direct)"
             },
             {
-              "id": 218073,
+              "id": 224590,
               "key": "_wc_order_attribution_session_entry",
               "value": "https://www.senas.ch/"
             },
             {
-              "id": 218074,
+              "id": 224591,
               "key": "_wc_order_attribution_session_start_time",
-              "value": "2024-02-08 16:44:27"
+              "value": "2024-03-31 10:29:07"
             },
             {
-              "id": 218075,
+              "id": 224592,
               "key": "_wc_order_attribution_session_pages",
-              "value": "6"
+              "value": "8"
             },
             {
-              "id": 218076,
+              "id": 224593,
               "key": "_wc_order_attribution_session_count",
               "value": "1"
             },
             {
-              "id": 218077,
+              "id": 224594,
               "key": "_wc_order_attribution_user_agent",
-              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15"
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
             },
             {
-              "id": 218078,
+              "id": 224595,
               "key": "_wc_order_attribution_device_type",
               "value": "Desktop"
             },
             {
-              "id": 218079,
-              "key": "payrexx_gateway_id",
-              "value": "14358356"
+              "id": 225078,
+              "key": "b2bking_product_customrows_group_10788",
+              "value": ""
             },
             {
-              "id": 218084,
+              "id": 225079,
+              "key": "b2bking_product_customrows_group_b2c",
+              "value": ""
+            },
+            {
+              "id": 225083,
               "key": "_bexio_order_id",
-              "value": "1026"
+              "value": "1124"
             },
             {
-              "id": 218085,
+              "id": 225084,
               "key": "_bexio_order_nr",
-              "value": "AU-01026"
+              "value": "AU-01124"
             },
             {
-              "id": 218086,
-              "key": "_bexio_delivery_id",
-              "value": "329"
-            },
-            {
-              "id": 218087,
-              "key": "_bexio_delivery_nr",
-              "value": "LS-00329"
-            },
-            {
-              "id": 218088,
+              "id": 225085,
               "key": "_bexio_invoice_id",
-              "value": "1936"
+              "value": "2048"
             },
             {
-              "id": 218089,
+              "id": 225086,
               "key": "_bexio_invoice_nr",
-              "value": "RE-01936"
+              "value": "RE-02048"
             },
             {
-              "id": 218090,
+              "id": 225087,
               "key": "_bexio_invoice_issued",
-              "value": "1"
-            },
-            {
-              "id": 218091,
-              "key": "_bexio_invoice_paid",
-              "value": "1"
-            },
-            {
-              "id": 218095,
-              "key": "_bexio_delivery_issued",
               "value": "1"
             }
           ],
           "line_items": [
             {
-              "id": 4802,
-              "name": "VOM Active Complete Karton 30x500g Wurst",
-              "product_id": 6613,
+              "id": 5160,
+              "name": "VOM Active Complete Easy Pack Karton 9kg",
+              "product_id": 8616,
               "variation_id": 0,
-              "quantity": 1,
+              "quantity": 10,
               "tax_class": "reduzierter-preis-frigo",
-              "subtotal": "90.64",
-              "subtotal_tax": "2.36",
-              "total": "90.64",
-              "total_tax": "2.36",
+              "subtotal": "487.33",
+              "subtotal_tax": "12.67",
+              "total": "487.33",
+              "total_tax": "12.67",
               "taxes": [
                 {
                   "id": 5,
-                  "total": "2.356725",
-                  "subtotal": "2.356725"
+                  "total": "12.670565",
+                  "subtotal": "12.670565"
                 }
               ],
               "meta_data": [
                 {
-                  "id": 48890,
+                  "id": 52376,
                   "key": "_price_without_tax",
-                  "value": "115.497076",
+                  "value": "67.251462",
                   "display_key": "_price_without_tax",
-                  "display_value": "115.497076"
+                  "display_value": "67.251462"
                 },
                 {
-                  "id": 48891,
+                  "id": 52377,
                   "key": "_price_with_tax",
-                  "value": "118.5",
+                  "value": "69",
                   "display_key": "_price_with_tax",
-                  "display_value": "118.5"
+                  "display_value": "69"
                 },
                 {
-                  "id": 48908,
+                  "id": 52390,
                   "key": "_reduced_stock",
-                  "value": "1",
+                  "value": "10",
                   "display_key": "_reduced_stock",
-                  "display_value": "1"
+                  "display_value": "10"
                 }
               ],
-              "sku": "133500",
-              "price": 90.643275,
+              "sku": "902",
+              "price": 48.7329435,
               "image": {
-                "id": "8583",
-                "src": "https://www.senas.ch/wp-content/uploads/2020/11/Active_500g-scaled.jpg"
+                "id": "8617",
+                "src": "https://www.senas.ch/wp-content/uploads/2021/09/Easy-pack-Active-2.jpg"
               },
               "parent_name": null
             }
           ],
           "tax_lines": [
             {
-              "id": 4804,
+              "id": 5162,
               "rate_code": "MEHRWERTSTEUER NAHRUNGSMITTELFRIGO-1",
               "rate_id": 5,
               "label": "Mehrwertsteuer Nahrungsmittelfrigo",
               "compound": false,
-              "tax_total": "2.36",
+              "tax_total": "12.67",
               "shipping_tax_total": "0.00",
               "rate_percent": 2.6,
               "meta_data": []
@@ -2618,80 +2605,20 @@
           ],
           "shipping_lines": [
             {
-              "id": 4803,
-              "method_title": "Versand nach Gewicht",
-              "method_id": "flexible_shipping",
-              "instance_id": "1",
-              "total": "29.00",
+              "id": 5161,
+              "method_title": "Abholung vor Ort (nach Vereinbarung)",
+              "method_id": "local_pickup",
+              "instance_id": "3",
+              "total": "0.00",
               "total_tax": "0.00",
               "taxes": [],
               "meta_data": [
                 {
-                  "id": 48897,
-                  "key": "_default",
-                  "value": "yes",
-                  "display_key": "_default",
-                  "display_value": "yes"
-                },
-                {
-                  "id": 48898,
-                  "key": "_fs_method",
-                  "value": {
-                    "woocommerce_method_instance_id": "1",
-                    "id": "1",
-                    "id_for_shipping": "flexible_shipping_1_1",
-                    "method_title": "Versand nach Gewicht",
-                    "method_description": "",
-                    "method_free_shipping": "",
-                    "method_free_shipping_label": "",
-                    "method_calculation_method": "sum",
-                    "method_visibility": "no",
-                    "method_default": "yes",
-                    "method_enabled": "yes",
-                    "method_integration": "",
-                    "method_free_shipping_cart_notice": "no",
-                    "method_debug_mode": "no",
-                    "tax_status": "taxable"
-                  },
-                  "display_key": "_fs_method",
-                  "display_value": {
-                    "woocommerce_method_instance_id": "1",
-                    "id": "1",
-                    "id_for_shipping": "flexible_shipping_1_1",
-                    "method_title": "Versand nach Gewicht",
-                    "method_description": "",
-                    "method_free_shipping": "",
-                    "method_free_shipping_label": "",
-                    "method_calculation_method": "sum",
-                    "method_visibility": "no",
-                    "method_default": "yes",
-                    "method_enabled": "yes",
-                    "method_integration": "",
-                    "method_free_shipping_cart_notice": "no",
-                    "method_debug_mode": "no",
-                    "tax_status": "taxable"
-                  }
-                },
-                {
-                  "id": 48899,
-                  "key": "_fs_integration",
-                  "value": "",
-                  "display_key": "_fs_integration",
-                  "display_value": ""
-                },
-                {
-                  "id": 48900,
-                  "key": "description",
-                  "value": "",
-                  "display_key": "description",
-                  "display_value": ""
-                },
-                {
-                  "id": 48901,
+                  "id": 52383,
                   "key": "Positionen",
-                  "value": "VOM Active Complete Karton 30x500g Wurst &times; 1",
+                  "value": "VOM Active Complete Easy Pack Karton 9kg &times; 10",
                   "display_key": "Positionen",
-                  "display_value": "VOM Active Complete Karton 30x500g Wurst &times; 1"
+                  "display_value": "VOM Active Complete Easy Pack Karton 9kg &times; 10"
                 }
               ]
             }
@@ -2699,19 +2626,19 @@
           "fee_lines": [],
           "coupon_lines": [],
           "refunds": [],
-          "payment_url": "https://www.senas.ch/checkout/order-pay/11223/?pay_for_order=true&key=wc_order_hm9KtcGSXNxCe",
+          "payment_url": "https://www.senas.ch/checkout/order-pay/11314/?pay_for_order=true&key=wc_order_XnXfZniJT9jol",
           "is_editable": false,
           "needs_payment": false,
           "needs_processing": true,
-          "date_created_gmt": "2024-02-08T16:51:20",
-          "date_modified_gmt": "2024-02-08T17:00:09",
-          "date_completed_gmt": "2024-02-08T17:00:09",
-          "date_paid_gmt": "2024-02-08T16:51:41",
+          "date_created_gmt": "2024-03-31T10:34:14",
+          "date_modified_gmt": "2024-04-01T17:24:48",
+          "date_completed_gmt": null,
+          "date_paid_gmt": "2024-04-01T17:24:48",
           "currency_symbol": "CHF",
           "_links": {
             "self": [
               {
-                "href": "https://www.senas.ch/wp-json/wc/v3/orders/11223"
+                "href": "https://www.senas.ch/wp-json/wc/v3/orders/11314"
               }
             ],
             "collection": [
@@ -2721,13 +2648,10 @@
             ],
             "customer": [
               {
-                "href": "https://www.senas.ch/wp-json/wc/v3/customers/254"
+                "href": "https://www.senas.ch/wp-json/wc/v3/customers/174"
               }
             ]
           }
-        },
-        "pairedItem": {
-          "item": 0
         }
       }
     ]
@@ -2745,6 +2669,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-02-09T07:17:13.000Z",
-  "versionId": "fdaeb32d-4ae0-494f-a2c0-b37df0127c07"
+  "updatedAt": "2024-04-01T19:48:22.000Z",
+  "versionId": "e1f4dba0-6f5e-4c03-aea1-c79b5eb7fce4"
 }
