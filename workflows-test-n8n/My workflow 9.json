@@ -15,7 +15,9 @@
   },
   "createdAt": "2024-01-02T11:57:37.968Z",
   "id": "kV0zDKB2pekvF84q",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "My workflow 9",
   "nodes": [
     {
@@ -33,7 +35,7 @@
       "parameters": {
         "resource": "order",
         "operation": "update",
-        "orderId": "11160",
+        "orderId": "11318",
         "updateFields": {
           "status": "processing"
         },
@@ -68,6 +70,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-01-11T12:51:51.000Z",
-  "versionId": "8b43ea10-ba44-4bac-b0d5-4472f9a2fbd1"
+  "updatedAt": "2024-04-02T06:18:20.000Z",
+  "versionId": "fb1a9cf8-81b3-4fb9-ad32-ab254f0a3e2c"
 }
