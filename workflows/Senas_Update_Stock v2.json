@@ -55,11 +55,6 @@
         ]
       ]
     },
-    "MySQL": {
-      "main": [
-        []
-      ]
-    },
     "MySQL1": {
       "main": [
         [
@@ -96,14 +91,16 @@
   },
   "createdAt": "2023-09-22T08:21:02.550Z",
   "id": "scoBkhJqu169aTsD",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Senas_Update_Stock v2",
   "nodes": [
     {
       "parameters": {
         "format": "resolved",
         "options": {
-          "customEmailConfig": "[\"UNSEEN\", [\"SUBJECT\", \"Bestand Frigosuisse 719\"]]"
+          "customEmailConfig": "[\"UNSEEN\", [\"SUBJECT\", \"Bestand STEF Moehlin 719\"]]"
         }
       },
       "id": "48194b4d-a942-4cc5-80b5-91bff428291e",
@@ -156,7 +153,7 @@
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "MySQL account"
+          "name": "SENAS - MySQL account"
         }
       }
     },
@@ -242,7 +239,7 @@
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "MySQL account"
+          "name": "SENAS - MySQL account"
         }
       }
     },
@@ -265,7 +262,7 @@
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "MySQL account"
+          "name": "SENAS - MySQL account"
         }
       }
     },
@@ -292,7 +289,7 @@
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "MySQL account"
+          "name": "SENAS - MySQL account"
         }
       }
     },
@@ -342,7 +339,7 @@
       "credentials": {
         "mySql": {
           "id": "6f9409J9OFpcD6mL",
-          "name": "MySQL account"
+          "name": "SENAS - MySQL account"
         }
       }
     }
@@ -368,6 +365,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-04-24T03:16:11.000Z",
-  "versionId": "f27f5f2c-b548-4189-9737-1eebe3ccbd84"
+  "updatedAt": "2024-04-25T05:26:37.000Z",
+  "versionId": "0f2121ee-f7fa-445d-b8da-4046fb88ec52"
 }
