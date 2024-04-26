@@ -353,7 +353,7 @@
   },
   "staticData": {
     "node:Email Trigger (IMAP)": {
-      "lastMessageUid": 182
+      "lastMessageUid": 184
     }
   },
   "tags": [
@@ -365,6 +365,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-04-25T05:26:37.000Z",
+  "updatedAt": "2024-04-26T03:16:22.000Z",
   "versionId": "0f2121ee-f7fa-445d-b8da-4046fb88ec52"
 }
