@@ -1,0 +1,553 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-14T15:26:49.523Z",
+  "id": "mhwgnPCgMHqLbtdl",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Senas_Stock_Update_V3",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "11fb4fa8-800f-4bad-be0a-e415d2b69837",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        460,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0af3d8d9-330a-469c-bb5e-cebeadede2a2",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        680,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO stock_frigo_staging (sku, stock, exec_id)\n  VALUES ($1,$2,$3);\n",
+        "options": {
+          "queryReplacement": "={{ $json.Artikel }},  {{ $json.Menge }}, {{ $execution.id }}"
+        }
+      },
+      "id": "60f3cdd1-efb6-4f32-9647-78d3d2e4ef0e",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        940,
+        540
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS TEST - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO stock_frigo_temp (sku, stock)\nSELECT sku, SUM(stock) AS stock\nFROM stock_frigo_staging\nGROUP BY sku;",
+        "options": {}
+      },
+      "id": "8fdf2d94-1884-4b85-966a-df917f6b63f5",
+      "name": "MySQL1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1320,
+        540
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS TEST - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://www.senas.ch/wp-json/wc/v3/products?tax_class=reduzierter-preis-frigo",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "options": {}
+      },
+      "id": "32ee00e4-3a93-4c76-bff5-206559f026f1",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        940,
+        760
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Extract from File": [
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "125500",
+          "Bezeichnung": "Aktiv complete m/Lachs 30x500g",
+          "Charge": "240124",
+          "MHD": "03.01.2025",
+          "Menge": "3",
+          "EH": "CA",
+          "Nettogewicht": "45",
+          "Bruttogewicht": "47.4",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                              "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "903",
+          "Bezeichnung": "Easy Pack Active Lachs 9 kg",
+          "Charge": "230901",
+          "MHD": "21.04.2024",
+          "Menge": "3",
+          "EH": "CA",
+          "Nettogewicht": "27",
+          "Bruttogewicht": "28.5",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                    "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "135000",
+          "Bezeichnung": "Digestive complete 32x500g",
+          "Charge": "240124",
+          "MHD": "03.01.2025",
+          "Menge": "12",
+          "EH": "CA",
+          "Nettogewicht": "192",
+          "Bruttogewicht": "201.6",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                               "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "170010",
+          "Bezeichnung": "Puppy complete 32x500g",
+          "Charge": "230928",
+          "MHD": "14.09.2024",
+          "Menge": "11",
+          "EH": "CA",
+          "Nettogewicht": "176",
+          "Bruttogewicht": "184.8",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                   "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "902",
+          "Bezeichnung": "Easy Pack Active 9 kg",
+          "Charge": "240419",
+          "MHD": "09.12.2024",
+          "Menge": "54",
+          "EH": "CA",
+          "Nettogewicht": "486",
+          "Bruttogewicht": "513",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                         "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "180040",
+          "Bezeichnung": "Active complete Protein meatballs 15x560g",
+          "Charge": "231208",
+          "MHD": "19.05.2024",
+          "Menge": "9",
+          "EH": "CA",
+          "Nettogewicht": "75.6",
+          "Bruttogewicht": "82.8",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                 "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "180050",
+          "Bezeichnung": "Aktiv complete Protein 3x6kg",
+          "Charge": "240419",
+          "MHD": "07.03.2025",
+          "Menge": "9",
+          "EH": "CA",
+          "Nettogewicht": "162",
+          "Bruttogewicht": "171",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "133504",
+          "Bezeichnung": "Act. complete meatballs15x560g",
+          "Charge": "240419",
+          "MHD": "04.11.2024",
+          "Menge": "10",
+          "EH": "CA",
+          "Nettogewicht": "84",
+          "Bruttogewicht": "92",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                               "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "125030",
+          "Bezeichnung": "Aktiv complete mit Lachs 3x6kg",
+          "Charge": "240419",
+          "MHD": "09.04.2025",
+          "Menge": "17",
+          "EH": "CA",
+          "Nettogewicht": "306",
+          "Bruttogewicht": "323",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                             "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "135039",
+          "Bezeichnung": "Digestive complete Meatballs  15x560g",
+          "Charge": "231208",
+          "MHD": "08.07.2024",
+          "Menge": "3",
+          "EH": "CA",
+          "Nettogewicht": "25.2",
+          "Bruttogewicht": "27.6",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                     "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "170040",
+          "Bezeichnung": "Puppy complete meatball15x560g",
+          "Charge": "230901",
+          "MHD": "09.04.2024",
+          "Menge": "8",
+          "EH": "CA",
+          "Nettogewicht": "67.2",
+          "Bruttogewicht": "73.6",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                            "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "125030",
+          "Bezeichnung": "Aktiv complete mit Lachs 3x6kg",
+          "Charge": "240419",
+          "MHD": "09.04.2025",
+          "Menge": "16",
+          "EH": "CA",
+          "Nettogewicht": "288",
+          "Bruttogewicht": "304",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                             "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "260049",
+          "Bezeichnung": "Taste beef meatballs15x560g",
+          "Charge": "240419",
+          "MHD": "02.11.2024",
+          "Menge": "10",
+          "EH": "CA",
+          "Nettogewicht": "84",
+          "Bruttogewicht": "92",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                  "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "170040",
+          "Bezeichnung": "Puppy complete meatball15x560g",
+          "Charge": "240419",
+          "MHD": "28.10.2024",
+          "Menge": "5",
+          "EH": "CA",
+          "Nettogewicht": "42",
+          "Bruttogewicht": "46",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "102504",
+          "Bezeichnung": "Taste chicken meatballs15x560g",
+          "Charge": "231208",
+          "MHD": "01.07.2024",
+          "Menge": "5",
+          "EH": "CA",
+          "Nettogewicht": "42",
+          "Bruttogewicht": "46",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "135039",
+          "Bezeichnung": "Digestive complete Meatballs  15x560g",
+          "Charge": "240419",
+          "MHD": "19.11.2024",
+          "Menge": "10",
+          "EH": "CA",
+          "Nettogewicht": "84",
+          "Bruttogewicht": "92",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                        "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "170040",
+          "Bezeichnung": "Puppy complete meatball15x560g",
+          "Charge": "231208",
+          "MHD": "11.06.2024",
+          "Menge": "15",
+          "EH": "CA",
+          "Nettogewicht": "126",
+          "Bruttogewicht": "138",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                             "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "903",
+          "Bezeichnung": "Easy Pack Active Lachs 9 kg",
+          "Charge": "240119",
+          "MHD": "12.08.2024",
+          "Menge": "15",
+          "EH": "CA",
+          "Nettogewicht": "135",
+          "Bruttogewicht": "142.5",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                 "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "125510",
+          "Bezeichnung": "Active complete mit Lachs meatballs 15x560g",
+          "Charge": "240419",
+          "MHD": "14.10.2024",
+          "Menge": "10",
+          "EH": "CA",
+          "Nettogewicht": "84",
+          "Bruttogewicht": "92",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                  "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "101509",
+          "Bezeichnung": "Taste beef tripe meatballs    15x560 g",
+          "Charge": "240419",
+          "MHD": "25.09.2024",
+          "Menge": "5",
+          "EH": "CA",
+          "Nettogewicht": "42",
+          "Bruttogewicht": "46",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                        "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "260049",
+          "Bezeichnung": "Taste beef meatballs15x560g",
+          "Charge": "231208",
+          "MHD": "09.07.2024",
+          "Menge": "4",
+          "EH": "CA",
+          "Nettogewicht": "33.6",
+          "Bruttogewicht": "36.8",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                               "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "125510",
+          "Bezeichnung": "Active complete mit Lachs meatballs 15x560g",
+          "Charge": "231208",
+          "MHD": "26.05.2024",
+          "Menge": "3",
+          "EH": "CA",
+          "Nettogewicht": "25.2",
+          "Bruttogewicht": "27.6",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                               "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "133504",
+          "Bezeichnung": "Act. complete meatballs15x560g",
+          "Charge": "231208",
+          "MHD": "18.06.2024",
+          "Menge": "5",
+          "EH": "CA",
+          "Nettogewicht": "42",
+          "Bruttogewicht": "46",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "180040",
+          "Bezeichnung": "Active complete Protein meatballs 15x560g",
+          "Charge": "240419",
+          "MHD": "07.11.2024",
+          "Menge": "10",
+          "EH": "CA",
+          "Nettogewicht": "84",
+          "Bruttogewicht": "92",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                    "
+        }
+      },
+      {
+        "json": {
+          "Datum": "14.05.2024",
+          "Firma": "719",
+          "Artikel": "180050",
+          "Bezeichnung": "Aktiv complete Protein 3x6kg",
+          "Charge": "240419",
+          "MHD": "07.03.2025",
+          "Menge": "1",
+          "EH": "CA",
+          "Nettogewicht": "18",
+          "Bruttogewicht": "19",
+          "Anzahl_Pal": "1",
+          "                                                                                                                                                                                                                                                                                                                                                                                                                          ": "                                                                                                                                                                                                                                                                                                                                                                                                                                  "
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-14T15:59:45.000Z",
+  "versionId": "5157c4ca-3fa7-48c1-b049-cd7ebaa776e2"
+}
