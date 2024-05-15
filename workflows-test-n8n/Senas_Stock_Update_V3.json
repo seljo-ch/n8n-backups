@@ -19,11 +19,6 @@
             "node": "MySQL",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -32,7 +27,51 @@
       "main": [
         [
           {
-            "node": "MySQL1",
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "MySQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL2": {
+      "main": [
+        [
+          {
+            "node": "MySQL3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL4": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL3": {
+      "main": [
+        [
+          {
+            "node": "MySQL4",
             "type": "main",
             "index": 0
           }
@@ -54,7 +93,7 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        460,
+        180,
         540
       ]
     },
@@ -67,7 +106,7 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        680,
+        400,
         540
       ]
     },
@@ -84,7 +123,53 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        940,
+        620,
+        540
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS TEST - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://www.senas.ch/wp-json/wc/v3/products?tax_class=reduzierter-preis-frigo&per_page=100",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "options": {}
+      },
+      "id": "32ee00e4-3a93-4c76-bff5-206559f026f1",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        840,
+        540
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO stock_woo (id_woo, sku, description, date_modified_woo, stock_woo)\nVALUES ($1, $2, $3, $4, $5)\nON DUPLICATE KEY UPDATE stock_woo = VALUES(stock_woo);\n",
+        "options": {
+          "queryReplacement": "={{ $json.id }}, {{ $json.sku }}, {{ $json.name }}, {{ $json.date_modified }},  {{ $json.stock_quantity }}"
+        }
+      },
+      "id": "e3e90924-29d4-433d-aed9-90765304f2a5",
+      "name": "MySQL2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1060,
         540
       ],
       "credentials": {
@@ -97,15 +182,15 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO stock_frigo_temp (sku, stock)\nSELECT sku, SUM(stock) AS stock\nFROM stock_frigo_staging\nGROUP BY sku;",
+        "query": "INSERT INTO stock_frigo_temp (sku, stock)\nSELECT sku, SUM(stock) AS stock\nFROM stock_frigo_staging\nGROUP BY sku;\n\nUPDATE stock_woo woo\nJOIN stock_frigo_temp ts ON woo.sku = ts.sku\nSET woo.stock_woo = ts.stock;\n\nUPDATE stock_woo woo\nLEFT JOIN stock_frigo_temp ts ON woo.sku = ts.sku\nSET woo.stock_woo = 0\nWHERE ts.sku IS NULL;\n\nTRUNCATE stock_frigo_temp;\nTRUNCATE stock_frigo_staging;",
         "options": {}
       },
-      "id": "8fdf2d94-1884-4b85-966a-df917f6b63f5",
-      "name": "MySQL1",
+      "id": "adb26854-ec72-4481-9d46-e2cd9371b7b5",
+      "name": "MySQL3",
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.2,
       "position": [
-        1320,
+        1260,
         540
       ],
       "credentials": {
@@ -117,23 +202,55 @@
     },
     {
       "parameters": {
-        "url": "https://www.senas.ch/wp-json/wc/v3/products?tax_class=reduzierter-preis-frigo",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "wooCommerceApi",
-        "options": {}
+        "resource": "product",
+        "operation": "update",
+        "productId": "={{ $json.id_woo }}",
+        "updateFields": {
+          "stockQuantity": "={{ $json.stock_woo }}"
+        },
+        "dimensionsUi": {},
+        "imagesUi": {},
+        "metadataUi": {}
       },
-      "id": "32ee00e4-3a93-4c76-bff5-206559f026f1",
-      "name": "HTTP Request",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
+      "id": "fbd36b11-4170-4e55-9edb-0b73fbdff25f",
+      "name": "WooCommerce4",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
       "position": [
-        940,
-        760
+        1680,
+        540
       ],
       "credentials": {
         "wooCommerceApi": {
           "id": "jNQNwskptCZoGAP6",
           "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "stock_woo",
+          "mode": "list",
+          "cachedResultName": "stock_woo"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "4ace7f6e-29d4-43ef-919b-ec2a99db0236",
+      "name": "MySQL4",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1460,
+        540
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS TEST - MySQL account"
         }
       }
     }
@@ -548,6 +665,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-05-14T15:59:45.000Z",
-  "versionId": "5157c4ca-3fa7-48c1-b049-cd7ebaa776e2"
+  "updatedAt": "2024-05-15T06:26:44.000Z",
+  "versionId": "d7538d2a-cb15-4fde-842e-303ee0e65aa3"
 }
