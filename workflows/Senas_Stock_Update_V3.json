@@ -1,0 +1,281 @@
+{
+  "active": true,
+  "connections": {
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "MySQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL2": {
+      "main": [
+        [
+          {
+            "node": "MySQL3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL4": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL3": {
+      "main": [
+        [
+          {
+            "node": "MySQL4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Trigger (IMAP)": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-15T06:27:26.203Z",
+  "id": "UlTNcIfBq7ox6RAn",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Senas_Stock_Update_V3",
+  "nodes": [
+    {
+      "parameters": {
+        "binaryPropertyName": "attachment_0",
+        "options": {
+          "delimiter": ";"
+        }
+      },
+      "id": "0b6125fa-d185-4e68-a37e-2b15105443b0",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        680,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO stock_frigo_staging (sku, stock, exec_id)\n  VALUES ($1,$2,$3);\n",
+        "options": {
+          "queryReplacement": "={{ $json.Artikel }},  {{ $json.Menge }}, {{ $execution.id }}"
+        }
+      },
+      "id": "f7183cf7-499f-4c0c-b6b8-842c207c648f",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        900,
+        460
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://www.senas.ch/wp-json/wc/v3/products?tax_class=reduzierter-preis-frigo&per_page=100",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "options": {}
+      },
+      "id": "20324663-4dab-477a-917f-9979248b9e33",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1120,
+        460
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO stock_woo (id_woo, sku, description, date_modified_woo, stock_woo)\nVALUES ($1, $2, $3, $4, $5)\nON DUPLICATE KEY UPDATE stock_woo = VALUES(stock_woo);\n",
+        "options": {
+          "queryReplacement": "={{ $json.id }}, {{ $json.sku }}, {{ $json.name }}, {{ $json.date_modified }},  {{ $json.stock_quantity }}"
+        }
+      },
+      "id": "658cbc12-1227-46ea-8d87-145d01b53f11",
+      "name": "MySQL2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1340,
+        460
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO stock_frigo_temp (sku, stock)\nSELECT sku, SUM(stock) AS stock\nFROM stock_frigo_staging\nGROUP BY sku;\n\nUPDATE stock_woo woo\nJOIN stock_frigo_temp ts ON woo.sku = ts.sku\nSET woo.stock_woo = ts.stock;\n\nUPDATE stock_woo woo\nLEFT JOIN stock_frigo_temp ts ON woo.sku = ts.sku\nSET woo.stock_woo = 0\nWHERE ts.sku IS NULL;\n\nTRUNCATE stock_frigo_temp;\nTRUNCATE stock_frigo_staging;",
+        "options": {}
+      },
+      "id": "c202ebd3-ae50-4dfd-8899-ef9fa0e18a1a",
+      "name": "MySQL3",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1540,
+        460
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "product",
+        "operation": "update",
+        "productId": "={{ $json.id_woo }}",
+        "updateFields": {
+          "stockQuantity": "={{ $json.stock_woo }}"
+        },
+        "dimensionsUi": {},
+        "imagesUi": {},
+        "metadataUi": {}
+      },
+      "id": "970f0c47-0842-4319-b519-506b8182e03d",
+      "name": "WooCommerce4",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        460
+      ],
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "jNQNwskptCZoGAP6",
+          "name": "Senas_WooCommerce"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "stock_woo",
+          "mode": "list",
+          "cachedResultName": "stock_woo"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "8255bd74-ec9a-4b68-9aaa-2784b9f6f924",
+      "name": "MySQL4",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1740,
+        460
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6f9409J9OFpcD6mL",
+          "name": "SENAS - MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "format": "resolved",
+        "options": {
+          "customEmailConfig": "[\"UNSEEN\", [\"SUBJECT\", \"Bestand STEF Moehlin 719\"]]"
+        }
+      },
+      "id": "a69ac3ea-6fd0-4a9f-bfc1-5a10b0271209",
+      "name": "Email Trigger (IMAP)",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "imap": {
+          "id": "u31frbIrp3r7mPex",
+          "name": "N8N IMAP"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-15T06:41:03.000Z",
+  "versionId": "b6295ddf-73be-4162-95ec-b1a3ab6af2e2"
+}
