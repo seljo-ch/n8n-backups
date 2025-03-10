@@ -1,0 +1,458 @@
+{
+  "active": true,
+  "connections": {
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "If  empty",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "MySQL - Nagsys abfrage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL - Nagsys abfrage": {
+      "main": [
+        [
+          {
+            "node": "If found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If found": {
+      "main": [
+        [
+          {
+            "node": "tel.search API request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set JSON Nagsys",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tel.search API request": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If  empty": {
+      "main": [
+        [
+          {
+            "node": "Error JSON",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set JSON tel.search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error JSON": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set JSON tel.search": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set JSON Nagsys": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-27T10:04:24.059Z",
+  "id": "f1fmoqMcQYQ4G0GX",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "NAG - 3CX CRM Abgleich",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2040,
+        460
+      ],
+      "id": "cc644a4d-36b5-46d9-bd2a-100bdbd930ab",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        280
+      ],
+      "id": "0b82861c-7882-45d5-a318-e9e7258cb19d",
+      "name": "XML"
+    },
+    {
+      "parameters": {
+        "path": "nag-crm",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "1308b732-6fcd-4895-a00d-15a045ebdd1b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        180,
+        440
+      ],
+      "webhookId": "47cd70c4-b1c5-4f60-b830-43827a1906fb"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT c.*, GROUP_CONCAT(t.telefon_typ SEPARATOR ', ') AS gefundene_telefonspalten\nFROM customers c\nJOIN telefon_index t ON c.id = t.customer_id\nWHERE t.telefon_normalisiert = REPLACE(REPLACE(REPLACE(LOWER('{{ $json.query.number }}'), ' ', ''), '-', ''), '+41', '0')\nGROUP BY c.id\nORDER BY c.erfasst DESC\nLIMIT 1;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        380,
+        440
+      ],
+      "id": "ffb9bd32-cf6c-4571-974f-c106dc7911e2",
+      "name": "MySQL - Nagsys abfrage",
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "nfLUijAZeGDYe31D",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "65ab5fff-8f3d-4494-a7b2-c5cb50d24c89",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        580,
+        440
+      ],
+      "id": "184a8a35-24c1-4350-9f4a-533467e32219",
+      "name": "If found"
+    },
+    {
+      "parameters": {
+        "url": "=https://search.ch/tel/api/?was={{ $('Webhook').item.json.query.number }}&key=985a2f5beafbee6e9e39c0d803e69fd4",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        280
+      ],
+      "id": "a4d6a506-9f79-4521-8288-35b5e7698f4d",
+      "name": "tel.search API request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "65ab5fff-8f3d-4494-a7b2-c5cb50d24c89",
+              "leftValue": "={{ $json.feed['openSearch:totalResults'] }}",
+              "rightValue": "0",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1200,
+        280
+      ],
+      "id": "745c27a0-c012-4929-8dbf-8a9735d2f18b",
+      "name": "If  empty"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"error\": true,\n}\n",
+        "options": {}
+      },
+      "id": "7480e242-f477-49c1-990b-a635b16c3526",
+      "name": "Error JSON",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1560,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0dc2d9c3-4160-4992-86f1-263a5d575c41",
+              "name": "nachname",
+              "value": "={{ $json.feed.entry['tel:name'] }}",
+              "type": "string"
+            },
+            {
+              "id": "faf5c9a4-0f3c-4d95-96f2-c77a4238180e",
+              "name": "vorname",
+              "value": "={{ $json.feed.entry['tel:firstname'] }}",
+              "type": "string"
+            },
+            {
+              "id": "5de5e369-b28a-40e5-ab70-a95c70eac0d6",
+              "name": "strasse",
+              "value": "={{ $json.feed.entry['tel:street'] }} {{ $json.feed.entry['tel:streetno'] }}",
+              "type": "string"
+            },
+            {
+              "id": "a8a3f65f-4c44-45ef-a63a-849a83cb2cc1",
+              "name": "plz",
+              "value": "={{ $json.feed.entry['tel:zip'] }}",
+              "type": "string"
+            },
+            {
+              "id": "42fcf2ac-bdb3-43bc-bf96-f7a20e73cc7e",
+              "name": "ort",
+              "value": "={{ $json.feed.entry['tel:city'] }}",
+              "type": "string"
+            },
+            {
+              "id": "dc00b475-6672-4660-8ff4-c2e8c7f592d0",
+              "name": "natel",
+              "value": "={{ $json.feed.entry['tel:phone'] }}",
+              "type": "string"
+            },
+            {
+              "id": "36080278-7823-45fb-a9bb-eceb6a18f8ae",
+              "name": "telefon_privat",
+              "value": "={{ $json.feed.entry['tel:phone'] }}",
+              "type": "string"
+            },
+            {
+              "id": "fa3da5d6-1f3f-4dcf-84db-0b1006269691",
+              "name": "telefon_geschaeftlich",
+              "value": "={{ $json.feed.entry['tel:phone'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1560,
+        200
+      ],
+      "id": "2c153759-554f-4116-b8ff-a59751b58d87",
+      "name": "Set JSON tel.search"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4b7f3b60-a8f5-436a-a1a2-d9e6e53f7be1",
+              "name": "nummer",
+              "value": "={{ $json.nummer }}",
+              "type": "string"
+            },
+            {
+              "id": "00c3a6cf-e57c-41e6-aff4-0d07b14fe306",
+              "name": "nachname",
+              "value": "={{ $json.nachname }}",
+              "type": "string"
+            },
+            {
+              "id": "eeada100-ee7b-442b-90bb-f75bf70618cc",
+              "name": "vorname",
+              "value": "={{ $json.vorname }}",
+              "type": "string"
+            },
+            {
+              "id": "49ddddf8-b36f-43e0-b17a-217b4f3ba32e",
+              "name": "strasse",
+              "value": "={{ $json.strasse }}",
+              "type": "string"
+            },
+            {
+              "id": "bedaa169-008f-4cf7-ba94-55bdbf25ca56",
+              "name": "plz",
+              "value": "={{ $json.plz }}",
+              "type": "string"
+            },
+            {
+              "id": "e55db692-80f8-4e41-9960-9ea8b5a00a9a",
+              "name": "ort",
+              "value": "={{ $json.ort }}",
+              "type": "string"
+            },
+            {
+              "id": "10b5f14c-62fa-46e5-b143-cbee50125391",
+              "name": "natel",
+              "value": "={{ $json.natel }}",
+              "type": "string"
+            },
+            {
+              "id": "7bfe09b1-63a8-44cd-8d44-1da42f43e7c1",
+              "name": "telefon_privat",
+              "value": "={{ $json.telefon_privat }}",
+              "type": "string"
+            },
+            {
+              "id": "b63ac944-c1bc-49e3-94df-4b641426b849",
+              "name": "telefon_geschaeftlich",
+              "value": "={{ $json.telefon_geschaeftlich }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1560,
+        460
+      ],
+      "id": "7115e100-236a-401d-94b2-e04af86a8f88",
+      "name": "Set JSON Nagsys"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.phx-cloud.ch",
+            "x-forwarded-for": "62.204.106.174",
+            "x-forwarded-host": "n8n.phx-cloud.ch",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "b6fdd38f0dcc",
+            "x-real-ip": "62.204.106.174",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "number": "0338236788",
+            "direction": "Inbound"
+          },
+          "body": {},
+          "webhookUrl": "https://n8n.phx-cloud.ch/webhook-test/nag-crm",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-10T19:39:07.000Z",
+  "versionId": "ff686fc1-571c-4c33-a3da-cc6c6c65c8ad"
+}
