@@ -1,0 +1,95 @@
+{
+  "active": true,
+  "connections": {
+    "WooCommerce Trigger": {
+      "main": [
+        [
+          {
+            "node": "RabbitMQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-12T18:40:17.431Z",
+  "id": "QH2xp6Na28e2q5nG",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "SENAS - RabbitMQ",
+  "nodes": [
+    {
+      "parameters": {
+        "event": "order.updated"
+      },
+      "id": "b8d9ddd6-8877-403e-a119-a2b19334e8fa",
+      "name": "WooCommerce Trigger",
+      "type": "n8n-nodes-base.wooCommerceTrigger",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ],
+      "webhookId": "ef4052e1-37d8-4d84-9337-56c7b73cdf4b",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "9DCREhuk556z4zV9",
+          "name": "SENAS WooCommerce PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "queue": "WooCommerce",
+        "options": {}
+      },
+      "id": "bacb081d-1395-4f40-ab79-14288a5120d5",
+      "name": "RabbitMQ",
+      "type": "n8n-nodes-base.rabbitmq",
+      "typeVersion": 1.1,
+      "position": [
+        680,
+        460
+      ],
+      "credentials": {
+        "rabbitmq": {
+          "id": "vsivSndxsjAXwrVV",
+          "name": "SENAS RabbitMQ"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 30,
+    "errorWorkflow": "RmcsMOOjqYAPzM5R"
+  },
+  "staticData": {
+    "node:WooCommerce Trigger": {
+      "webhookId": 84,
+      "secret": "368db0601a15082648e02ace9b086eb5"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-06-12T16:05:50.071Z",
+      "updatedAt": "2024-06-12T16:05:50.071Z",
+      "id": "BMuNjE4XzDLJlWYd",
+      "name": "SENAS"
+    },
+    {
+      "createdAt": "2024-06-12T12:22:24.849Z",
+      "updatedAt": "2024-06-12T12:22:24.849Z",
+      "id": "CqX5k2lMgamxLs2J",
+      "name": "V1.0"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-06-12T19:46:35.000Z",
+  "versionId": "285f9bb9-bc76-45ff-8f7b-e554cab2c43f"
+}
