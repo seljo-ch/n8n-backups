@@ -1,0 +1,106 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-12T15:56:08.109Z",
+  "id": "RmcsMOOjqYAPzM5R",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "SENAS - ERROR Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7f9b2d76-6fbc-4a1c-85b4-1c669dcd8648",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "n8n@phx-cloud.ch",
+        "toEmail": "olivier@sebel.be",
+        "subject": "SENAS - Workflow ERROR",
+        "text": "=WORKFLOW LOG !!! ERROR !!!:  {{ $json.execution.error.message }}",
+        "options": {}
+      },
+      "id": "914e0c6b-05bf-4b05-a5a9-6a7dfdfb1b35",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        460,
+        620
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "pOFtS0g8KdUOP80U",
+          "name": "n8n Generic E-Mail"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "502883818",
+        "text": "={{ $now.toFormat('hh:mm - dd.MM.yyyy')  }} WORKFLOW LOG !!! ERROR !!!:  {{ $json.execution.error.message }}",
+        "additionalFields": {}
+      },
+      "id": "88bca800-1d5e-4170-b81d-96664c0ec4d2",
+      "name": "Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "3WbJ2SBGmEt4GjEP",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-06-12T12:22:24.849Z",
+      "updatedAt": "2024-06-12T12:22:24.849Z",
+      "id": "CqX5k2lMgamxLs2J",
+      "name": "V1.0"
+    },
+    {
+      "createdAt": "2024-06-12T11:53:43.640Z",
+      "updatedAt": "2024-06-12T11:53:43.640Z",
+      "id": "cANPI1xE71Kwtkis",
+      "name": "Senas"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-12T19:45:26.000Z",
+  "versionId": "473ad924-8761-4b65-8f64-3b055f482250"
+}
