@@ -1,0 +1,72 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-23T17:26:36.576Z",
+  "id": "2B6AaoSmjQjU4j91",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -256
+      ],
+      "id": "f98e74e0-1c69-4ff7-8e1a-24a64d51128b",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.firecrawl.dev/v1/scrape",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer fc-a5f49c4371254ca8b073d8d37c480883"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"url\": \"https://www.fahrschule-straubhaar.ch/\",\n  \"formats\": [\"json\"],\n  \"jsonOptions\": {\n    \"prompt\": \"Extract all pages to the schema\",\n    \"schema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"pages\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"url\": { \"type\": \"string\" },\n              \"headings\": {\n                \"type\": \"array\",\n                \"items\": { \"type\": \"string\" }\n              },\n              \"text\": { \"type\": \"string\" },\n              \"imageAlts\": {\n                \"type\": \"array\",\n                \"items\": { \"type\": \"string\" }\n              }\n            },\n            \"required\": [\"url\", \"headings\", \"text\", \"imageAlts\"]\n          }\n        }\n      },\n      \"required\": [\"pages\"]\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        -256
+      ],
+      "id": "a29fc512-6062-4012-9085-ed926cfeb492",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-23T18:01:49.000Z",
+  "versionId": "4fb36782-bfef-4a25-97d9-968c1b24a8c7"
+}
